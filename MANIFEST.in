@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include ordem_servico *.css
+recursive-include ordem_servico *.csv
+recursive-include ordem_servico *.html
+recursive-include ordem_servico *.ico
+recursive-include ordem_servico *.js
+recursive-include ordem_servico *.json
+recursive-include ordem_servico *.md
+recursive-include ordem_servico *.png
+recursive-include ordem_servico *.py
+recursive-include ordem_servico *.svg
+recursive-include ordem_servico *.txt
+recursive-exclude ordem_servico *.pyc
