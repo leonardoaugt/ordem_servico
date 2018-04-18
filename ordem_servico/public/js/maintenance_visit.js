@@ -27,6 +27,11 @@ frappe.ui.form.on("Maintenance Visit", {
 });
 
 frappe.ui.form.on("Maintenance Visit Purpose", { 
+
+	setup: function () {
+		console.log('teste setup event');
+	},
+
 	orcamento: function(frm, cdt, cdn) {
 		//Run script if document is already saved
 		if (!frm.doc.__unsaved) {
