@@ -53,6 +53,7 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 	},
 	
 	numero_serie: function (frm, cdt, cdn) {
+		console.log('numero serie');
 		d = locals[cdt][cdn];
 		if (d.numero_serie) {
 			frappe.call({
@@ -77,6 +78,7 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 	},
 
 	agendado_para: function (frm, cdt, cdn) {
+		console.log('agendado para');
 		d = locals[cdt][cdn];
 		frappe.call({
 			method: "ordem_servico.ordem_servico.ordem_servico.get_materials",
