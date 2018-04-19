@@ -4,3 +4,4 @@
 *.swp
 tags
 ordem_servico/docs/current
+.vscode/temp.sql

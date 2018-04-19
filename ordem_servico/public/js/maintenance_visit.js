@@ -28,10 +28,6 @@ frappe.ui.form.on("Maintenance Visit", {
 
 frappe.ui.form.on("Maintenance Visit Purpose", { 
 
-	setup: function () {
-		console.log('teste setup event');
-	},
-
 	orcamento: function(frm, cdt, cdn) {
 		//Run script if document is already saved
 		if (!frm.doc.__unsaved) {
@@ -78,6 +74,21 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 				}
 			});
 		}
+	},
+
+	agendado_para: function (frm, cdt, cdn) {
+		d = locals[cdt][cdn];
+		frappe.call({
+			method: "ordem_servico.ordem_servico.ordem_servico.get_materials",
+			args: {
+				"tab_idx": d.idx
+			},
+			callback: function (r) {
+				data = r.message;
+				sql_result = data[0][0];
+				console.log(data = r.message);
+			}
+		});
 	}
 
 });
