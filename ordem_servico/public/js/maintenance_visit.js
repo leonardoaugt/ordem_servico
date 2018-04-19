@@ -53,9 +53,9 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 	},
 	
 	numero_serie: function (frm, cdt, cdn) {
-		console.log('numero serie');
 		d = locals[cdt][cdn];
 		if (d.numero_serie) {
+			console.log(d.numero_serie);
 			frappe.call({
 				method: "ordem_servico.ordem_servico.ordem_servico.get_materials",
 				args: {
@@ -88,7 +88,7 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 			callback: function (r) {
 				data = r.message;
 				sql_result = data[0][0];
-				console.log(data = r.message);
+				console.log(data);
 			}
 		});
 	}
