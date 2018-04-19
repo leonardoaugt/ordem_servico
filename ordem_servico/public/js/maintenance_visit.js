@@ -9,12 +9,6 @@ frappe.ui.form.on("Maintenance Visit", {
 		});
 		frm.reload_doc();
 	},
-
-	customer: function (frm) {
-		if (frm.doc.purposes) {
-			frm.doc.purposes = [];
-		}
-	},
 	
 	local_manutencao: function (frm) {
 		frm.fields_dict.purposes.grid.get_field('numero_serie').get_query = function() {
