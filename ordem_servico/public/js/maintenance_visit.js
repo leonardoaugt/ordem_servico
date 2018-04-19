@@ -50,47 +50,6 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 				} else { frappe.throw("Local de Manutenção deve ser Interno!") }
 			} else { frappe.throw("Equipamento na garantia!") }
 		} else { frappe.throw("Salve o documento primeiro!") }
-	},
-	
-	numero_serie: function (frm, cdt, cdn) {
-		d = locals[cdt][cdn];
-		if (d.numero_serie) {
-			console.log(d.numero_serie);
-			frappe.call({
-				method: "ordem_servico.ordem_servico.ordem_servico.get_materials",
-				args: {
-					"name": d.numero_serie,
-					"columns": "descricao, tag, modelo",
-					"tab_idx": d.idx
-				},
-				callback: function (r) {
-					data = r.message;
-					sql_result = data[0][0];
-					tab_idx = parseInt(data[1]['idx']);
-					cur_frm.doc.purposes[tab_idx].item_name = sql_result['descricao'];
-					cur_frm.doc.purposes[tab_idx].tag = sql_result['tag'];
-					cur_frm.doc.purposes[tab_idx].modelo_equipamento = sql_result['modelo'];
-					cur_frm.doc.purposes[tab_idx].responsavel_usuario = frappe.user.name;
-					refresh_field("purposes");
-				}
-			});
-		}
-	},
-
-	agendado_para: function (frm, cdt, cdn) {
-		console.log('agendado para');
-		d = locals[cdt][cdn];
-		frappe.call({
-			method: "ordem_servico.ordem_servico.ordem_servico.get_materials",
-			args: {
-				"tab_idx": d.idx
-			},
-			callback: function (r) {
-				data = r.message;
-				sql_result = data[0][0];
-				console.log(data);
-			}
-		});
 	}
 
 });
