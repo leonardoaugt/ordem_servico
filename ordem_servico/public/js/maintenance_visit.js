@@ -74,6 +74,7 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 					cur_frm.doc.purposes[idx].item_name = data['descricao'];
 					cur_frm.doc.purposes[idx].modelo_equipamento = data['modelo'];
 					cur_frm.doc.purposes[idx].tag = data['tag'];
+					cur_frm.refresh_field("purposes");
 				}
 			})	
 		}
