@@ -35,7 +35,7 @@ frappe.ui.form.on("Maintenance Visit", {
 				filters: { 
 					"department": ["in", ["Diretoria", "Assistência Técnica"]] }
 			}
-		},
+		}
 
 	}
 
