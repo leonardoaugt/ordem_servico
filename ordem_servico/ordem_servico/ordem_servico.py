@@ -20,7 +20,7 @@ def rename_quotation(doc_maint):
 	return
 
 @frappe.whitelist()
-def make_orcamento(doc_maint, purposes_os):
+def new_quotation(doc_maint, purposes_os):
 	maint = frappe.get_doc("Maintenance Visit", doc_maint)
 	quotation = frappe.new_doc("Quotation")
 	quotation.os_doctype = "Maintenance Visit"

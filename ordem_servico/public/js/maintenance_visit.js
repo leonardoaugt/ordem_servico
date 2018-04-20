@@ -75,7 +75,7 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 					// Take index datas
 					d = locals[cdt][cdn];
 					frappe.call({
-						method: "ordem_servico.ordem_servico.ordem_servico.make_orcamento",
+						method: "ordem_servico.ordem_servico.ordem_servico.new_quotation",
 						args: {
 							doc_maint: frm.doc.name,
 							purposes_os: d.os,
