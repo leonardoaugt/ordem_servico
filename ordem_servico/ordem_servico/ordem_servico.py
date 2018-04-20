@@ -15,7 +15,7 @@ def rename_quotation(doc_maint):
 	else:
 		local_manutencao = "INT"
 	for idx in range(len_array_purposes):
-		maint.purposes[idx].os = "OS-%s-%s/%s" % (maint.name, local_manutencao, str(idx))
+		maint.purposes[idx].os = "OS-%s/%s" % (local_manutencao, str(idx))
 	maint.save()
 	return
 
