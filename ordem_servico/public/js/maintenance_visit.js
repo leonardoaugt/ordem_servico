@@ -62,7 +62,7 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 					filters: {
 						numero_serie: d.numero_serie,
 					},
-					fieldname:["modelo", "descriao", "tag"]
+					fieldname:["modelo", "descricao", "tag"]
 				}, 
 				callback: function(r) { 
 					console.log(r);
