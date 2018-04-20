@@ -10,8 +10,12 @@ def rename_quotation(doc_maint):
 	maint = frappe.get_doc("Maintenance Visit", doc_maint)
 	len_array_purposes = len(maint.purposes)
 	idx = 0
+	if maint.local_manutencao == "Externo":
+		local_manutencao = "EXT"
+	else:
+		local_manutencao = "INT"
 	for idx in range(len_array_purposes):
-		maint.purposes[idx].os = "OS-%s/%s" % (maint.name, str(idx))
+		maint.purposes[idx].os = "OS-%s-%s/%s" % (maint.name, local_manutencao, str(idx))
 	maint.save()
 	return
 
