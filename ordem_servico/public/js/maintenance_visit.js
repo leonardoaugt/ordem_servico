@@ -37,13 +37,6 @@ frappe.ui.form.on("Maintenance Visit", {
 			}
 		},
 
-		frm.fields_dict.purposes.grid.get_field('agendado_para2').get_query = function () {
-			return {
-				filters: { 
-					"department": ["in", ["Diretoria", "Assistência Técnica"]] }
-			}
-		}
-
 	}
 
 });
