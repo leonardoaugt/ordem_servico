@@ -20,13 +20,23 @@ frappe.ui.form.on("Maintenance Visit", {
 		}
 	},
 	
-	// Set series on purposes grid
 	local_manutencao: function (frm) {
-		frm.fields_dict.purposes.grid.get_field('numero_serie').get_query = function() {
+
+		// Set serie_number
+		frm.fields_dict.purposes.grid.get_field('numero_serie').get_query = function () {
 			return {
-				filters: { "parent": cur_frm.doc.customer }
+				filters: { 
+					"parent": cur_frm.doc.customer }
+			}
+		},
+
+		frm.field_dict.purposes.grid.get_field('agendado_para').get_query = function () {
+			return {
+				filters: { 
+					"department": ["in", ["Diretoria", "Assistência Técnica"]] }
 			}
 		}
+
 	}
 
 });
@@ -82,17 +92,7 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 
 	agendado_para: function (frm, cdt, cdn) {
 		d = locals[cdt][cdn];
-		frappe.call({
-			method: "ordem_servico.ordem_servico.ordem_servico.get_materials",
-			args: {
-				"tab_idx": d.idx
-			},
-			callback: function (r) {
-				data = r.message;
-				sql_result = data[0][0];
-				console.log(data = r.message);
-			}
-		});
+		
 	}
 
 });
