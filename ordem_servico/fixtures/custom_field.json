@@ -1654,7 +1654,7 @@
   "in_list_view": 0, 
   "in_standard_filter": 0, 
   "insert_after": "agendado_para2", 
-  "label": "Agendado por", 
+  "label": "Agendado Por", 
   "modified": "2018-04-12 15:57:08.356201", 
   "name": "Maintenance Visit Purpose-agendado_por", 
   "no_copy": 0, 
