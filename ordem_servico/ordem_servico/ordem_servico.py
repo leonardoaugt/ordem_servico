@@ -6,7 +6,7 @@ import frappe
 from frappe.model.document import Document
 
 @frappe.whitelist()
-def rename_os(doc_maint):
+def rename_quotation(doc_maint):
 	maint = frappe.get_doc("Maintenance Visit", doc_maint)
 	len_array_purposes = len(maint.purposes)
 	idx = 0

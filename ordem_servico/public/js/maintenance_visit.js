@@ -1,7 +1,9 @@
 frappe.ui.form.on("Maintenance Visit", {
+
+	// Rename Quotation
 	after_save: function(frm) {
 		frappe.call( {
-			method: "ordem_servico.ordem_servico.ordem_servico.rename_os",
+			method: "ordem_servico.ordem_servico.ordem_servico.rename_quotation",
 			args: { doc_maint: frm.doc.name, },
 			callback: function(r){
 				cur_frm.__unsaved = 1;
@@ -10,12 +12,15 @@ frappe.ui.form.on("Maintenance Visit", {
 		frm.reload_doc();
 	},
 
+	// Clear purposes when change customer
 	customer: function (frm) {
 		if (frm.doc.purposes) {
 			frm.doc.purposes = [];
+			frm.add_child('purposes');
 		}
 	},
 	
+	// Set series on purposes grid
 	local_manutencao: function (frm) {
 		frm.fields_dict.purposes.grid.get_field('numero_serie').get_query = function() {
 			return {
@@ -29,12 +34,11 @@ frappe.ui.form.on("Maintenance Visit", {
 frappe.ui.form.on("Maintenance Visit Purpose", { 
 
 	orcamento: function(frm, cdt, cdn) {
-		//Run script if document is already saved
 		if (!frm.doc.__unsaved) {
 			d = locals[cdt][cdn]
 			if (d.garantia == 0){
 				if (frm.doc.local_manutencao == "Interno") {
-					//Take datas of index
+					// Take index datas
 					d = locals[cdt][cdn];
 		  			frappe.call( {
 						method: "ordem_servico.ordem_servico.ordem_servico.make_orcamento",
@@ -65,8 +69,11 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 					fieldname:["modelo", "descricao", "tag"]
 				}, 
 				callback: function(r) { 
-					console.log(r, d);
-					
+					data = r.message;
+					idx = (d.idx-1);
+					cur_frm.doc.purposes[idx].item_name = data['descricao'];
+					cur_frm.doc.purposes[idx].modelo_equipamento = data['modelo'];
+					cur_frm.doc.purposes[idx].tag = data['tag'];
 				}
 			})	
 		}
