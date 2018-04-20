@@ -28,14 +28,14 @@ frappe.ui.form.on("Maintenance Visit", {
 				filters: { 
 					"parent": cur_frm.doc.customer }
 			}
-		}
+		},
 
 		frm.fields_dict.purposes.grid.get_field('agendado_para').get_query = function () {
 			return {
 				filters: { 
 					"department": ["in", ["Diretoria", "Assistência Técnica"]] }
 			}
-		}
+		},
 
 		frm.fields_dict.purposes.grid.get_field('agendado_para2').get_query = function () {
 			return {
@@ -43,7 +43,7 @@ frappe.ui.form.on("Maintenance Visit", {
 					"department": ["in", ["Diretoria", "Assistência Técnica"]]
 				}
 			}
-		}
+		},
 
 		frm.fields_dict.purposes.grid.get_field('agendado_por').get_query = function () {
 			return {
@@ -51,7 +51,7 @@ frappe.ui.form.on("Maintenance Visit", {
 					"department": ["in", ["Diretoria", "Vendas"]]
 				}
 			}
-		}
+		},
 
 		frm.fields_dict.purposes.grid.get_field('agendado_por2').get_query = function () {
 			return {
