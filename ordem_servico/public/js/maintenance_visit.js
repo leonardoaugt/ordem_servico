@@ -65,8 +65,8 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 					fieldname:["modelo", "descricao", "tag"]
 				}, 
 				callback: function(r) { 
-					console.log(r);
-			
+					console.log(r, d);
+					
 				}
 			})	
 		}
