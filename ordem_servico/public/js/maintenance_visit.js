@@ -28,7 +28,7 @@ frappe.ui.form.on("Maintenance Visit", {
 				filters: { 
 					"parent": cur_frm.doc.customer }
 			}
-		},
+		}
 
 		frm.fields_dict.purposes.grid.get_field('agendado_para').get_query = function () {
 			return {
