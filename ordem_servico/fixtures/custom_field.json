@@ -194,7 +194,7 @@
   "bold": 0, 
   "collapsible": 0, 
   "collapsible_depends_on": null, 
-  "columns": 1, 
+  "columns": 2, 
   "default": null, 
   "depends_on": "", 
   "description": null, 
