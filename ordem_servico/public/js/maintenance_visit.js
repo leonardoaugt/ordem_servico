@@ -37,26 +37,34 @@ frappe.ui.form.on("Maintenance Visit", {
 			}
 		}
 
+		frm.fields_dict.purposes.grid.get_field('agendado_para2').get_query = function () {
+			return {
+				filters: {
+					"department": ["in", ["Diretoria", "Assistência Técnica"]]
+				}
+			}
+		}
+
 	}
 
 });
 
-frappe.ui.form.on("Maintenance Visit Purpose", { 
+frappe.ui.form.on("Maintenance Visit Purpose", {
 
-	orcamento: function(frm, cdt, cdn) {
+	orcamento: function (frm, cdt, cdn) {
 		if (!frm.doc.__unsaved) {
 			d = locals[cdt][cdn]
-			if (d.garantia == 0){
+			if (d.garantia == 0) {
 				if (frm.doc.local_manutencao == "Interno") {
 					// Take index datas
 					d = locals[cdt][cdn];
-		  			frappe.call( {
+					frappe.call({
 						method: "ordem_servico.ordem_servico.ordem_servico.make_orcamento",
 						args: {
 							doc_maint: frm.doc.name,
 							purposes_os: d.os,
 						},
-						callback: function(r){
+						callback: function (r) {
 							var doc = r.message;
 							frappe.set_route("Form", "Quotation", doc.name);
 						}
@@ -65,34 +73,34 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 			} else { frappe.throw("Equipamento na garantia!") }
 		} else { frappe.throw("Salve o documento primeiro!") }
 	},
-	
+
 	numero_serie: function (frm, cdt, cdn) {
 		d = locals[cdt][cdn];
 		if (d.numero_serie) {
 			frappe.call({
-				method:"frappe.client.get_value",
+				method: "frappe.client.get_value",
 				args: {
-					doctype:"Materiais",
+					doctype: "Materiais",
 					filters: {
 						numero_serie: d.numero_serie,
 					},
-					fieldname:["modelo", "descricao", "tag"]
-				}, 
-				callback: function(r) { 
+					fieldname: ["modelo", "descricao", "tag"]
+				},
+				callback: function (r) {
 					data = r.message;
-					idx = (d.idx-1);
+					idx = (d.idx - 1);
 					cur_frm.doc.purposes[idx].item_name = data['descricao'];
 					cur_frm.doc.purposes[idx].modelo_equipamento = data['modelo'];
 					cur_frm.doc.purposes[idx].tag = data['tag'];
 					cur_frm.refresh_field("purposes");
 				}
-			})	
+			})
 		}
 	},
 
 	agendado_para: function (frm, cdt, cdn) {
 		d = locals[cdt][cdn];
-		
+
 	}
 
 });
