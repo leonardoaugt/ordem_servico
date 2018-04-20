@@ -27,25 +27,3 @@ def make_orcamento(doc_maint, purposes_os):
 	quotation.flags.ignore_validate = True
 	quotation.save()
 	return quotation
-
-@frappe.whitelist()
-def get_materials(name, columns, tab_idx):
-	tab_idx = int(tab_idx) - 1
-	sql_result = frappe.db.sql("SELECT {} FROM tabMateriais WHERE name='{}'".format(columns, name), as_dict=True)
-	if sql_result:
-		data = sql_result
-	else:
-		data = "Vazio"
-	tab_idx = {"idx": tab_idx}
-	return data, tab_idx
-
-@frappe.whitelist()
-def custom_get(name, columns, tab_idx):
-	tab_idx = int(tab_idx) - 1
-	sql_result = frappe.db.sql("SELECT employee_name FROM tabEmployee WHERE department = 'Assistência Técnica' AND department <> ''", as_dict=True)
-	if sql_result:
-		data = sql_result
-	else:
-		data = "Vazio"
-	tab_idx = {"idx": tab_idx}
-	return data, tab_idx
