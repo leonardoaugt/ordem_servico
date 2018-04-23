@@ -2722,7 +2722,7 @@
   "modified": "2018-04-16 10:21:16.794947", 
   "name": "Maintenance Visit Purpose-status_ordem_servico", 
   "no_copy": 0, 
-  "options": "\nEm Or\u00e7amento\nAguardando Aprova\u00e7\u00e3o\nEm Conserto\nAguarda Retirada\nAguarda Retirada - Reprov\nAguarda Retirada - S/ Cons\nEncerrada", 
+  "options": "\nEm Or\u00e7amento\nEm Aprova\u00e7\u00e3o\nEm Conserto\nEncerrada", 
   "permlevel": 0, 
   "precision": "", 
   "print_hide": 0, 
