@@ -110,14 +110,32 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 					cur_frm.doc.purposes[idx].tag = data['tag'];
 					cur_frm.refresh_field("purposes");
 				}
-			})
+			});
 		}
 	},
 
+	// Functions
+	
 	agendado_para: function (frm, cdt, cdn) {
 		d = locals[cdt][cdn];
-
-	}
+		if (d.agendado_para) {
+			frappe.call({
+				method: "frappe.client.get_value",
+				args: {
+					doctype: "Employee",
+					filters: {
+						name: d.agendado_para,
+					},
+					fieldname: "employee_name"
+				},
+				callback: function (r) {
+					data = r.message;
+					idx = (d.idx - 1);
+					cur_frm.doc.purposes[idx].agendado_para= data['employee_name'];
+					cur_frm.refresh_field("agendado_para");
+				}
+			});
+		}
+	},
 
 });
-
