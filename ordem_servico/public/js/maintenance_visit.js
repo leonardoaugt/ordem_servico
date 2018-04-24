@@ -67,6 +67,8 @@ frappe.ui.form.on("Maintenance Visit", {
 
 frappe.ui.form.on("Maintenance Visit Purpose", {
 
+	// Create quotation doc
+
 	orcamento: function (frm, cdt, cdn) {
 		if (!frm.doc.__unsaved) {
 			d = locals[cdt][cdn]
@@ -89,6 +91,8 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 			} else { frappe.throw("Equipamento na garantia!") }
 		} else { frappe.throw("Salve o documento primeiro!") }
 	},
+
+	// Get serie number
 
 	numero_serie: function (frm, cdt, cdn) {
 		d = locals[cdt][cdn];
@@ -114,8 +118,8 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 		}
 	},
 
-	// Functions
-	
+	// Get employee_name
+
 	agendado_para: function (frm, cdt, cdn) {
 		d = locals[cdt][cdn];
 		if (d.agendado_para) {
@@ -137,7 +141,7 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 			});
 		}
 		else {
-			d.agendado_para = "";
+			d.agendado_para_name = "";
 			cur_frm.refresh_field("purposes");
 		}
 	},
