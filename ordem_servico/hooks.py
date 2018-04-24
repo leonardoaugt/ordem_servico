@@ -33,7 +33,7 @@ doctype_js = {"Maintenance Visit" : "public/js/maintenance_visit.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 fixtures = fixtures = [
 	"Custom Script", "Property Setter",
-		{"dt":"Custom Field",  "filters": [["dt", "in", ("Maintenance Visit", "Maintenance Visit Purpose", "Quotation", "Customer")]]}
+		{"dt":"Custom Field",  "filters": [["dt", "in", ("Maintenance Visit", "Maintenance Visit Purpose", "Quotation", "Customer", "Event")]]}
 ]
 # Home Pages
 # ----------
