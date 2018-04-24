@@ -138,7 +138,86 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 		}
 		else {
 			d.agendado_para = "";
+			cur_frm.refresh_field("purposes");
 		}
 	},
+
+	agendado_por: function (frm, cdt, cdn) {
+		d = locals[cdt][cdn];
+		if (d.agendado_por) {
+			frappe.call({
+				method: "frappe.client.get_value",
+				args: {
+					doctype: "Employee",
+					filters: {
+						name: d.agendado_por,
+					},
+					fieldname: "employee_name"
+				},
+				callback: function (r) {
+					data = r.message;
+					idx = (d.idx - 1);
+					cur_frm.doc.purposes[idx].agendado_por_name= data['employee_name'];
+					cur_frm.refresh_field("purposes");
+				}
+			});
+		}
+		else {
+			d.agendado_por_name = "";
+			cur_frm.refresh_field("purposes");
+		}
+	},
+
+	agendado_para2: function (frm, cdt, cdn) {
+		d = locals[cdt][cdn];
+		if (d.agendado_para2) {
+			frappe.call({
+				method: "frappe.client.get_value",
+				args: {
+					doctype: "Employee",
+					filters: {
+						name: d.agendado_para2,
+					},
+					fieldname: "employee_name"
+				},
+				callback: function (r) {
+					data = r.message;
+					idx = (d.idx - 1);
+					cur_frm.doc.purposes[idx].agendado_para_name2 = data['employee_name'];
+					cur_frm.refresh_field("purposes");
+				}
+			});
+		}
+		else {
+			d.agendado_para_name2 = "";
+			cur_frm.refresh_field("purposes");
+		}
+	}, 
+
+	agendado_por2: function (frm, cdt, cdn) {
+		d = locals[cdt][cdn];
+		if (d.agendado_por) {
+			frappe.call({
+				method: "frappe.client.get_value",
+				args: {
+					doctype: "Employee",
+					filters: {
+						name: d.agendado_por,
+					},
+					fieldname: "employee_name"
+				},
+				callback: function (r) {
+					data = r.message;
+					idx = (d.idx - 1);
+					cur_frm.doc.purposes[idx].agendado_por_name2 = data['employee_name'];
+					cur_frm.refresh_field("purposes");
+				}
+			});
+		}
+		else {
+			d.agendado_por_name2 = "";
+			cur_frm.refresh_field("purposes");
+		}
+	}, 
 
 });
