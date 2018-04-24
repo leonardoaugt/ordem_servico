@@ -44,5 +44,6 @@ def make_event(maint_name, os_name, customer, employee):
 	event.owner = agendado_para
 	event.flags.ignore_mandatory = True
 	event.flags.ignore_validate = True
+	event.flags.ignore_permissions = True
 	event.save()
 	return event
