@@ -1,23 +1,18 @@
 frappe.ui.form.on("Maintenance Visit", {
 
-	// after_save: function (frm) {
-
-	// 	// Rename Quotation
-
-	// 	frappe.call({
-	// 		method: "ordem_servico.ordem_servico.ordem_servico.rename_quotation",
-	// 		args: {
-	// 			doc_maint: frm.doc.name,
-	// 		},
-	// 		callback: function (r) {
-	// 			cur_frm.__unsaved = 1;
-	// 		}
-	// 	});
-
-	// 	frm.reload_doc();
-	// },
-
 	after_save: function (frm) {
+
+		// Rename Quotation
+
+		frappe.call({
+			method: "ordem_servico.ordem_servico.ordem_servico.rename_quotation",
+			args: {
+				doc_maint: frm.doc.name,
+			},
+			callback: function (r) {
+				cur_frm.__unsaved = 1;
+			}
+		});
 
 		// Create event based on "agendado_para"
 
@@ -38,6 +33,7 @@ frappe.ui.form.on("Maintenance Visit", {
 			});
 		});
 
+		frm.reload_doc();
 		frm.refresh_field('purposes');
 	},
 
