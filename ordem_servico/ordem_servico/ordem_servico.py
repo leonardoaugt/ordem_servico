@@ -41,7 +41,7 @@ def make_event(maint_name, os_name, customer, employee):
 	event.starts_on = now.strftime("%Y-%m-%d %H:%M:00")
 	event.manutencao = maint_name
 	event.ordem_servico = os_name
-	event.owner = agendado_para
+	event.owner = employee
 	event.flags.ignore_mandatory = True
 	event.flags.ignore_validate = True
 	event.flags.ignore_permissions = True
