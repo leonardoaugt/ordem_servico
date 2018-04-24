@@ -17,7 +17,7 @@ frappe.ui.form.on("Maintenance Visit", {
 		frm.reload_doc();
 	},
 
-	before_save: function () {
+	on_save: function () {
 
 		// Create event based on "agendado_para"
 
