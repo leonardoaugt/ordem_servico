@@ -17,11 +17,11 @@ frappe.ui.form.on("Maintenance Visit", {
 		frm.reload_doc();
 	},
 
-	on_save: function () {
+	on_save: function (frm) {
 
 		// Create event based on "agendado_para"
 
-		$.each(frm.doc.purposes || [], function (frm, i, d) {
+		$.each(frm.doc.purposes || [], function (i, d) {
 			frappe.call({
 				method: "ordem_servico.ordem_servico.ordem_servico.make_event",
 				args: {
