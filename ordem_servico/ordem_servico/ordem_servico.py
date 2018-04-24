@@ -46,4 +46,4 @@ def make_event(maint_name, os_name, customer, employee):
 	event.flags.ignore_validate = True
 	event.flags.ignore_permissions = True
 	event.save()
-	return event.name
+	return event
