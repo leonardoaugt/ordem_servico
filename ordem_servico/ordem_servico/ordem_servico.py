@@ -34,7 +34,7 @@ def new_quotation(doc_maint, purposes_os):
 	return quotation
 
 @frappe.whitelist()
-def make_event(maint_name, os_name, customer, agendado_para):
+def make_event(maint_name, os_name, customer, employee):
 	event = frappe.new_doc("Event")
 	event.subject = customer
 	now = datetime.datetime.now()
