@@ -2,24 +2,6 @@
  {
   "docstatus": 0, 
   "doctype": "Custom Script", 
-  "dt": "Maintenance Visit", 
-  "modified": "2017-11-23 23:30:01.020006", 
-  "name": "Maintenance Visit-Client", 
-  "script": "frappe.ui.form.on(\"Maintenance Visit Purpose\", \"purposes_add\", function(frm) {\n\t\tconsole.log(\"foi\");\n});", 
-  "script_type": "Client"
- }, 
- {
-  "docstatus": 0, 
-  "doctype": "Custom Script", 
-  "dt": "Event", 
-  "modified": "2017-12-11 18:33:23.582760", 
-  "name": "Event-Client", 
-  "script": "frappe.ui.form.on(\"Event\", { \n\ton_submit: function(frm) { \n\t\tif (frm.doc.owner == 'marinete@eranalitica.com.br') {\n\t\t\tfrm.doc.color = '#ff8989';\n\t\t} else if (frm.doc.owner == 'daniel@eranalitica.com.br') {\n\t\t\tfrm.doc.color = '#428b46';\n\t\t} else if (frm.doc.owner == 'renato@eranalitica.com.br') {\n\t\t\tfrm.doc.color = '#49937e';\n\t\t} else if (frm.doc.owner == 'emilio@eranalitica.com.br') {\n\t\t\tfrm.doc.color = '#ff7846';\n\t\t} else if (frm.doc.owner == 'vendas@eranalitica.com.br') {\n\t\t\tfrm.doc.color = '#a87945';\n\t\t} \n\t} \n});", 
-  "script_type": "Client"
- }, 
- {
-  "docstatus": 0, 
-  "doctype": "Custom Script", 
   "dt": "Customer", 
   "modified": "2018-04-12 20:29:01.554527", 
   "name": "Customer-Client", 
