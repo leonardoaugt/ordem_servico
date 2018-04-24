@@ -19,17 +19,21 @@ frappe.ui.form.on("Maintenance Visit", {
 
 	before_save: function (frm) {
 
-		// Create event based agendado_para
+		// Create event based on "agendado_para"
 
 		$.each(frm.doc.purposes || [], function (i, d) {
 			frappe.call({
 				method: "ordem_servico.ordem_servico.ordem_servico.make_event",
 				args: {
-					doc_maint: d.os,
+					maint_name: frm.doc.name,
+					os_name: d.os,
+					customer: frm.doc.customer,
+					employee: d.agendado_para,
 				},
 				callback: function (r) {
 					r.message = data;
-					cur_frm.doc.purposes[i].agenda = data['name'];
+					console.log(data);
+					// cur_frm.doc.purposes[i].agenda = data['name'];
 				}
 			});
 		});
