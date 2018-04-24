@@ -136,6 +136,9 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 				}
 			});
 		}
+		else {
+			d.agendado_para = "";
+		}
 	},
 
 });
