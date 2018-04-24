@@ -132,7 +132,7 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 					data = r.message;
 					idx = (d.idx - 1);
 					cur_frm.doc.purposes[idx].agendado_para_name = data['employee_name'];
-					cur_frm.refresh_field("agendado_para_name");
+					cur_frm.refresh_field("purposes");
 				}
 			});
 		}
