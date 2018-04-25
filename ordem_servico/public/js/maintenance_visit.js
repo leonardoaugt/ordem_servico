@@ -32,7 +32,6 @@ frappe.ui.form.on("Maintenance Visit", {
 				}
 			});
 		});
-		frm.save();
 		frm.reload_doc();
 		frm.refresh_field('purposes');
 	},
