@@ -48,7 +48,7 @@ def make_event(doc_name):
 		event.all_day = 1
 		event.manutencao = doc_maint.name
 		event.ordem_servico = row.os
-		event.owner = row.employee
+		event.owner = row.agendado_para
 		event.flags.ignore_mandatory = True
 		event.flags.ignore_validate = True
 		event.flags.ignore_permissions = True
