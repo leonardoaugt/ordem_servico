@@ -38,7 +38,7 @@ def new_quotation(doc_maint, purposes_os):
 
 @frappe.whitelist()
 def make_event(doc_name):
-	doc_maint = frappe.get_doc("Maintenance Visit", maint_name)
+	doc_maint = frappe.get_doc("Maintenance Visit", doc_name)
 	purposes = doc_maint.purposes
 	for row in purposes:
 		event = frappe.new_doc("Event")
