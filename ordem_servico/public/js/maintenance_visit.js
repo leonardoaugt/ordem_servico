@@ -4,15 +4,15 @@ frappe.ui.form.on("Maintenance Visit", {
 
 		// Rename Quotation
 
-		frappe.call({
-			method: "ordem_servico.ordem_servico.ordem_servico.rename_quotation",
-			args: {
-				doc_maint: frm.doc.name,
-			},
-			callback: function (r) {
-				cur_frm.__unsaved = 1;
-			}
-		});
+		// frappe.call({
+		// 	method: "ordem_servico.ordem_servico.ordem_servico.rename_quotation",
+		// 	args: {
+		// 		doc_maint: frm.doc.name,
+		// 	},
+		// 	callback: function (r) {
+		// 		cur_frm.__unsaved = 1;
+		// 	}
+		// });
 
 		// Create event based on "agendado_para"
 
