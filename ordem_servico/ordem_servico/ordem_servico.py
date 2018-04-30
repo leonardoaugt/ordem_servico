@@ -4,7 +4,9 @@
 from __future__ import unicode_literals
 import frappe
 from frappe.model.document import Document
-import datetime, timedelta
+import datetime
+import timedelta
+
 
 @frappe.whitelist()
 def rename_quotation(doc_maint):
@@ -20,6 +22,7 @@ def rename_quotation(doc_maint):
 	maint.save()
 	return
 
+
 @frappe.whitelist()
 def new_quotation(doc_maint, purposes_os):
 	maint = frappe.get_doc("Maintenance Visit", doc_maint)
@@ -33,19 +36,22 @@ def new_quotation(doc_maint, purposes_os):
 	quotation.save()
 	return quotation
 
+
 @frappe.whitelist()
-def make_event(maint_name, os_name, customer, employee):
-	maint = frappe.get_doc("Maintenance Visit", maint_name)
-	event = frappe.new_doc("Event")
-	event.subject = customer
-	now = datetime.datetime.now()
-	event.starts_on = now.strftime("%Y-%m-%d %H:%M:00")
-	event.all_day = 1
-	event.manutencao = maint_name
-	event.ordem_servico = os_name
-	event.owner = employee
-	event.flags.ignore_mandatory = True
-	event.flags.ignore_validate = True
-	event.flags.ignore_permissions = True
-	event.save()
-	return evento
+def make_event(doc_name):
+	doc_maint = frappe.get_doc("Maintenance Visit", maint_name)
+	purposes = doc_maint.purposes
+	for row in purposes:
+		event = frappe.new_doc("Event")
+		event.subject = doc_maint.customer
+		now = datetime.datetime.now()
+		event.starts_on = now.strftime("%Y-%m-%d %H:%M:00")
+		event.all_day = 1
+		event.manutencao = doc_maint.name
+		event.ordem_servico = row.os
+		event.owner = row.employee
+		event.flags.ignore_mandatory = True
+		event.flags.ignore_validate = True
+		event.flags.ignore_permissions = True
+		event.save()
+		return event

@@ -24,7 +24,6 @@ frappe.ui.form.on("Maintenance Visit", {
 			callback: function (r) {
 				data = r.message;
 				console.log(data);
-				d.agenda = data['name'];
 			}
 		});
 		frm.reload_doc();
