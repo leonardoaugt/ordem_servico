@@ -1,90 +1,90 @@
-// frappe.ui.form.on("Maintenance Visit", {
+frappe.ui.form.on("Maintenance Visit", {
 
-// 	after_save: function (frm) {
+	after_save: function (frm) {
 
-// 		// Rename Quotation
+		// Rename Quotation
 
-// 		frappe.call({
-// 			method: "ordem_servico.ordem_servico.ordem_servico.rename_quotation",
-// 			args: {
-// 				doc_maint: frm.doc.name,
-// 			},
-// 			callback: function (r) {
-// 				cur_frm.__unsaved = 1;
-// 			}
-// 		});
+		frappe.call({
+			method: "ordem_servico.ordem_servico.ordem_servico.rename_quotation",
+			args: {
+				doc_maint: frm.doc.name,
+			},
+			callback: function (r) {
+				cur_frm.__unsaved = 1;
+			}
+		});
 
-// 		// Create event based on "agendado_para"
+		// Create event based on "agendado_para"
 
-// 		frappe.call({
-// 			method: "ordem_servico.ordem_servico.ordem_servico.make_event",
-// 			args: {
-// 				doc_name: frm.doc.name,
-// 			},
-// 			callback: function (r) {
-// 				data = r.message;
-// 				console.log(data);
-// 				d.agenda = data['name'];
-// 			}
-// 		});
-// 		frm.reload_doc();
-// 		frm.refresh_field('purposes');
-// 	},
+		frappe.call({
+			method: "ordem_servico.ordem_servico.ordem_servico.make_event",
+			args: {
+				doc_name: frm.doc.name,
+			},
+			callback: function (r) {
+				data = r.message;
+				console.log(data);
+				d.agenda = data['name'];
+			}
+		});
+		frm.reload_doc();
+		frm.refresh_field('purposes');
+	},
 
-// 	customer: function (frm) {
+	customer: function (frm) {
 
-// 		// Clear purposes when change customer
-// 		if (frm.doc.purposes) {
-// 			frm.doc.purposes = [];
-// 			frm.add_child('purposes');
-// 		}
-// 	},
+		// Clear purposes when change customer
+		if (frm.doc.purposes) {
+			frm.doc.purposes = [];
+			frm.add_child('purposes');
+		}
+	},
 
-// 	local_manutencao: function (frm) {
+	local_manutencao: function (frm) {
 
-// 		// Set serie_number
-// 		frm.fields_dict.purposes.grid.get_field('numero_serie').get_query = function () {
-// 			return {
-// 				filters: {
-// 					"parent": cur_frm.doc.customer
-// 				}
-// 			}
-// 		}
+		// Set serie_number
+		frm.fields_dict.purposes.grid.get_field('numero_serie').get_query = function () {
+			return {
+				filters: {
+					"parent": cur_frm.doc.customer
+				}
+			}
+		}
 
-// 		frm.fields_dict.purposes.grid.get_field('agendado_para').get_query = function () {
-// 			return {
-// 				filters: {
-// 					"department": ["in", ["Diretoria", "Assistência Técnica"]]
-// 				}
-// 			}
-// 		}
+		frm.fields_dict.purposes.grid.get_field('agendado_para').get_query = function () {
+			return {
+				filters: {
+					"department": ["in", ["Diretoria", "Assistência Técnica"]]
+				}
+			}
+		}
 
-// 		frm.fields_dict.purposes.grid.get_field('agendado_para2').get_query = function () {
-// 			return {
-// 				filters: {
-// 					"department": ["in", ["Diretoria", "Assistência Técnica"]]
-// 				}
-// 			}
-// 		}
+		frm.fields_dict.purposes.grid.get_field('agendado_para2').get_query = function () {
+			return {
+				filters: {
+					"department": ["in", ["Diretoria", "Assistência Técnica"]]
+				}
+			}
+		}
 
-// 		frm.fields_dict.purposes.grid.get_field('agendado_por').get_query = function () {
-// 			return {
-// 				filters: {
-// 					"department": ["in", ["Diretoria", "Vendas"]]
-// 				}
-// 			}
-// 		}
+		frm.fields_dict.purposes.grid.get_field('agendado_por').get_query = function () {
+			return {
+				filters: {
+					"department": ["in", ["Diretoria", "Vendas"]]
+				}
+			}
+		}
 
-// 		frm.fields_dict.purposes.grid.get_field('agendado_por2').get_query = function () {
-// 			return {
-// 				filters: {
-// 					"department": ["in", ["Diretoria", "Vendas"]]
-// 				}
-// 			}
-// 		}
-// 	}
+		frm.fields_dict.purposes.grid.get_field('agendado_por2').get_query = function () {
+			return {
+				filters: {
+					"department": ["in", ["Diretoria", "Vendas"]]
+				}
+			}
+		}
+	}
 
-// });
+});
 
 // frappe.ui.form.on("Maintenance Visit Purpose", {
 
