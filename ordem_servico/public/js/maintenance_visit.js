@@ -16,16 +16,16 @@ frappe.ui.form.on("Maintenance Visit", {
 
 		// Create event based on "agendado_para"
 
-		// frappe.call({
-		// 	method: "ordem_servico.ordem_servico.ordem_servico.make_event",
-		// 	args: {
-		// 		doc_name: frm.doc.name,
-		// 	},
-		// 	callback: function (r) {
-		// 		data = r.message;
-		// 		console.log(data);
-		// 	}
-		// });
+		frappe.call({
+			method: "ordem_servico.ordem_servico.ordem_servico.make_event",
+			args: {
+				doc_name: frm.doc.name,
+			},
+			callback: function (r) {
+				data = r.message;
+				console.log(data);
+			}
+		});
 		frm.reload_doc();
 		frm.refresh_field('purposes');
 	},
