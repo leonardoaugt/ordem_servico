@@ -5,8 +5,6 @@ from __future__ import unicode_literals
 import frappe
 from frappe.model.document import Document
 import datetime
-import timedelta
-
 
 @frappe.whitelist()
 def rename_quotation(doc_maint):
