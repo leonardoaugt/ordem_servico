@@ -42,6 +42,7 @@ frappe.ui.form.on("Maintenance Visit", {
 	local_manutencao: function (frm) {
 
 		// Set serie_number
+		console.log('local_manutencao');
 		frm.fields_dict.purposes.grid.get_field('numero_serie').get_query = function () {
 			return {
 				filters: {
