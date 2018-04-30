@@ -39,19 +39,4 @@ def new_quotation(doc_maint, purposes_os):
 
 @frappe.whitelist()
 def make_event(doc_name):
-	doc_maint = frappe.get_doc("Maintenance Visit", maint_name)
-	purposes = doc_maint.purposes
-	for row in purposes:
-		event = frappe.new_doc("Event")
-		event.subject = doc_maint.customer
-		now = datetime.datetime.now()
-		event.starts_on = now.strftime("%Y-%m-%d %H:%M:00")
-		event.all_day = 1
-		event.manutencao = doc_maint.name
-		event.ordem_servico = row.os
-		event.owner = row.employee
-		event.flags.ignore_mandatory = True
-		event.flags.ignore_validate = True
-		event.flags.ignore_permissions = True
-		event.save()
-		return event
+	return doc_name
