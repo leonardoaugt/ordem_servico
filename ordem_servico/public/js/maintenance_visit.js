@@ -41,7 +41,8 @@ frappe.ui.form.on("Maintenance Visit", {
 
 	local_manutencao: function (frm) {
 
-		// Set serie_number
+		// Filtering values
+
 		frm.fields_dict.purposes.grid.get_field('numero_serie').get_query = function () {
 			return {
 				filters: {
@@ -132,6 +133,30 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 					cur_frm.doc.purposes[idx].item_name = data['descricao'];
 					cur_frm.doc.purposes[idx].modelo_equipamento = data['modelo'];
 					cur_frm.doc.purposes[idx].tag = data['tag'];
+					cur_frm.refresh_field("purposes");
+				}
+			});
+		}
+	},
+
+	// Get maintenance time
+
+	modelo_equipamento: function (frm, cdt, cdn) {
+		d = locals[cdt][cdn];
+		if (d.modelo_equipamento) {
+			frappe.call({
+				method: "frappe.client.get_value",
+				args: {
+					doctype: "Modelo Equipamento",
+					filters: {
+						modelo_equipamento: d.modelo_equipamento,
+					},
+					fieldname: ["tempo_conserto"]
+				},
+				callback: function (r) {
+					data = r.message;
+					idx = (d.idx - 1);
+					cur_frm.doc.purposes[idx].tempo_servico = data['tempo_conserto']
 					cur_frm.refresh_field("purposes");
 				}
 			});
