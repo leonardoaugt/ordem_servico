@@ -43,8 +43,8 @@ def make_event(doc_name):
 	for row in purposes:
 		event = frappe.new_doc("Event")
 		event.subject = doc_maint.customer
-		now = datetime.datetime.now()
-		event.starts_on = now.strftime("%Y-%m-%d %H:%M:00")
+		datetime_now = datetime.datetime.now()
+		event.starts_on = datetime_now.strftime("%Y-%m-%d %H:%M:00")
 		event.all_day = 1
 		event.manutencao = doc_maint.name
 		event.ordem_servico = row.os
@@ -53,4 +53,7 @@ def make_event(doc_name):
 		event.flags.ignore_validate = True
 		event.flags.ignore_permissions = True
 		event.save()
-		return type(row), row
+		row['agenda'] = event.name
+		return event
+	doc_maint.save()
+		
