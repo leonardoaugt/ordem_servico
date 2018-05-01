@@ -6,7 +6,6 @@ import frappe
 from frappe.model.document import Document
 import datetime
 
-
 @frappe.whitelist()
 def rename_quotation(doc_maint):
 	maint = frappe.get_doc("Maintenance Visit", doc_maint)
@@ -41,20 +40,15 @@ def make_event(doc_name):
 	doc_maint = frappe.get_doc("Maintenance Visit", doc_name)
 	purposes = doc_maint.purposes
 	for row in purposes:
-		event = frappe.new_doc("Event")
-		event.subject = doc_maint.customer
-		datetime_now = datetime.datetime.now()
-		event.starts_on = datetime_now.strftime("%Y-%m-%d %H:%M:00")
-		event.all_day = 1
-		event.manutencao = doc_maint.name
-		event.ordem_servico = row.os
-		event.owner = row.agendado_para
-		event.flags.ignore_mandatory = True
-		event.flags.ignore_validate = True
-		event.flags.ignore_permissions = True
-		event.save()
-		row.agenda = event.name
-		row.save()
-		return event.name
-	doc_maint.save()
-		
+		if not row.agenda:
+			event = frappe.new_doc("Event")
+			event.subject = doc_maint.customer
+			datetime_now = datetime.datetime.now()
+			event.starts_on = datetime_now.strftime("%Y-%m-%d %H:%M:00")
+			event.all_day = 1
+			event.manutencao = doc_maint.name
+			event.ordem_servico = row.os
+			event.owner = row.agendado_para
+			event.save()
+			row.agenda = event.name
+			row.save()
