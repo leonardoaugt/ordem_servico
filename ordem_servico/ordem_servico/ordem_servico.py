@@ -53,4 +53,4 @@ def make_event(doc_name):
 		event.flags.ignore_validate = True
 		event.flags.ignore_permissions = True
 		event.save()
-		return event
+		return type(row), row
