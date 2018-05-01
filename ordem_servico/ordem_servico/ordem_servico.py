@@ -48,7 +48,7 @@ def make_event(doc_name):
 			event.all_day = 1
 			event.manutencao = doc_maint.name
 			event.ordem_servico = row.os
-			event.owner = row.agendado_para
+			event.owner = frappe.db.get_value("Employee", row.agendado_para, "user_id")
 			event.save()
 			row.agenda = event.name
 			row.save()
