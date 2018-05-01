@@ -53,7 +53,7 @@ def make_event(doc_name):
 		event.flags.ignore_validate = True
 		event.flags.ignore_permissions = True
 		event.save()
-		row['agenda'] = event.name
+		row.agenda = event.name
 		return event
 	doc_maint.save()
 		
