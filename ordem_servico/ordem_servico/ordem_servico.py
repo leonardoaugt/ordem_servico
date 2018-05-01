@@ -54,6 +54,6 @@ def make_event(doc_name):
 		event.flags.ignore_permissions = True
 		event.save()
 		row.agenda = event.name
-		return event
+		return row.tag
 	doc_maint.save()
 		
