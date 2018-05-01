@@ -40,7 +40,7 @@ def make_event(doc_name):
 	doc_maint = frappe.get_doc("Maintenance Visit", doc_name)
 	purposes = doc_maint.purposes
 	for row in purposes:
-		if not row.agenda:
+		if not row.agenda and row.agendado_para:
 			event = frappe.new_doc("Event")
 			event.subject = doc_maint.customer
 			datetime_now = datetime.datetime.now()
@@ -48,7 +48,7 @@ def make_event(doc_name):
 			event.all_day = 1
 			event.manutencao = doc_maint.name
 			event.ordem_servico = row.os
-			event.owner = frappe.db.get_value("Employee", row.agendado_para, "user_id")
+			event.owner = frappe.db.get_value("Employee", row.agendado_por, "user_id")
 			event.save()
 			row.agenda = event.name
 			row.save()
