@@ -123,6 +123,7 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 				args: {
 					doctype: "Materiais",
 					filters: {
+						parent: doc.name,
 						numero_serie: d.numero_serie,
 					},
 					fieldname: ["modelo", "descricao", "tag"]
