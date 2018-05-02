@@ -122,7 +122,7 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 				method: "frappe.client.get_value",
 				args: {
 					doctype: "Materiais",
-					parent: doc.name,
+					parent: frm.doc.name,
 					filters: {
 						numero_serie: d.numero_serie,
 					},
