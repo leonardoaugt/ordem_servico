@@ -119,7 +119,7 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 		d = locals[cdt][cdn];
 		if (d.numero_serie) {
 			frappe.call({
-				method: "frappe.client.get_value",
+				method: "frappe.client.custom_get_value",
 				args: {
 					doctype: "Materiais",
 					filters: {

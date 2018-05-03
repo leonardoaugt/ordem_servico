@@ -52,3 +52,28 @@ def make_event(doc_name):
 			event.save()
 			row.agenda = event.name
 			row.save()
+
+@frappe.whitelist()
+def custom_get_value(doctype, fieldname, filters=None, as_dict=True, debug=False, parent=None)
+	try:
+		filters = json.loads(filters)
+
+		if isinstance(filters, (integer_types, float)):
+			filters = frappe.as_unicode(filters)
+
+	except (TypeError, ValueError):
+		# filters are not passesd, not json
+		pass
+
+	try:
+		fieldname = json.loads(fieldname)
+	except (TypeError, ValueError):
+		# name passed, not json
+		pass
+
+	# check whether the used filters were really parseable and usable
+	# and did not just result in an empty string or dict
+	if not filters:
+		filters = None
+
+	return frappe.db.get_value(doctype, filters, fieldname, as_dict=as_dict, debug=debug)
