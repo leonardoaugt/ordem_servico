@@ -4,8 +4,10 @@
 from __future__ import unicode_literals
 import frappe
 from frappe.model.document import Document
+
 import datetime
 import json, os
+from six import iteritems, string_types, integer_types
 
 @frappe.whitelist()
 def rename_quotation(doc_maint):
