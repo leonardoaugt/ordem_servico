@@ -119,7 +119,7 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 		d = locals[cdt][cdn];
 		if (d.numero_serie) {
 			frappe.call({
-				method: "frappe.client.custom_get_value",
+				method: "ordem_servico.ordem_servico.ordem_servico.custom_get_value",
 				args: {
 					doctype: "Materiais",
 					filters: {
@@ -145,7 +145,7 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 		d = locals[cdt][cdn];
 		if (d.modelo_equipamento) {
 			frappe.call({
-				method: "frappe.client.get_value",
+				method: "ordem_servico.ordem_servico.ordem_servico.custom_get_value",
 				args: {
 					doctype: "Modelo Equipamento",
 					filters: {
@@ -169,7 +169,7 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 		d = locals[cdt][cdn];
 		if (d.agendado_para) {
 			frappe.call({
-				method: "frappe.client.get_value",
+				method: "ordem_servico.ordem_servico.ordem_servico.custom_get_value",
 				args: {
 					doctype: "Employee",
 					filters: {
@@ -195,7 +195,7 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 		d = locals[cdt][cdn];
 		if (d.agendado_por) {
 			frappe.call({
-				method: "frappe.client.get_value",
+				method: "ordem_servico.ordem_servico.ordem_servico.custom_get_value",
 				args: {
 					doctype: "Employee",
 					filters: {
@@ -221,7 +221,7 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 		d = locals[cdt][cdn];
 		if (d.agendado_para2) {
 			frappe.call({
-				method: "frappe.client.get_value",
+				method: "ordem_servico.ordem_servico.ordem_servico.custom_get_value",
 				args: {
 					doctype: "Employee",
 					filters: {
@@ -247,7 +247,7 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 		d = locals[cdt][cdn];
 		if (d.agendado_por) {
 			frappe.call({
-				method: "frappe.client.get_value",
+				method: "ordem_servico.ordem_servico.ordem_servico.custom_get_value",
 				args: {
 					doctype: "Employee",
 					filters: {
