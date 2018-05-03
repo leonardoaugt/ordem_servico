@@ -54,7 +54,7 @@ def make_event(doc_name):
 			row.save()
 
 @frappe.whitelist()
-def custom_get_value(doctype, fieldname, filters=None, as_dict=True, debug=False, parent=None)
+def custom_get_value(doctype, fieldname, filters=None, as_dict=True, debug=False, parent=None):
 	try:
 		filters = json.loads(filters)
 
