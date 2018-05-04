@@ -86,7 +86,7 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 
 	// Create quotation doc
 
-	orcamento: function (frm, cdt, cdn) {
+	gerar_orcamento: function (frm, cdt, cdn) {
 		if (!frm.doc.__unsaved) {
 			d = locals[cdt][cdn]
 			if (d.garantia == 0) {
@@ -97,12 +97,8 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 						method: "ordem_servico.ordem_servico.ordem_servico.new_quotation",
 						args: {
 							doc_maint: frm.doc.name,
-							purposes_os: d.os,
+							purposes_idx: d.idx,
 						},
-						callback: function (r) {
-							var doc = r.message;
-							frappe.set_route("Form", "Quotation", doc.name);
-						}
 					});
 				} else { frappe.throw("Local de Manutenção deve ser Interno!") }
 			} else { frappe.throw("Equipamento na garantia!") }
