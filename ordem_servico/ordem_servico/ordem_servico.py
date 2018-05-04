@@ -44,6 +44,7 @@ def make_event(doc_name):
 	purposes = doc_maint.purposes
 	for row in purposes:
 		if not row.agenda and row.agendado_para:
+			# create event document
 			event = frappe.new_doc("Event")
 			event.subject = doc_maint.customer
 			datetime_now = datetime.datetime.now()
@@ -53,9 +54,9 @@ def make_event(doc_name):
 			event.ordem_servico = row.os
 			event.owner = frappe.db.get_value("Employee", row.agendado_por, "user_id")
 			event.save()
+			# set event doc name to purposes row
 			row.agenda = event.name
 			row.save()
-			return event.name, row.agenda
 
 @frappe.whitelist()
 def custom_get_value(doctype, fieldname, filters=None, as_dict=True, debug=False, parent=None):
