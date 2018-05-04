@@ -25,8 +25,8 @@ def purposes_rename(maint_name):
 
 
 @frappe.whitelist()
-def new_quotation(maint, purposes_idx):
-	maint = frappe.get_doc("Maintenance Visit", maint)
+def new_quotation(maint_name, purposes_idx):
+	maint = frappe.get_doc("Maintenance Visit", maint_name)
 
 	# create quotation doc
 	quotation = frappe.new_doc("Quotation")

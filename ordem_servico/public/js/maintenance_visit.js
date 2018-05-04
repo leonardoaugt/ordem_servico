@@ -96,7 +96,7 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 					frappe.call({
 						method: "ordem_servico.ordem_servico.ordem_servico.new_quotation",
 						args: {
-							doc_maint: frm.doc.name,
+							maint_name: frm.doc.name,
 							purposes_idx: d.idx,
 						},
 					});
