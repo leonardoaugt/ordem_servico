@@ -55,6 +55,7 @@ def make_event(doc_name):
 			event.save()
 			row.agenda = event.name
 			row.save()
+			return event.name, row.agenda
 
 @frappe.whitelist()
 def custom_get_value(doctype, fieldname, filters=None, as_dict=True, debug=False, parent=None):
