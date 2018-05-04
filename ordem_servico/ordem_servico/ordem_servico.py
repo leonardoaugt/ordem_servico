@@ -10,7 +10,7 @@ import json, os
 from six import iteritems, string_types, integer_types
 
 @frappe.whitelist()
-def rename_quotation(maint_name):
+def purposes_rename(maint_name):
 	maint = frappe.get_doc("Maintenance Visit", maint_name)
 	len_array_purposes = len(maint.purposes)
 	idx = 0

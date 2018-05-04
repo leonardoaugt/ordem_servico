@@ -5,7 +5,7 @@ frappe.ui.form.on("Maintenance Visit", {
 		// Rename Quotation
 
 		frappe.call({
-			method: "ordem_servico.ordem_servico.ordem_servico.rename_quotation",
+			method: "ordem_servico.ordem_servico.ordem_servico.purposes_rename",
 			args: {
 				maint_name: frm.doc.name,
 			},
