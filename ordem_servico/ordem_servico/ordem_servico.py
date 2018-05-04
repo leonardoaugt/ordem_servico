@@ -33,6 +33,8 @@ def new_quotation(maint_name, purposes_idx):
 	quotation.os_doctype = "Maintenance Visit"
 	quotation.os_link = maint.name
 	quotation.customer = maint.customer_name
+	quotation.conversion_rate = 1
+	quotation.plc_conversion_rate = 1
 	quotation.flags.ignore_mandatory = True
 	quotation.flags.ignore_validate = True
 	quotation.save()
