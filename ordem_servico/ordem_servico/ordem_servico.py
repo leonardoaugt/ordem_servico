@@ -41,7 +41,7 @@ def new_quotation(maint_name, purposes_idx):
 	idx = int(purposes_idx) - 1
 	maint.purposes[idx-1].documento_orcamento = quotation.name
 	maint.save()
-	return
+	return quotation
 
 
 @frappe.whitelist()
