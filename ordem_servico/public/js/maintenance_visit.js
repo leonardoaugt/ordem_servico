@@ -1,11 +1,11 @@
-frappe.ui.form.on("Maintenance Visit", {
+frappe.ui.form.on('Maintenance Visit', {
 
 	after_save: function (frm) {
 
 		// Rename Quotation
 
 		frappe.call({
-			method: "ordem_servico.ordem_servico.ordem_servico.purposes_rename",
+			method: 'ordem_servico.ordem_servico.ordem_servico.purposes_rename',
 			args: {
 				maint_name: frm.doc.name,
 			},
@@ -14,10 +14,10 @@ frappe.ui.form.on("Maintenance Visit", {
 			}
 		});
 
-		// Create event based on "agendado_para"
+		// Create event based on 'agendado_para'
 
 		frappe.call({
-			method: "ordem_servico.ordem_servico.ordem_servico.make_event",
+			method: 'ordem_servico.ordem_servico.ordem_servico.make_event',
 			args: {
 				doc_name: frm.doc.name,
 			},
@@ -42,7 +42,7 @@ frappe.ui.form.on("Maintenance Visit", {
 		frm.fields_dict.purposes.grid.get_field('numero_serie').get_query = function () {
 			return {
 				filters: {
-					"parent": cur_frm.doc.customer
+					'parent': cur_frm.doc.customer
 				}
 			}
 		}
@@ -50,7 +50,7 @@ frappe.ui.form.on("Maintenance Visit", {
 		frm.fields_dict.purposes.grid.get_field('agendado_para').get_query = function () {
 			return {
 				filters: {
-					"department": ["in", ["Diretoria", "Assistência Técnica"]]
+					'department': ['in', ['Diretoria', 'Assistência Técnica']]
 				}
 			}
 		}
@@ -58,7 +58,7 @@ frappe.ui.form.on("Maintenance Visit", {
 		frm.fields_dict.purposes.grid.get_field('agendado_para2').get_query = function () {
 			return {
 				filters: {
-					"department": ["in", ["Diretoria", "Assistência Técnica"]]
+					'department': ['in', ['Diretoria', 'Assistência Técnica']]
 				}
 			}
 		}
@@ -66,7 +66,7 @@ frappe.ui.form.on("Maintenance Visit", {
 		frm.fields_dict.purposes.grid.get_field('agendado_por').get_query = function () {
 			return {
 				filters: {
-					"department": ["in", ["Diretoria", "Vendas"]]
+					'department': ['in', ['Diretoria', 'Vendas']]
 				}
 			}
 		}
@@ -74,7 +74,7 @@ frappe.ui.form.on("Maintenance Visit", {
 		frm.fields_dict.purposes.grid.get_field('agendado_por2').get_query = function () {
 			return {
 				filters: {
-					"department": ["in", ["Diretoria", "Vendas"]]
+					'department': ['in', ['Diretoria', 'Vendas']]
 				}
 			}
 		}
@@ -82,7 +82,7 @@ frappe.ui.form.on("Maintenance Visit", {
 
 });
 
-frappe.ui.form.on("Maintenance Visit Purpose", {
+frappe.ui.form.on('Maintenance Visit Purpose', {
 
 	// Create quotation doc
 
@@ -90,19 +90,22 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 		if (!frm.doc.__unsaved) {
 			d = locals[cdt][cdn]
 			if (d.garantia == 0) {
-				if (frm.doc.local_manutencao == "Interno") {
+				if (frm.doc.local_manutencao == 'Interno') {
 					// Take index datas
 					d = locals[cdt][cdn];
 					frappe.call({
-						method: "ordem_servico.ordem_servico.ordem_servico.new_quotation",
+						method: 'ordem_servico.ordem_servico.ordem_servico.new_quotation',
 						args: {
 							maint_name: frm.doc.name,
 							purposes_idx: d.idx,
 						},
+						callback: function (r) {
+							refresh_field('purposes');
+						}
 					});
-				} else { frappe.throw("Local de Manutenção deve ser Interno!") }
-			} else { frappe.throw("Equipamento na garantia!") }
-		} else { frappe.throw("Salve o documento primeiro!") }
+				} else { frappe.throw('Local de Manutenção deve ser Interno!') }
+			} else { frappe.throw('Equipamento na garantia!') }
+		} else { frappe.throw('Salve o documento primeiro!') }
 	},
 
 	// Get serie number
@@ -111,13 +114,13 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 		d = locals[cdt][cdn];
 		if (d.numero_serie) {
 			frappe.call({
-				method: "ordem_servico.ordem_servico.ordem_servico.custom_get_value",
+				method: 'ordem_servico.ordem_servico.ordem_servico.custom_get_value',
 				args: {
-					doctype: "Materiais",
+					doctype: 'Materiais',
 					filters: {
 						numero_serie: d.numero_serie,
 					},
-					fieldname: ["modelo", "descricao", "tag"]
+					fieldname: ['modelo', 'descricao', 'tag']
 				},
 				callback: function (r) {
 					data = r.message;
@@ -125,7 +128,7 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 					cur_frm.doc.purposes[idx].item_name = data['descricao'];
 					cur_frm.doc.purposes[idx].modelo_equipamento = data['modelo'];
 					cur_frm.doc.purposes[idx].tag = data['tag'];
-					cur_frm.refresh_field("purposes");
+					cur_frm.refresh_field('purposes');
 				}
 			});
 		}
@@ -137,19 +140,19 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 		d = locals[cdt][cdn];
 		if (d.modelo_equipamento) {
 			frappe.call({
-				method: "ordem_servico.ordem_servico.ordem_servico.custom_get_value",
+				method: 'ordem_servico.ordem_servico.ordem_servico.custom_get_value',
 				args: {
-					doctype: "Modelo Equipamento",
+					doctype: 'Modelo Equipamento',
 					filters: {
 						modelo_equipamento: d.modelo_equipamento,
 					},
-					fieldname: ["tempo_conserto"]
+					fieldname: ['tempo_conserto']
 				},
 				callback: function (r) {
 					data = r.message;
 					idx = (d.idx - 1);
 					cur_frm.doc.purposes[idx].tempo_servico = data['tempo_conserto']
-					cur_frm.refresh_field("purposes");
+					cur_frm.refresh_field('purposes');
 				}
 			});
 		}
@@ -161,25 +164,25 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 		d = locals[cdt][cdn];
 		if (d.agendado_para) {
 			frappe.call({
-				method: "ordem_servico.ordem_servico.ordem_servico.custom_get_value",
+				method: 'ordem_servico.ordem_servico.ordem_servico.custom_get_value',
 				args: {
-					doctype: "Employee",
+					doctype: 'Employee',
 					filters: {
 						name: d.agendado_para,
 					},
-					fieldname: "employee_name"
+					fieldname: 'employee_name'
 				},
 				callback: function (r) {
 					data = r.message;
 					idx = (d.idx - 1);
 					cur_frm.doc.purposes[idx].agendado_para_name = data['employee_name'];
-					cur_frm.refresh_field("purposes");
+					cur_frm.refresh_field('purposes');
 				}
 			});
 		}
 		else {
-			d.agendado_para_name = "";
-			cur_frm.refresh_field("purposes");
+			d.agendado_para_name = '';
+			cur_frm.refresh_field('purposes');
 		}
 	},
 
@@ -187,25 +190,25 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 		d = locals[cdt][cdn];
 		if (d.agendado_por) {
 			frappe.call({
-				method: "ordem_servico.ordem_servico.ordem_servico.custom_get_value",
+				method: 'ordem_servico.ordem_servico.ordem_servico.custom_get_value',
 				args: {
-					doctype: "Employee",
+					doctype: 'Employee',
 					filters: {
 						name: d.agendado_por,
 					},
-					fieldname: "employee_name"
+					fieldname: 'employee_name'
 				},
 				callback: function (r) {
 					data = r.message;
 					idx = (d.idx - 1);
 					cur_frm.doc.purposes[idx].agendado_por_name = data['employee_name'];
-					cur_frm.refresh_field("purposes");
+					cur_frm.refresh_field('purposes');
 				}
 			});
 		}
 		else {
-			d.agendado_por_name = "";
-			cur_frm.refresh_field("purposes");
+			d.agendado_por_name = '';
+			cur_frm.refresh_field('purposes');
 		}
 	},
 
@@ -213,25 +216,25 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 		d = locals[cdt][cdn];
 		if (d.agendado_para2) {
 			frappe.call({
-				method: "ordem_servico.ordem_servico.ordem_servico.custom_get_value",
+				method: 'ordem_servico.ordem_servico.ordem_servico.custom_get_value',
 				args: {
-					doctype: "Employee",
+					doctype: 'Employee',
 					filters: {
 						name: d.agendado_para2,
 					},
-					fieldname: "employee_name"
+					fieldname: 'employee_name'
 				},
 				callback: function (r) {
 					data = r.message;
 					idx = (d.idx - 1);
 					cur_frm.doc.purposes[idx].agendado_para_name2 = data['employee_name'];
-					cur_frm.refresh_field("purposes");
+					cur_frm.refresh_field('purposes');
 				}
 			});
 		}
 		else {
-			d.agendado_para_name2 = "";
-			cur_frm.refresh_field("purposes");
+			d.agendado_para_name2 = '';
+			cur_frm.refresh_field('purposes');
 		}
 	},
 
@@ -239,25 +242,25 @@ frappe.ui.form.on("Maintenance Visit Purpose", {
 		d = locals[cdt][cdn];
 		if (d.agendado_por) {
 			frappe.call({
-				method: "ordem_servico.ordem_servico.ordem_servico.custom_get_value",
+				method: 'ordem_servico.ordem_servico.ordem_servico.custom_get_value',
 				args: {
-					doctype: "Employee",
+					doctype: 'Employee',
 					filters: {
 						name: d.agendado_por,
 					},
-					fieldname: "employee_name"
+					fieldname: 'employee_name'
 				},
 				callback: function (r) {
 					data = r.message;
 					idx = (d.idx - 1);
 					cur_frm.doc.purposes[idx].agendado_por_name2 = data['employee_name'];
-					cur_frm.refresh_field("purposes");
+					cur_frm.refresh_field('purposes');
 				}
 			});
 		}
 		else {
-			d.agendado_por_name2 = "";
-			cur_frm.refresh_field("purposes");
+			d.agendado_por_name2 = '';
+			cur_frm.refresh_field('purposes');
 		}
 	},
 
