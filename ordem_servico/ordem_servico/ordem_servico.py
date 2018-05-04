@@ -53,7 +53,7 @@ def make_event(doc_name):
 		if not row.agenda and row.agendado_para:
 			# create event document
 			event = frappe.new_doc("Event")
-			event.subject = maint.customer
+			event.subject = "Manutenção {}".format(row.item_name)
 			datetime_now = datetime.datetime.now()
 			event.starts_on = datetime_now.strftime("%Y-%m-%d %H:%M:00")
 			event.all_day = 1
