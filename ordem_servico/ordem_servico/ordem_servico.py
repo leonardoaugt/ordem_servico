@@ -38,7 +38,7 @@ def new_quotation(maint_name, purposes_idx):
 	quotation.save()
 
 	# set quotation name to purposes os
-	idx = purposes_idx - 1
+	idx = int(purposes_idx) - 1
 	maint.purposes[idx-1].documento_orcamento = quotation.name
 	maint.save()
 	return
