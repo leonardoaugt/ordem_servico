@@ -103,8 +103,8 @@ frappe.ui.form.on('Maintenance Visit Purpose', {
 						},
 						callback: function (r) {
 							doc = r.message;
-							refresh_field('purposes');
-							frappe.set_route('Form', 'Quotation', doc.name)
+							curm_frm.refresh_field('purposes');
+							frappe.set_route("Form", "Quotation", doc.name)
 						}
 					});
 				} else { frappe.throw('Orçamento já gerado!') }
