@@ -21,10 +21,6 @@ frappe.ui.form.on("Maintenance Visit", {
 			args: {
 				doc_name: frm.doc.name,
 			},
-			callback: function (r) {
-				data = r.message;
-				console.log(data);
-			}
 		});
 		frm.reload_doc();
 		frm.refresh_field('purposes');
