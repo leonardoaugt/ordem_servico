@@ -37,10 +37,10 @@ frappe.ui.form.on('Maintenance Visit', {
 
 		// Filtering values
 
-		frm.fields_dict.purposes.grid.get_field('responsavel_tecnico_2').get_query = function () {
+		frm.fields_dict.purposes.grid.get_field('responsavel_tecnico2').get_query = function () {
 			return {
 				filters: {
-					'parent': cur_frm.doc.customer
+					'department': ['in', ['Diretoria', 'Assistência Técnica']]
 				}
 			}
 		}
@@ -48,7 +48,7 @@ frappe.ui.form.on('Maintenance Visit', {
 		frm.fields_dict.purposes.grid.get_field('responsavel_tecnico').get_query = function () {
 			return {
 				filters: {
-					'parent': cur_frm.doc.customer
+					'department': ['in', ['Diretoria', 'Assistência Técnica']]
 				}
 			}
 		}
