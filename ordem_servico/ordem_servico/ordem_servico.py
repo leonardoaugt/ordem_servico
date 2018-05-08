@@ -42,11 +42,11 @@ def new_quotation(maint_name, purposes_idx):
 
     # set quotation name to purposes os
     idx = int(purposes_idx) - 1
+    date_now = datetime.datetime.today().strftime('%Y-%m-%d')
     maint.purposes[idx-1].documento_orcamento = quotation.name
     maint.purposes[idx-1].numero_orcamento = quotation.name
-    maint.purposes[idx-1].data_orcamento2 = datetime_now()
-	datetime_now = datetime.datetime.now()
-	maint.purposes[idx-1].data_orcamento = datetime_now
+    maint.purposes[idx-1].data_orcamento2 = date_now
+	maint.purposes[idx-1].data_orcamento = date_now
     maint.save()
     return quotation
 
@@ -62,9 +62,9 @@ def make_event(doc_name):
             # create event document
             event = frappe.new_doc("Event")
             event.subject = row.os
-            datetime_now = datetime.datetime.now()
-            event.starts_on = datetime_now.strftime("%Y-%m-%d %H:%M:00")
-            event.ends_on = datetime_now.strftime("%Y-%m-%d 18:00:00")
+            datetime_now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:00")
+            event.starts_on = datetime_now
+            event.ends_on = datetime_now
             event.manutencao = maint.name
             event.ordem_servico = row.os
             event.ref_type = "Maintenance Visit Purpose"
@@ -79,9 +79,9 @@ def make_event(doc_name):
             # create event document
             event = frappe.new_doc("Event")
             event.subject = row.os
-            datetime_now = datetime.datetime.now()
-            event.starts_on = datetime_now.strftime("%Y-%m-%d %H:%M:00")
-            event.ends_on = datetime_now.strftime("%Y-%m-%d 18:00:00")
+            datetime_now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:00")
+            event.starts_on = datetime_now
+            event.ends_on = datetime_now
             event.manutencao = maint.name
             event.ordem_servico = row.os
             event.ref_type = "Maintenance Visit Purpose"
