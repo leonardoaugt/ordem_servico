@@ -46,7 +46,7 @@ def new_quotation(maint_name, purposes_idx):
     maint.purposes[idx-1].documento_orcamento = quotation.name
     maint.purposes[idx-1].numero_orcamento = quotation.name
     maint.purposes[idx-1].data_orcamento2 = date_now
-	maint.purposes[idx-1].data_orcamento = date_now
+    maint.purposes[idx-1].data_orcamento = date_now
     maint.save()
     return quotation
 
