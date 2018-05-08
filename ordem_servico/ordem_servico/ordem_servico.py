@@ -72,6 +72,7 @@ def make_event(doc_name):
             event.save()
 
             # set event doc name to purposes row
+            row.data_agendamento_orcamento = datetime.datetime.today().strftime('%Y-%m-%d')
             row.agenda = event.name
             row.save()
 
