@@ -75,26 +75,6 @@ def make_event(doc_name):
             row.agenda = event.name
             row.save()
 
-        elif (not row.evento_link2 and row.agendado_para2):
-            # create event document
-            event = frappe.new_doc("Event")
-            event.subject = row.os
-            datetime_now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:00")
-            event.starts_on = datetime_now
-            event.ends_on = datetime_now
-            event.manutencao = maint.name
-            event.ordem_servico = row.os
-            event.ref_type = "Maintenance Visit Purpose"
-            event.owner = frappe.db.get_value("Employee", row.agendado_para2, "user_id")
-            event.save()
-
-            # set event doc name to purposes row
-            row.agenda_link2 = event.name
-            row.save()
-
-		else:
-			return
-
 @frappe.whitelist()
 def custom_get_value(doctype, fieldname, filters=None, as_dict=True, debug=False, parent=None):
     try:
