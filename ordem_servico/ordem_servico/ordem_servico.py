@@ -58,7 +58,7 @@ def make_event(doc_name):
 
     for row in purposes:
         # if not agenda value on purposes_idx and has agendado_para
-        if (not row.agenda and row.agendado_para):
+        if (not row.evento_link and row.agendado_para):
             # create event document
             event = frappe.new_doc("Event")
             event.subject = row.os
@@ -75,7 +75,7 @@ def make_event(doc_name):
             row.agenda = event.name
             row.save()
 
-        elif (not row.agenda_link2 and row.agendado_para2):
+        elif (not row.evento_link2 and row.agendado_para2):
             # create event document
             event = frappe.new_doc("Event")
             event.subject = row.os
