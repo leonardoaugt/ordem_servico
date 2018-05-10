@@ -2577,7 +2577,7 @@
   "doctype": "Property Setter", 
   "doctype_or_field": "DocType", 
   "field_name": null, 
-  "modified": "2018-05-08 18:34:11.330884", 
+  "modified": "2018-05-08 18:48:24.835321", 
   "name": "Maintenance Visit Purpose-read_only_onload", 
   "property": "read_only_onload", 
   "property_type": "Check", 
