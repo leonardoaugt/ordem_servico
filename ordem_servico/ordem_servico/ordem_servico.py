@@ -33,6 +33,10 @@ def new_quotation(maint_name, purposes_idx):
     quotation.os_doctype = "Maintenance Visit"
     quotation.os_link = maint.name
     quotation.customer = maint.customer_name
+    date = datetime.date.today()
+    date = date + datetime.timedelta(days=15)
+    quotation.valid_till = date.strftime('%y-%m-%d')
+    quotation.tc_name = "Boleto 28 dias"
     quotation.conversion_rate = 1
     quotation.plc_conversion_rate = 1
     quotation.price_list_currency = "BRL"
