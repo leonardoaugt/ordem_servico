@@ -36,7 +36,8 @@ def new_quotation(maint_name, purposes_idx):
     date = datetime.date.today()
     date = date + datetime.timedelta(days=15)
     quotation.valid_till = date.strftime('%y-%m-%d')
-    quotation.tc_name = "Boleto 28 dias"
+    quotation.tc_name = "Boleto 15 dias"
+    quotation.terms = frappe.db.get_value('Terms and Conditions', {'name': 'Boleto 15 dias'}, ['terms'])
     quotation.conversion_rate = 1
     quotation.plc_conversion_rate = 1
     quotation.price_list_currency = "BRL"
@@ -47,6 +48,7 @@ def new_quotation(maint_name, purposes_idx):
     # set quotation name to purposes os
     idx = int(purposes_idx) - 1
     date_now = datetime.datetime.today().strftime('%Y-%m-%d')
+    maint.purposes[idx-1].status_ordem_servico = "Em Orçamento"
     maint.purposes[idx-1].documento_orcamento = quotation.name
     maint.purposes[idx-1].numero_orcamento = quotation.name
     maint.purposes[idx-1].data_orcamento2 = date_now
