@@ -268,7 +268,7 @@ frappe.ui.form.on('Maintenance Visit Purpose', {
 						args: {
 							doctype: 'Employee',
 							filters: {
-								name: d.agendado_por,
+								name: d.agendado_por2,
 							},
 							fieldname: 'employee_name'
 						},
