@@ -172,6 +172,7 @@ frappe.ui.form.on('Maintenance Visit Purpose', {
 						fieldname: ['tempo_orcamento']
 					},
 					callback: function (r) {
+						console.log('tempo orcamento rodou!')
 						data = r.message;
 						idx = (d.idx - 1);
 						cur_frm.doc.purposes[idx].tempo_orcamento = data['tempo_orcamento']
