@@ -156,6 +156,9 @@ frappe.ui.form.on('Maintenance Visit Purpose', {
 							cur_frm.refresh_field('purposes');
 						}
 					});
+					if (1 > 0) {
+						console.log('numero serie trigger');
+					}
 				}
 			},
 
