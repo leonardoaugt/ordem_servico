@@ -1,0 +1,252 @@
+[
+ {
+  "docstatus": 0, 
+  "doctype": "Familias de Equipamentos", 
+  "familia": "Phmetro Port\u00e1til", 
+  "linha": "Port\u00e1til", 
+  "modified": "2018-05-16 14:03:15.702900", 
+  "name": "Phmetro Port\u00e1til", 
+  "tempo_conserto": "1:00:00", 
+  "tempo_orcamento": "1:00:00"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Familias de Equipamentos", 
+  "familia": "Phmetro de Bancada", 
+  "linha": "Port\u00e1til", 
+  "modified": "2018-05-16 14:03:15.709059", 
+  "name": "Phmetro de Bancada", 
+  "tempo_conserto": "1:00:00", 
+  "tempo_orcamento": "1:00:00"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Familias de Equipamentos", 
+  "familia": "Condutivimetro Port\u00e1til", 
+  "linha": "Port\u00e1til", 
+  "modified": "2018-05-16 14:03:15.711306", 
+  "name": "Condutivimetro Port\u00e1til", 
+  "tempo_conserto": "1:00:00", 
+  "tempo_orcamento": "1:00:00"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Familias de Equipamentos", 
+  "familia": "Condutivimetro de Bancada", 
+  "linha": "Port\u00e1til", 
+  "modified": "2018-05-16 14:03:15.713591", 
+  "name": "Condutivimetro de Bancada", 
+  "tempo_conserto": "1:00:00", 
+  "tempo_orcamento": "1:00:00"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Familias de Equipamentos", 
+  "familia": "Colorimetro Port\u00e1til", 
+  "linha": "Port\u00e1til", 
+  "modified": "2018-05-16 14:03:15.715823", 
+  "name": "Colorimetro Port\u00e1til", 
+  "tempo_conserto": "1:00:00", 
+  "tempo_orcamento": "0:30:00"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Familias de Equipamentos", 
+  "familia": "Turbidimetro Port\u00e1til", 
+  "linha": "Port\u00e1til", 
+  "modified": "2018-05-16 14:03:15.718248", 
+  "name": "Turbidimetro Port\u00e1til", 
+  "tempo_conserto": "1:00:00", 
+  "tempo_orcamento": "1:00:00"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Familias de Equipamentos", 
+  "familia": "Medidores de OD Port\u00e1til", 
+  "linha": "Port\u00e1til", 
+  "modified": "2018-05-16 14:03:15.720599", 
+  "name": "Medidores de OD Port\u00e1til", 
+  "tempo_conserto": "1:00:00", 
+  "tempo_orcamento": "0:30:00"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Familias de Equipamentos", 
+  "familia": "Medidores Multiparametros Port\u00e1til", 
+  "linha": "Port\u00e1til", 
+  "modified": "2018-05-16 14:03:15.722585", 
+  "name": "Medidores Multiparametros Port\u00e1til", 
+  "tempo_conserto": "1:00:00", 
+  "tempo_orcamento": "1:00:00"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Familias de Equipamentos", 
+  "familia": "Pipetas e Pipetadores", 
+  "linha": "Port\u00e1til", 
+  "modified": "2018-05-16 14:03:15.724625", 
+  "name": "Pipetas e Pipetadores", 
+  "tempo_conserto": "1:00:00", 
+  "tempo_orcamento": "1:00:00"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Familias de Equipamentos", 
+  "familia": "Dispensadores Eletr\u00f4nicos e Mec\u00e2nicos", 
+  "linha": "Port\u00e1til", 
+  "modified": "2018-05-16 14:03:15.726715", 
+  "name": "Dispensadores Eletr\u00f4nicos e Mec\u00e2nicos", 
+  "tempo_conserto": "1:00:00", 
+  "tempo_orcamento": "1:00:00"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Familias de Equipamentos", 
+  "familia": "Turbidimetro de Bancada", 
+  "linha": "Bancada", 
+  "modified": "2018-05-16 14:03:15.728820", 
+  "name": "Turbidimetro de Bancada", 
+  "tempo_conserto": "2:00:00", 
+  "tempo_orcamento": "1:00:00"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Familias de Equipamentos", 
+  "familia": "Aquecedor", 
+  "linha": "Bancada", 
+  "modified": "2018-05-16 14:03:15.730831", 
+  "name": "Aquecedor", 
+  "tempo_conserto": "1:00:00", 
+  "tempo_orcamento": "1:00:00"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Familias de Equipamentos", 
+  "familia": "Medidor de DBO Bancada", 
+  "linha": "Bancada", 
+  "modified": "2018-05-16 14:03:15.732860", 
+  "name": "Medidor de DBO Bancada", 
+  "tempo_conserto": "1:30:00", 
+  "tempo_orcamento": "1:00:00"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Familias de Equipamentos", 
+  "familia": "Espectrofotometro Visivel", 
+  "linha": "Bancada", 
+  "modified": "2018-05-16 14:03:15.734789", 
+  "name": "Espectrofotometro Visivel", 
+  "tempo_conserto": "1:30:00", 
+  "tempo_orcamento": "1:00:00"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Familias de Equipamentos", 
+  "familia": "Espectrofotometro UV/VIS", 
+  "linha": "Bancada", 
+  "modified": "2018-05-16 14:03:15.736803", 
+  "name": "Espectrofotometro UV/VIS", 
+  "tempo_conserto": "3:00:00", 
+  "tempo_orcamento": "2:00:00"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Familias de Equipamentos", 
+  "familia": "Motores", 
+  "linha": "Bancada", 
+  "modified": "2018-05-16 14:03:15.738802", 
+  "name": "Motores", 
+  "tempo_conserto": "2:00:00", 
+  "tempo_orcamento": "2:00:00"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Familias de Equipamentos", 
+  "familia": "Balan\u00e7as", 
+  "linha": "Bancada", 
+  "modified": "2018-05-16 14:03:15.740986", 
+  "name": "Balan\u00e7as", 
+  "tempo_conserto": "1:00:00", 
+  "tempo_orcamento": "1:00:00"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Familias de Equipamentos", 
+  "familia": "Aquecedor / Balan\u00e7a", 
+  "linha": "Bancada", 
+  "modified": "2018-05-16 14:03:15.743244", 
+  "name": "Aquecedor / Balan\u00e7a", 
+  "tempo_conserto": "1:00:00", 
+  "tempo_orcamento": "1:00:00"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Familias de Equipamentos", 
+  "familia": "Turbidimetro de Processo", 
+  "linha": "Processo", 
+  "modified": "2018-05-16 14:03:15.745237", 
+  "name": "Turbidimetro de Processo", 
+  "tempo_conserto": "1:30:00", 
+  "tempo_orcamento": "1:30:00"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Familias de Equipamentos", 
+  "familia": "Analisador de Cargas", 
+  "linha": "Processo", 
+  "modified": "2018-05-16 14:03:15.747163", 
+  "name": "Analisador de Cargas", 
+  "tempo_conserto": "2:30:00", 
+  "tempo_orcamento": "3:00:00"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Familias de Equipamentos", 
+  "familia": "Colorimetro de Processo", 
+  "linha": "Processo", 
+  "modified": "2018-05-16 14:03:15.749163", 
+  "name": "Colorimetro de Processo", 
+  "tempo_conserto": "2:00:00", 
+  "tempo_orcamento": "2:30:00"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Familias de Equipamentos", 
+  "familia": "Analisador Potenciometrico", 
+  "linha": "Processo", 
+  "modified": "2018-05-16 14:03:15.751143", 
+  "name": "Analisador Potenciometrico", 
+  "tempo_conserto": "3:00:00", 
+  "tempo_orcamento": "3:30:00"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Familias de Equipamentos", 
+  "familia": "Sensores Digitais", 
+  "linha": "Processo", 
+  "modified": "2018-05-16 14:03:15.753149", 
+  "name": "Sensores Digitais", 
+  "tempo_conserto": "1:30:00", 
+  "tempo_orcamento": "1:30:00"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Familias de Equipamentos", 
+  "familia": "Sensores Anal\u00f3gicos", 
+  "linha": "Processo", 
+  "modified": "2018-05-16 14:03:15.755166", 
+  "name": "Sensores Anal\u00f3gicos", 
+  "tempo_conserto": "1:30:00", 
+  "tempo_orcamento": "1:30:00"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Familias de Equipamentos", 
+  "familia": "Controlador de Processo", 
+  "linha": "Processo", 
+  "modified": "2018-05-16 14:03:15.757123", 
+  "name": "Controlador de Processo", 
+  "tempo_conserto": "1:30:00", 
+  "tempo_orcamento": "1:30:00"
+ }
+]

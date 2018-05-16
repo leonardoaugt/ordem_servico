@@ -1,0 +1,370 @@
+[
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Phmetro Port\u00e1til", 
+  "modelo": "Phmetro Port\u00e1til ", 
+  "modified": "2018-05-16 17:45:45.005225", 
+  "name": "Phmetro Port\u00e1til"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Phmetro de Bancada", 
+  "modelo": "Phmetro Bancada", 
+  "modified": "2018-05-16 17:45:45.020991", 
+  "name": "Phmetro Bancada"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Condutivimetro Port\u00e1til", 
+  "modelo": "Condutiv\u00edmetro Port\u00e1til", 
+  "modified": "2018-05-16 17:45:45.023604", 
+  "name": "Condutiv\u00edmetro Port\u00e1til"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Condutivimetro de Bancada", 
+  "modelo": "Condutivimetro de Bancada", 
+  "modified": "2018-05-16 17:45:45.030862", 
+  "name": "Condutivimetro de Bancada"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Colorimetro Port\u00e1til", 
+  "modelo": "Color\u00edmetro Pocket Cloro", 
+  "modified": "2018-05-16 17:45:45.033112", 
+  "name": "Color\u00edmetro Pocket Cloro"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Colorimetro Port\u00e1til", 
+  "modelo": "Color\u00edmetro Pocket Fluor", 
+  "modified": "2018-05-16 17:45:45.035360", 
+  "name": "Color\u00edmetro Pocket Fluor"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Colorimetro Port\u00e1til", 
+  "modelo": "Color\u00edmetro Port\u00e1til DR890 e DR900", 
+  "modified": "2018-05-16 17:45:45.037641", 
+  "name": "Color\u00edmetro Port\u00e1til DR890 e DR900"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Turbidimetro Port\u00e1til", 
+  "modelo": "Turbid\u00edmetro Port\u00e1til ", 
+  "modified": "2018-05-16 17:45:45.040164", 
+  "name": "Turbid\u00edmetro Port\u00e1til"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Medidores de OD Port\u00e1til", 
+  "modelo": "Medidor de OD ", 
+  "modified": "2018-05-16 17:45:45.042284", 
+  "name": "Medidor de OD"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Medidores Multiparametros Port\u00e1til", 
+  "modelo": "Medidor Multipar\u00e2metros ", 
+  "modified": "2018-05-16 17:45:45.044594", 
+  "name": "Medidor Multipar\u00e2metros"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Pipetas e Pipetadores", 
+  "modelo": "Pipetas eletr\u00f4nicas ", 
+  "modified": "2018-05-16 17:45:45.046685", 
+  "name": "Pipetas eletr\u00f4nicas"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Dispensadores Eletr\u00f4nicos e Mec\u00e2nicos", 
+  "modelo": "Dispensadores eletr\u00f4nicos ", 
+  "modified": "2018-05-16 17:45:45.048815", 
+  "name": "Dispensadores eletr\u00f4nicos"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Turbidimetro de Bancada", 
+  "modelo": "Turbid\u00edmetro Bancada", 
+  "modified": "2018-05-16 17:45:45.050956", 
+  "name": "Turbid\u00edmetro Bancada"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Aquecedor", 
+  "modelo": "Reator DQO ", 
+  "modified": "2018-05-16 17:45:45.053082", 
+  "name": "Reator DQO"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Aquecedor", 
+  "modelo": "Digestor Digesdahl", 
+  "modified": "2018-05-16 17:45:45.055162", 
+  "name": "Digestor Digesdahl"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Medidor de DBO Bancada", 
+  "modelo": "DBO eletr\u00f4nico ", 
+  "modified": "2018-05-16 17:45:45.056947", 
+  "name": "DBO eletr\u00f4nico"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Aquecedor", 
+  "modelo": "Chapa Aquecedora e ou Agitadores", 
+  "modified": "2018-05-16 17:45:45.059028", 
+  "name": "Chapa Aquecedora e ou Agitadores"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Espectrofotometro Visivel", 
+  "modelo": "Espectrofot\u00f4metro DR2000/DR2010", 
+  "modified": "2018-05-16 17:45:45.060832", 
+  "name": "Espectrofot\u00f4metro DR2000/DR2010"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Espectrofotometro Visivel", 
+  "modelo": "Espectrofot\u00f4metro DR2500/2400", 
+  "modified": "2018-05-16 17:45:45.062947", 
+  "name": "Espectrofot\u00f4metro DR2500/2400"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Espectrofotometro Visivel", 
+  "modelo": "Espectrofot\u00f4metro DR2800/DR2700", 
+  "modified": "2018-05-16 17:45:45.064734", 
+  "name": "Espectrofot\u00f4metro DR2800/DR2700"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Espectrofotometro UV/VIS", 
+  "modelo": "Espectrofot\u00f4metro DR4000", 
+  "modified": "2018-05-16 17:45:45.066497", 
+  "name": "Espectrofot\u00f4metro DR4000"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Espectrofotometro UV/VIS", 
+  "modelo": "Espectrofot\u00f4metro DR5000", 
+  "modified": "2018-05-16 17:45:45.068679", 
+  "name": "Espectrofot\u00f4metro DR5000"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Espectrofotometro UV/VIS", 
+  "modelo": "Espectrofot\u00f4metro DR6000", 
+  "modified": "2018-05-16 17:45:45.070718", 
+  "name": "Espectrofot\u00f4metro DR6000"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Espectrofotometro Visivel", 
+  "modelo": "Espectrofot\u00f4metro DR3800/DR3900", 
+  "modified": "2018-05-16 17:45:45.072508", 
+  "name": "Espectrofot\u00f4metro DR3800/DR3900"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Motores", 
+  "modelo": "Centr\u00edfugas", 
+  "modified": "2018-05-16 17:45:45.074277", 
+  "name": "Centr\u00edfugas"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Aquecedor", 
+  "modelo": "Termociclador ", 
+  "modified": "2018-05-16 17:45:45.076407", 
+  "name": "Termociclador"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Balan\u00e7as", 
+  "modelo": "Balan\u00e7as Anal\u00edticas e Semi-Anal\u00edticas", 
+  "modified": "2018-05-16 17:45:45.078157", 
+  "name": "Balan\u00e7as Anal\u00edticas e Semi-Anal\u00edticas"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Aquecedor", 
+  "modelo": "Autoclaves", 
+  "modified": "2018-05-16 17:45:45.080286", 
+  "name": "Autoclaves"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Aquecedor / Balan\u00e7a", 
+  "modelo": "Determinador de umidade", 
+  "modified": "2018-05-16 17:45:45.082109", 
+  "name": "Determinador de umidade"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Turbidimetro de Processo", 
+  "modelo": "Turbid\u00edmetro 1720C", 
+  "modified": "2018-05-16 17:45:45.084258", 
+  "name": "Turbid\u00edmetro 1720C"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Turbidimetro de Processo", 
+  "modelo": "Turbid\u00edmetro 1720D", 
+  "modified": "2018-05-16 17:45:45.086373", 
+  "name": "Turbid\u00edmetro 1720D"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Turbidimetro de Processo", 
+  "modelo": "Turbid\u00edmetro 1720E", 
+  "modified": "2018-05-16 17:45:45.088156", 
+  "name": "Turbid\u00edmetro 1720E"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Turbidimetro de Processo", 
+  "modelo": "Turbid\u00edmetro SS6", 
+  "modified": "2018-05-16 17:45:45.089922", 
+  "name": "Turbid\u00edmetro SS6"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Turbidimetro de Processo", 
+  "modelo": "Turbid\u00edmetro SS7", 
+  "modified": "2018-05-16 17:45:45.091706", 
+  "name": "Turbid\u00edmetro SS7"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Analisador de Cargas", 
+  "modelo": "Monitor de coagulante ", 
+  "modified": "2018-05-16 17:45:45.093471", 
+  "name": "Monitor de coagulante"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Colorimetro de Processo", 
+  "modelo": "Analisador Colorim\u00e9trico CL17 antigo", 
+  "modified": "2018-05-16 17:45:45.095598", 
+  "name": "Analisador Colorim\u00e9trico CL17 antigo"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Colorimetro de Processo", 
+  "modelo": "Analisador Colorim\u00e9trico CL17 novo", 
+  "modified": "2018-05-16 17:45:45.098309", 
+  "name": "Analisador Colorim\u00e9trico CL17 novo"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Colorimetro de Processo", 
+  "modelo": "Monitor Colorim\u00e9trico SP 510", 
+  "modified": "2018-05-16 17:45:45.100150", 
+  "name": "Monitor Colorim\u00e9trico SP 510"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Analisador Potenciometrico", 
+  "modelo": "Analisador Potenciom\u00e9trico  Hach CA610", 
+  "modified": "2018-05-16 17:45:45.101995", 
+  "name": "Analisador Potenciom\u00e9trico  Hach CA610"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Turbidimetro de Processo", 
+  "modelo": "Sonda Solidos Suspenso/Turbidez", 
+  "modified": "2018-05-16 17:45:45.104461", 
+  "name": "Sonda Solidos Suspenso/Turbidez"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Sensores Digitais", 
+  "modelo": "Sensores digitais ", 
+  "modified": "2018-05-16 17:45:45.106232", 
+  "name": "Sensores digitais"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Sensores Anal\u00f3gicos", 
+  "modelo": "Sensores anal\u00f3gicos", 
+  "modified": "2018-05-16 17:45:45.108351", 
+  "name": "Sensores anal\u00f3gicos"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Controlador de Processo", 
+  "modelo": "Monitor modelos PRO", 
+  "modified": "2018-05-16 17:45:45.111046", 
+  "name": "Monitor modelos PRO"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Controlador de Processo", 
+  "modelo": "Monitor modelo SC100", 
+  "modified": "2018-05-16 17:45:45.113163", 
+  "name": "Monitor modelo SC100"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Controlador de Processo", 
+  "modelo": "Monitor modelo SC200", 
+  "modified": "2018-05-16 17:45:45.114960", 
+  "name": "Monitor modelo SC200"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Equipamentos", 
+  "familia": "Controlador de Processo", 
+  "modelo": "Monitor modelo SC1000", 
+  "modified": "2018-05-16 17:45:45.116804", 
+  "name": "Monitor modelo SC1000"
+ }
+]
