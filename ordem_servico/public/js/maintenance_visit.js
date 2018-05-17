@@ -156,9 +156,13 @@ frappe.ui.form.on('Maintenance Visit Purpose', {
 							cur_frm.refresh_field('purposes');
 						}
 					});
-					if (1 > 0) {
+					if (d.modelo_equipamento) {
 						console.log('numero serie trigger');
 					}
+				} else {
+					d.modelo_equipamento = '';
+					d.item_name = '';
+					d.tag = '';
 				}
 			},
 
