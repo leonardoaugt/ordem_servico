@@ -163,6 +163,7 @@ frappe.ui.form.on('Maintenance Visit Purpose', {
 					d.modelo_equipamento = '';
 					d.item_name = '';
 					d.tag = '';
+					cur_frm.refresh_field('purposes');
 				}
 			},
 
