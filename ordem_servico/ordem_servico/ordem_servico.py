@@ -106,3 +106,7 @@ def custom_get_value(doctype, fieldname, filters=None, as_dict=True, debug=False
         filters = None
 
     return frappe.db.get_value(doctype, filters, fieldname, as_dict=as_dict, debug=debug)
+
+@frappe.whitelist()
+def get_tempo_orcamento(equipamento):
+    return equipamento
