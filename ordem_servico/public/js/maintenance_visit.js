@@ -155,7 +155,15 @@ frappe.ui.form.on('Maintenance Visit Purpose', {
 					cur_frm.doc.purposes[idx].tag = data['tag'];
 					cur_frm.refresh_field('purposes');
 					if (d.modelo_equipamento) {
-						console.log('numero serie trigger');
+						frappe.call({
+							method: 'ordem_servico.ordem_servico.ordem_servico.get_tempo_orcamento',
+							args: {
+								equipamento: d.modelo_equipamento,
+							},
+							callback: function (r) {
+								console.log(r);
+							}
+						});
 					}
 				}
 			});
