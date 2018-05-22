@@ -1,5 +1,28 @@
 frappe.ui.form.on('Maintenance Visit', {
 
+	onsave: function (frm) {
+		console.log('chamou on submit trigger');
+		// Set OS status
+		$.each(frm.doc.purposes || [], function (i, d) {
+			if (d.status_conserto == 'Equipamento Liberado' || d.status_conserto == 'Liberado com restrição') {
+				d.status_ordem_servico = 'Encerrada';
+			}
+			else if (d.agendado_para2) {
+				d.status_ordem_servico = 'Em Conserto';
+			}
+			else if (d.documento_orcamento) {
+				d.status_ordem_servico = 'Em Aprovação';
+			}
+			else if (d.agendado_para) {
+				d.status_ordem_servico = 'Em Orçamento';
+			}
+			else {
+				frappe.throw('Preencha pelo menos uma seção corretamente!');
+			}
+		});
+
+		frm.refresh_field('purposes');
+	},
 
 	after_save: function (frm) {
 
@@ -21,29 +44,8 @@ frappe.ui.form.on('Maintenance Visit', {
 				doc_name: frm.doc.name,
 			},
 		});
-
-		// Set OS status
-		$.each(frm.doc.purposes || [], function (i, d) {
-			if (d.status_conserto == 'Equipamento Liberado' || d.status_conserto == 'Liberado com restrição') {
-				d.status_ordem_servico = 'Encerrada';
-			}
-			else if (d.evento_link2) {
-				d.status_ordem_servico = 'Em Conserto';
-			}
-			else if (d.documento_orcamento) {
-				d.status_ordem_servico = 'Em Aprovação';
-			}
-			else if (d.evento_link) {
-				d.status_ordem_servico = 'Em Orçamento';
-			}
-			else {
-				frappe.throw('Preencha pelo menos uma seção corretamente!');
-			}
-		});
-
-		frm.refresh_field('purposes');
 		frm.reload_doc();
-
+		frm.refresh_field('purposes');
 	},
 
 	customer: function (frm) {
