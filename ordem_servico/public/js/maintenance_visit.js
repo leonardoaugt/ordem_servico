@@ -1,6 +1,6 @@
 frappe.ui.form.on('Maintenance Visit', {
 
-	on_save: function (frm) {
+	before_save: function (frm) {
 		console.log('before save trigger');
 	},
 
