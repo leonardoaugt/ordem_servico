@@ -79,7 +79,7 @@ def make_event(doc_name):
 
             # set event doc name to purposes row
             row.data_agendamento_orcamento = datetime.datetime.today().strftime('%Y-%m-%d')
-            row.agenda = event.name
+            row.evento_link = event.name
             row.save()
 
 @frappe.whitelist()
