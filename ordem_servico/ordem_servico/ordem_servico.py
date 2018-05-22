@@ -109,6 +109,6 @@ def custom_get_value(doctype, fieldname, filters=None, as_dict=True, debug=False
 
 @frappe.whitelist()
 def get_tempo_orcamento(equipamento):
-    familia = frappe.db.sql("SELECT familia FROM tabEquipamentos WHERE name='{}'".format(equipamento), as_dict=True)
-    tempo_orcamento = "SELECT tempo_orcamento FROM `tabFamilias de Equipamentos` WHERE name='{}'".format(familia[0])
+    familia = frappe.db.get_value('tabEquipamentos', {'name': equipamento})
+    tempo_orcamento = "SELECT tempo_orcamento FROM `tabFamilias de Equipamentos` WHERE name='{}'".format(familia)
     return tempo_orcamento
