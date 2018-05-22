@@ -1,6 +1,6 @@
 frappe.ui.form.on('Maintenance Visit', {
 
-	before_save: function (frm) {
+	onsubmit: function (frm) {
 		
 		// Set OS status
 		$.each(frm.doc.purposes || [], function (i, d) {
@@ -35,7 +35,7 @@ frappe.ui.form.on('Maintenance Visit', {
 			}
 		});
 
-		// Create event based on 'agendado_para'
+		// Create event
 		frappe.call({
 			method: 'ordem_servico.ordem_servico.ordem_servico.make_event',
 			args: {
