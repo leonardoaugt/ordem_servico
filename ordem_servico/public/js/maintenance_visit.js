@@ -4,7 +4,7 @@ frappe.ui.form.on('Maintenance Visit', {
 
 		// Set last OS status
 		$.each(frm.doc.purposes || [], function (i, d) {
-			if (d.status_conserto == 'Equipamento Liberado' || d.status_conserto == 'Liberado com restrição') {
+			if (d.status_conserto == 'Equipamento liberado' || d.status_conserto == 'Liberado com restrição') {
 				d.status_ordem_servico = 'Encerrada';
 			}
 		});
