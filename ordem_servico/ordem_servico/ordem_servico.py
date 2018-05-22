@@ -70,7 +70,7 @@ def make_event(doc_name):
             event.subject = row.os
             datetime_now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:00")
             event.starts_on = datetime_now
-            event.ends_on = datetime_now
+            event.ends_on = datetime_now.strftime("%Y-%m-%d 18:00:00")
             event.manutencao = maint.name
             event.ordem_servico = row.os
             event.ref_type = "Maintenance Visit Purpose"
@@ -87,7 +87,7 @@ def make_event(doc_name):
             event.subject = row.os
             datetime_now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:00")
             event.starts_on = datetime_now
-            event.ends_on = datetime_now
+            event.ends_on = datetime_now.strftime("%Y-%m-%d 18:00:00")
             event.manutencao = maint.name
             event.ordem_servico = row.os
             event.ref_type = "Maintenance Visit Purpose"
