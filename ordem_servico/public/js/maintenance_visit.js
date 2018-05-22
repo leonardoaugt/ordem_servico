@@ -161,7 +161,8 @@ frappe.ui.form.on('Maintenance Visit Purpose', {
 								equipamento: d.modelo_equipamento,
 							},
 							callback: function (r) {
-								console.log(r.message);
+								data = r.message;
+								d.tempo_orcamento = data;
 							}
 						});
 					}
