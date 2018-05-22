@@ -162,7 +162,8 @@ frappe.ui.form.on('Maintenance Visit Purpose', {
 							},
 							callback: function (r) {
 								data = r.message;
-								d.tempo_orcamento = data;
+								d.tempo_orcamento = data['tempo_orcamento'];
+								d.tempo_conserto = data['tempo_conserto']
 								cur_frm.refresh_field('purposes');
 							}
 						});
