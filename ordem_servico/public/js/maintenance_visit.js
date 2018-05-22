@@ -1,7 +1,25 @@
 frappe.ui.form.on('Maintenance Visit', {
 
 	before_save: function (frm) {
-		console.log('before save trigger');
+		
+		// Set OS status
+		$.each(frm.doc.purposes || [], function (i, d) {
+			if (d.status_conserto == 'Equipamento Liberado' || d.status_conserto == 'Liberado com restrição') {
+				d.status_ordem_servico = 'Encerrada';
+			}
+			else if (d.evento_link2) {
+				d.status_ordem_servico = 'Em Conserto';
+			}
+			else if (d.documento_orcamento) {
+				d.status_ordem_servico = 'Em Aprovação';
+			}
+			else if (d.evento_link) {
+				d.status_ordem_servico = 'Em Orçamento';
+			}
+			else {
+				frappe.throw('Preencha pelo menos uma seção corretamente!');
+			}
+		});
 	},
 
 	after_save: function (frm) {
