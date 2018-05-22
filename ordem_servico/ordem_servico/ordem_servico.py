@@ -76,6 +76,9 @@ def make_event(doc_name):
                 "%Y-%m-%d 18:00:00")
             event.manutencao = maint.name
             event.ordem_servico = row.os
+            event.equipamento = row.modelo_equipamento
+            event.descricao = row.item_name
+            event.tag = row.tag
             event.tempo_conserto = row.tempo_conserto
             event.ref_type = "Maintenance Visit Purpose"
             event.owner = frappe.db.get_value("Employee", row.agendado_para,
@@ -97,6 +100,9 @@ def make_event(doc_name):
                 "%Y-%m-%d 18:00:00")
             event.manutencao = maint.name
             event.ordem_servico = row.os
+            event.equipamento = row.modelo_equipamento
+            event.descricao = row.item_name
+            event.tag = row.tag
             event.tempo_conserto = row.tempo_conserto
             event.ref_type = "Maintenance Visit Purpose"
             event.owner = frappe.db.get_value("Employee", row.agendado_para2,
