@@ -1,7 +1,7 @@
 frappe.ui.form.on('Maintenance Visit', {
 
 	before_save: function (frm) {
-		console.log('chamou on submit trigger');
+
 		// Set last OS status
 		$.each(frm.doc.purposes || [], function (i, d) {
 			if (d.status_conserto == 'Equipamento Liberado' || d.status_conserto == 'Liberado com restrição') {
@@ -32,6 +32,7 @@ frappe.ui.form.on('Maintenance Visit', {
 				doc_name: frm.doc.name,
 			},
 		});
+
 		frm.reload_doc();
 		frm.refresh_field('purposes');
 	},
@@ -39,6 +40,7 @@ frappe.ui.form.on('Maintenance Visit', {
 	customer: function (frm) {
 
 		// Clear purposes when change customer
+
 		if (frm.doc.purposes) {
 			frm.doc.purposes = [];
 			frm.add_child('purposes');
@@ -130,7 +132,7 @@ frappe.ui.form.on('Maintenance Visit Purpose', {
 						},
 						callback: function (r) {
 							doc = r.message;
-							cur_frm.refresh_field('purposes');
+							frm.refresh_field('purposes');
 							frappe.set_route("Form", "Quotation", doc.name)
 						}
 					});
