@@ -154,7 +154,9 @@ frappe.ui.form.on('Maintenance Visit Purpose', {
 					cur_frm.doc.purposes[idx].modelo_equipamento = data['modelo'];
 					cur_frm.doc.purposes[idx].tag = data['tag'];
 					cur_frm.refresh_field('purposes');
+
 					if (d.modelo_equipamento) {
+						// Get tempo_conserto and tempo_orcamento
 						frappe.call({
 							method: 'ordem_servico.ordem_servico.ordem_servico.get_tempo_orcamento_conserto',
 							args: {
@@ -162,7 +164,6 @@ frappe.ui.form.on('Maintenance Visit Purpose', {
 							},
 							callback: function (r) {
 								data = r.message;
-								console.log(data);
 								d.tempo_orcamento = data['tempo_orcamento'];
 								d.tempo_conserto = data['tempo_conserto']
 								cur_frm.refresh_field('purposes');
