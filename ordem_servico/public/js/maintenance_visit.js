@@ -1,5 +1,9 @@
 frappe.ui.form.on('Maintenance Visit', {
 
+	before_save: function (frm) {
+		console.log('before save trigger');
+	},
+
 	after_save: function (frm) {
 
 		// Rename Quotation
