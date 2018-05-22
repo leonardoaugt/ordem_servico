@@ -156,7 +156,7 @@ frappe.ui.form.on('Maintenance Visit Purpose', {
 					cur_frm.refresh_field('purposes');
 					if (d.modelo_equipamento) {
 						frappe.call({
-							method: 'ordem_servico.ordem_servico.ordem_servico.get_tempo_orcamento',
+							method: 'ordem_servico.ordem_servico.ordem_servico.get_tempo_orcamento_conserto',
 							args: {
 								equipamento: d.modelo_equipamento,
 							},

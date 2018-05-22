@@ -110,5 +110,5 @@ def custom_get_value(doctype, fieldname, filters=None, as_dict=True, debug=False
 @frappe.whitelist()
 def get_tempo_orcamento_conserto(equipamento):
     familia = frappe.db.get_value('Equipamentos', {'name': equipamento}, ['familia'])
-    tempo_orcamento = frappe.db.get_value('Familias de Equipamentos', {'name': familia}, ['tempo_orcamento', 'tempo_conserto'])
-    return tempo_orcamento
+    data = frappe.db.get_value('Familias de Equipamentos', {'name': familia}, ['tempo_orcamento', 'tempo_conserto'])
+    return data
