@@ -1,6 +1,6 @@
 frappe.ui.form.on('Maintenance Visit', {
 
-	onsave: function (frm) {
+	before_save: function (frm) {
 		console.log('chamou on submit trigger');
 		// Set OS status
 		$.each(frm.doc.purposes || [], function (i, d) {
