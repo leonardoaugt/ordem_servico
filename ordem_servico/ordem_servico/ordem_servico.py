@@ -9,6 +9,7 @@ import datetime
 import json, os
 from six import iteritems, string_types, integer_types
 
+
 @frappe.whitelist()
 def purposes_rename(maint_name):
     maint = frappe.get_doc("Maintenance Visit", maint_name)
@@ -37,7 +38,8 @@ def new_quotation(maint_name, purposes_idx):
     date = date + datetime.timedelta(days=15)
     quotation.valid_till = date.strftime('%y-%m-%d')
     quotation.tc_name = "Boleto 15 dias"
-    quotation.terms = frappe.db.get_value('Terms and Conditions', {'name': 'Boleto 15 dias'}, ['terms'])
+    quotation.terms = frappe.db.get_value(
+        'Terms and Conditions', {'name': 'Boleto 15 dias'}, ['terms'])
     quotation.conversion_rate = 1
     quotation.plc_conversion_rate = 1
     quotation.price_list_currency = "BRL"
@@ -48,11 +50,11 @@ def new_quotation(maint_name, purposes_idx):
     # set quotation name to purposes os
     idx = int(purposes_idx) - 1
     date_now = datetime.datetime.today().strftime('%Y-%m-%d')
-    maint.purposes[idx-1].status_ordem_servico = "Em Orçamento"
-    maint.purposes[idx-1].documento_orcamento = quotation.name
-    maint.purposes[idx-1].numero_orcamento = quotation.name
-    maint.purposes[idx-1].data_orcamento2 = date_now
-    maint.purposes[idx-1].data_orcamento = date_now
+    maint.purposes[idx - 1].status_ordem_servico = "Em Orçamento"
+    maint.purposes[idx - 1].documento_orcamento = quotation.name
+    maint.purposes[idx - 1].numero_orcamento = quotation.name
+    maint.purposes[idx - 1].data_orcamento2 = date_now
+    maint.purposes[idx - 1].data_orcamento = date_now
     maint.save()
     return quotation
 
@@ -68,16 +70,20 @@ def make_event(doc_name):
         if (not row.evento_link and row.agendado_para):
             event = frappe.new_doc("Event")
             event.subject = row.os
-            event.starts_on = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:00")
-            event.ends_on = datetime.datetime.now().strftime("%Y-%m-%d 18:00:00")
+            event.starts_on = datetime.datetime.now().strftime(
+                "%Y-%m-%d %H:%M:00")
+            event.ends_on = datetime.datetime.now().strftime(
+                "%Y-%m-%d 18:00:00")
             event.manutencao = maint.name
             event.ordem_servico = row.os
             event.tempo_conserto = row.tempo_conserto
             event.ref_type = "Maintenance Visit Purpose"
-            event.owner = frappe.db.get_value("Employee", row.agendado_para, "user_id")
+            event.owner = frappe.db.get_value("Employee", row.agendado_para,
+                                              "user_id")
             event.save()
 
-            row.data_agendamento_orcamento = datetime.datetime.today().strftime('%Y-%m-%d')
+            row.data_agendamento_orcamento = datetime.datetime.today(
+            ).strftime('%Y-%m-%d')
             row.evento_link = event.name
             row.save()
 
@@ -85,21 +91,31 @@ def make_event(doc_name):
         elif (not row.evento_link2 and row.agendado_para2):
             event = frappe.new_doc("Event")
             event.subject = row.os
-            event.starts_on = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:00")
-            event.ends_on = datetime.datetime.now().strftime("%Y-%m-%d 18:00:00")
+            event.starts_on = datetime.datetime.now().strftime(
+                "%Y-%m-%d %H:%M:00")
+            event.ends_on = datetime.datetime.now().strftime(
+                "%Y-%m-%d 18:00:00")
             event.manutencao = maint.name
             event.ordem_servico = row.os
             event.tempo_conserto = row.tempo_conserto
             event.ref_type = "Maintenance Visit Purpose"
-            event.owner = frappe.db.get_value("Employee", row.agendado_para2, "user_id")
+            event.owner = frappe.db.get_value("Employee", row.agendado_para2,
+                                              "user_id")
             event.save()
 
-            row.data_agendamento_orcamento = datetime.datetime.today().strftime('%Y-%m-%d')
+            row.data_agendamento_orcamento = datetime.datetime.today(
+            ).strftime('%Y-%m-%d')
             row.evento_link2 = event.name
             row.save()
 
+
 @frappe.whitelist()
-def custom_get_value(doctype, fieldname, filters=None, as_dict=True, debug=False, parent=None):
+def custom_get_value(doctype,
+                     fieldname,
+                     filters=None,
+                     as_dict=True,
+                     debug=False,
+                     parent=None):
     try:
         filters = json.loads(filters)
 
@@ -121,10 +137,16 @@ def custom_get_value(doctype, fieldname, filters=None, as_dict=True, debug=False
     if not filters:
         filters = None
 
-    return frappe.db.get_value(doctype, filters, fieldname, as_dict=as_dict, debug=debug)
+    return frappe.db.get_value(
+        doctype, filters, fieldname, as_dict=as_dict, debug=debug)
+
 
 @frappe.whitelist()
 def get_tempo_orcamento_conserto(equipamento):
-    familia = frappe.db.get_value('Equipamentos', {'name': equipamento}, ['familia'])
-    data = frappe.db.get_value('Familias de Equipamentos', {'name': familia}, ['tempo_orcamento', 'tempo_conserto'], as_dict=True)
+    familia = frappe.db.get_value('Equipamentos', {'name': equipamento},
+                                  ['familia'])
+    data = frappe.db.get_value(
+        'Familias de Equipamentos', {'name': familia},
+        ['tempo_orcamento', 'tempo_conserto'],
+        as_dict=True)
     return data
