@@ -68,9 +68,8 @@ def make_event(doc_name):
         if (not row.evento_link and row.agendado_para):
             event = frappe.new_doc("Event")
             event.subject = row.os
-            datetime_now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:00")
-            event.starts_on = datetime_now
-            event.ends_on = datetime_now.strftime("%Y-%m-%d 18:00:00")
+            event.starts_on = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:00")
+            event.ends_on = datetime.datetime.now().strftime("%Y-%m-%d 18:00:00")
             event.manutencao = maint.name
             event.ordem_servico = row.os
             event.ref_type = "Maintenance Visit Purpose"
@@ -85,9 +84,8 @@ def make_event(doc_name):
         elif (not row.evento_link2 and row.agendado_para2):
             event = frappe.new_doc("Event")
             event.subject = row.os
-            datetime_now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:00")
-            event.starts_on = datetime_now
-            event.ends_on = datetime_now.strftime("%Y-%m-%d 18:00:00")
+            event.starts_on = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:00")
+            event.ends_on = datetime.datetime.now().strftime("%Y-%m-%d 18:00:00")
             event.manutencao = maint.name
             event.ordem_servico = row.os
             event.ref_type = "Maintenance Visit Purpose"
