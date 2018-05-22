@@ -50,7 +50,7 @@ def new_quotation(maint_name, purposes_idx):
     # set quotation name to purposes os
     idx = int(purposes_idx) - 1
     date_now = datetime.datetime.today().strftime('%Y-%m-%d')
-    maint.purposes[idx - 1].status_ordem_servico = "Em Orçamento"
+    maint.purposes[idx - 1].status_ordem_servico = "Em Aprovação"
     maint.purposes[idx - 1].documento_orcamento = quotation.name
     maint.purposes[idx - 1].numero_orcamento = quotation.name
     maint.purposes[idx - 1].data_orcamento2 = date_now
@@ -85,6 +85,7 @@ def make_event(doc_name):
                                               "user_id")
             event.save()
 
+            row.status_ordem_servico = 'Em Orçamento'
             row.data_agendamento_orcamento = datetime.datetime.today(
             ).strftime('%Y-%m-%d')
             row.evento_link = event.name
@@ -109,6 +110,7 @@ def make_event(doc_name):
                                               "user_id")
             event.save()
 
+            row.status_ordem_servico = 'Em Conserto'
             row.data_agendamento_orcamento = datetime.datetime.today(
             ).strftime('%Y-%m-%d')
             row.evento_link2 = event.name
