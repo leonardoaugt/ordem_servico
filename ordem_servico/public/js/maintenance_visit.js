@@ -1,7 +1,7 @@
 frappe.ui.form.on('Maintenance Visit', {
 
 	onsubmit: function (frm) {
-		
+		console.log('chamou on submit trigger');
 		// Set OS status
 		$.each(frm.doc.purposes || [], function (i, d) {
 			if (d.status_conserto == 'Equipamento Liberado' || d.status_conserto == 'Liberado com restrição') {
@@ -20,6 +20,7 @@ frappe.ui.form.on('Maintenance Visit', {
 				frappe.throw('Preencha pelo menos uma seção corretamente!');
 			}
 		});
+		cur_frm.refresh_field('purposes');
 	},
 
 	after_save: function (frm) {
