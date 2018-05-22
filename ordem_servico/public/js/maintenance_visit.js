@@ -161,7 +161,7 @@ frappe.ui.form.on('Maintenance Visit Purpose', {
 								equipamento: d.modelo_equipamento,
 							},
 							callback: function (r) {
-								console.log(r.message['familia']);
+								console.log(r.message);
 							}
 						});
 					}
