@@ -374,13 +374,5 @@
   "modelo": "Monitor modelo SC1000", 
   "modified": "2018-05-16 17:45:45.116804", 
   "name": "Monitor modelo SC1000"
- }, 
- {
-  "docstatus": 0, 
-  "doctype": "Equipamentos", 
-  "familia": "Espectrofotometro Visivel", 
-  "modelo": "TUF 0093", 
-  "modified": "2018-05-17 14:27:53.611803", 
-  "name": "TUF 0093"
  }
 ]
