@@ -10,4 +10,14 @@ frappe.ui.form.on('Event', {
         frm.refresh_field('iniciar_manutencao');
     },
 
+    finalizar_cronometro: function (frm) {
+        frappe.call({
+            method: 'ordem_servico.ordem_servico.event_document.end_maintenance',
+            args: {
+                docname: frm.doc.name,
+            },
+        });
+        frm.refresh_field('finalizar_manutencao');
+    }
+
 });

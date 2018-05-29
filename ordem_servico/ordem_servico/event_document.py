@@ -20,3 +20,16 @@ def start_maintenance(docname):
         doc_event.save()
     else:
         frappe.throw('A manutenção já foi iniciada!')
+
+@frappe.whitelist()
+def end_maintenance(docname):
+
+    doc_event = frappe.get_doc('Event', docname)
+    if doc_event.iniciar_manutencao:
+        if not doc_event.finalizar_manutencao:
+            doc_event.finalizar_manutencao = datetime_now()
+            doc_event.save()
+        else:
+            frappe.throw('Manutenção já finalizada!')
+    else:
+        frappe.throw('Manutenção não iniciada!')
