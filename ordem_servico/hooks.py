@@ -27,13 +27,23 @@ app_license = "MIT"
 
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}
-doctype_js = {"Maintenance Visit" : "public/js/maintenance_visit.js"}
+doctype_js = {
+    "Maintenance Visit": "public/js/maintenance_visit.js",
+    "Event": "public/js/event_document.js",
+}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 fixtures = fixtures = [
-	"Custom Script", "Property Setter", "Familias de Equipamentos", "Equipamentos",
-		{"dt":"Custom Field",  "filters": [["dt", "in", ("Maintenance Visit", "Maintenance Visit Purpose", "Quotation", "Customer", "Event")]]}
+    "Custom Script", "Property Setter", "Familias de Equipamentos",
+    "Equipamentos", {
+        "dt":
+        "Custom Field",
+        "filters": [[
+            "dt", "in", ("Maintenance Visit", "Maintenance Visit Purpose",
+                         "Quotation", "Customer", "Event")
+        ]]
+    }
 ]
 # Home Pages
 # ----------
@@ -123,4 +133,3 @@ fixtures = fixtures = [
 # override_whitelisted_methods = {
 # 	"frappe.desk.doctype.event.event.get_events": "ordem_servico.event.get_events"
 # }
-
