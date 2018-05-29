@@ -28,6 +28,7 @@ def end_maintenance(docname):
     if doc_event.iniciar_manutencao:
         if not doc_event.finalizar_manutencao:
             doc_event.finalizar_manutencao = datetime_now()
+            doc_event.color = '#ff4d4d'
             doc_event.save()
         else:
             frappe.throw('Manutenção já finalizada!')
