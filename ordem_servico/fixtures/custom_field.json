@@ -1502,7 +1502,7 @@
   "in_list_view": 0, 
   "in_standard_filter": 0, 
   "insert_after": "work_details", 
-  "label": "Agendamento", 
+  "label": "Agendamento Inicial", 
   "modified": "2018-01-19 16:36:32.610773", 
   "name": "Maintenance Visit Purpose-agendamento_inicial", 
   "no_copy": 0, 
