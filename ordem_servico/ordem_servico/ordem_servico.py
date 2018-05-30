@@ -73,7 +73,7 @@ def make_event(doc_name):
             event.starts_on = datetime.datetime.now().strftime(
                 "%Y-%m-%d %H:%M:00")
             event.ends_on = datetime.datetime.now().strftime(
-                "%Y-%m-%d 18:00:00")
+                "%Y-%m-%d 21:00:00")
             event.manutencao = maint.name
             event.ordem_servico = row.os
             event.equipamento = row.modelo_equipamento
