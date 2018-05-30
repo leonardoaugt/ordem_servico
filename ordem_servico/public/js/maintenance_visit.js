@@ -107,6 +107,20 @@ frappe.ui.form.on('Maintenance Visit', {
 				}
 			}
 		}
+
+		// Clear field values
+
+		$.each(frm.doc.purposes || [], function (i, d) {
+			d.agendado_para = '';
+			d.agendado_para2 = '';
+			d.agendado_por = '';
+			d.agendado_por2 = '';
+			d.responsavel_tecnico = '';
+			d.responsavel_tecnico2 = '';
+		});
+
+		frm.refresh_field('purposes');
+
 	}
 
 });
