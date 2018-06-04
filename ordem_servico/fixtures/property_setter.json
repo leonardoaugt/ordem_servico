@@ -2594,7 +2594,7 @@
   "doctype": "Property Setter", 
   "doctype_or_field": "DocType", 
   "field_name": null, 
-  "modified": "2018-06-01 16:38:44.972931", 
+  "modified": "2018-06-04 17:17:37.145099", 
   "name": "Quotation-read_only_onload", 
   "property": "read_only_onload", 
   "property_type": "Check", 
