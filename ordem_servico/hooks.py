@@ -36,7 +36,7 @@ doctype_js = {
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 fixtures = fixtures = [
     "Custom Script", "Property Setter",
-    {"dt": "Workflow", "filters": [[
+    {"dt": "Workflow State", "filters": [[
         "dt", "in", ("Quotation")
         ]]
     },
