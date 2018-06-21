@@ -1,0 +1,38 @@
+[
+ {
+  "docstatus": 0, 
+  "doctype": "Workflow State", 
+  "icon": "question-sign", 
+  "modified": "2016-08-22 18:25:02.111684", 
+  "name": "Pending", 
+  "style": "", 
+  "workflow_state_name": "Pending"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Workflow State", 
+  "icon": "ok-sign", 
+  "modified": "2016-08-22 18:25:02.113090", 
+  "name": "Approved", 
+  "style": "Success", 
+  "workflow_state_name": "Approved"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Workflow State", 
+  "icon": "remove", 
+  "modified": "2016-08-22 18:25:02.114209", 
+  "name": "Rejected", 
+  "style": "Danger", 
+  "workflow_state_name": "Rejected"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Workflow State", 
+  "icon": "", 
+  "modified": "2018-06-19 17:43:45.315390", 
+  "name": "Revisando", 
+  "style": "Warning", 
+  "workflow_state_name": "Revisando"
+ }
+]
