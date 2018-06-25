@@ -146,6 +146,7 @@ frappe.ui.form.on('Maintenance Visit Purpose', {
 						},
 						callback: function (r) {
 							doc = r.message;
+							console.log(doc.email)
 							frm.refresh_field('purposes');
 							frappe.set_route("Form", "Quotation", doc.name)
 						}

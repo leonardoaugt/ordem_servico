@@ -34,6 +34,7 @@ def new_quotation(maint_name, purposes_idx):
     quotation.os_doctype = "Maintenance Visit"
     quotation.os_link = maint.name
     quotation.customer = maint.customer_name
+    quotation.email = frappe.db.get_value('Contacts', {'customer': quotation.customer}, ['email_id'])
     date = datetime.date.today()
     date = date + datetime.timedelta(days=15)
     quotation.valid_till = date.strftime('%y-%m-%d')
