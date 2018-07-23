@@ -4,7 +4,7 @@
   "doctype": "Workflow", 
   "document_type": "Quotation", 
   "is_active": 1, 
-  "modified": "2018-07-23 09:31:46.721731", 
+  "modified": "2018-07-23 09:46:42.908854", 
   "name": "Workotation", 
   "override_status": 0, 
   "states": [
@@ -44,25 +44,25 @@
   "transitions": [
    {
     "action": "Approve", 
-    "allowed": "Customer", 
+    "allowed": "Customer Quotation Access", 
     "next_state": "Approved", 
     "state": "Pending"
    }, 
    {
     "action": "Review", 
-    "allowed": "Customer", 
+    "allowed": "Customer Quotation Access", 
     "next_state": "Revisando", 
     "state": "Pending"
    }, 
    {
     "action": "Approve", 
-    "allowed": "Customer", 
+    "allowed": "Customer Quotation Access", 
     "next_state": "Approved", 
     "state": "Revisando"
    }, 
    {
     "action": "Reject", 
-    "allowed": "Customer", 
+    "allowed": "Customer Quotation Access", 
     "next_state": "Rejected", 
     "state": "Revisando"
    }
