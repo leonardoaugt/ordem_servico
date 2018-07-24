@@ -2662,7 +2662,7 @@
   "doctype": "Property Setter", 
   "doctype_or_field": "DocType", 
   "field_name": null, 
-  "modified": "2018-07-24 11:17:53.842941", 
+  "modified": "2018-07-24 12:03:30.341841", 
   "name": "Customer-read_only_onload", 
   "property": "read_only_onload", 
   "property_type": "Check", 
