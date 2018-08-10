@@ -4,12 +4,12 @@
   "doctype": "Workflow", 
   "document_type": "Quotation", 
   "is_active": 1, 
-  "modified": "2018-07-23 09:46:42.908854", 
+  "modified": "2018-08-10 15:39:48.052095", 
   "name": "Workotation", 
   "override_status": 0, 
   "states": [
    {
-    "allow_edit": "Administrator", 
+    "allow_edit": "Customer Quotation Access", 
     "doc_status": "0", 
     "message": null, 
     "state": "Pending", 
@@ -17,7 +17,7 @@
     "update_value": null
    }, 
    {
-    "allow_edit": "Administrator", 
+    "allow_edit": "Customer Quotation Access", 
     "doc_status": "1", 
     "message": null, 
     "state": "Revisando", 
@@ -25,7 +25,7 @@
     "update_value": null
    }, 
    {
-    "allow_edit": "Administrator", 
+    "allow_edit": "Customer Quotation Access", 
     "doc_status": "1", 
     "message": null, 
     "state": "Approved", 
@@ -33,7 +33,7 @@
     "update_value": null
    }, 
    {
-    "allow_edit": "Administrator", 
+    "allow_edit": "Customer Quotation Access", 
     "doc_status": "2", 
     "message": null, 
     "state": "Rejected", 
