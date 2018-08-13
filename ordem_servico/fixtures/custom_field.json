@@ -3938,7 +3938,7 @@
   "modified": "2018-06-01 13:05:14.316888", 
   "name": "Customer-segmento", 
   "no_copy": 0, 
-  "options": "\nSaneamento\nPetroqu\u00edmica\nBebidas\nFarmac\u00eautica\nOutros", 
+  "options": "\nSaneamento\nAlimentos\nBebidas\nLaticinios\nFarmac\u00eauticos\nAcad\u00eamico\nPetroqu\u00edmico\nQu\u00edmico\nA\u00e7\u00facar e \u00c1lcool\nPapel e Celulose\nPrestadores de Servi\u00e7os\nLaborat\u00f3rios de An\u00e1lises", 
   "permlevel": 0, 
   "precision": "", 
   "print_hide": 0, 
