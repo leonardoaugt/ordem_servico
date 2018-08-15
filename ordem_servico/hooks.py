@@ -43,7 +43,7 @@ fixtures = [
     {"dt": "Custom Field",
         "filters": [[
             "dt", "in", ("Maintenance Visit", "Maintenance Visit Purpose",
-                         "Quotation", "Customer", "Event", "Opportunity", "Lead")
+                         "Quotation", "Quotation Item", "Customer", "Event", "Opportunity", "Lead")
         ]]
     }
 ]
