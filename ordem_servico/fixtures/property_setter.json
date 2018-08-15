@@ -2730,13 +2730,8 @@
   "doctype": "Property Setter", 
   "doctype_or_field": "DocType", 
   "field_name": null, 
-<<<<<<< HEAD
   "modified": "2018-08-14 10:11:35.839536", 
   "name": "Quotation Item-read_only_onload", 
-=======
-  "modified": "2018-08-13 19:48:21.404747", 
-  "name": "Lead-read_only_onload", 
->>>>>>> f18076fa4d8ee1de5261bba28e719908f297688a
   "property": "read_only_onload", 
   "property_type": "Check", 
   "value": null
