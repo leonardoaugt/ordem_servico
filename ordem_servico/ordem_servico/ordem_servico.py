@@ -36,7 +36,7 @@ def new_quotation(maint_name, purposes_idx):
     quotation.os_link = maint.name
     quotation.customer = maint.customer_name
     quotation.numero_serie = maint.purposes[idx - 1].numero_serie
-    quotation.descricao_equipamento = maint.purposes[idx - 1].descricao_equipamento
+    quotation.descricao_equipamento = maint.purposes[idx - 1].item_name
     quotation.tag = maint.purposes[idx - 1].tag
     quotation.email = frappe.db.get_value('Contacts', {'customer': quotation.customer}, ['email_id'])
     quotation.observacao = maint.purposes[idx - 1].observacao_3
