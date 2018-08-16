@@ -4622,7 +4622,7 @@
   "modified": "2018-08-14 10:11:35.879535", 
   "name": "Quotation Item-ncm", 
   "no_copy": 0, 
-  "options": null, 
+  "options": "item_code.ncm", 
   "permlevel": 0, 
   "precision": "", 
   "print_hide": 0, 
