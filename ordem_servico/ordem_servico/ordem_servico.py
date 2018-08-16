@@ -28,7 +28,7 @@ def purposes_rename(maint_name):
 @frappe.whitelist()
 def new_quotation(maint_name, purposes_idx):
     maint = frappe.get_doc("Maintenance Visit", maint_name)
-
+    idx = int(purposes_idx) - 1
     # create quotation doc
     quotation = frappe.new_doc("Quotation")
     quotation.os_doctype = "Maintenance Visit"
@@ -51,7 +51,6 @@ def new_quotation(maint_name, purposes_idx):
     quotation.save()
 
     # set quotation name to purposes os
-    idx = int(purposes_idx) - 1
     date_now = datetime.datetime.today().strftime('%Y-%m-%d')
     maint.purposes[idx - 1].status_ordem_servico = "Em Aprovação"
     maint.purposes[idx - 1].documento_orcamento = quotation.name
