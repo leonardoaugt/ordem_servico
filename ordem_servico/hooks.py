@@ -49,7 +49,7 @@ fixtures = [
     },
     {"dt": "Print Format",
         "filters": [[
-            "parent", "in", ("Orçamento")
+            "parent", "in", ("Quotation")
         ]]
     }
 ]
