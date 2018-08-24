@@ -55,6 +55,8 @@ def new_quotation(maint_name, purposes_idx):
     quotation.conversion_rate = 1
     quotation.plc_conversion_rate = 1
     quotation.price_list_currency = "BRL"
+    quotation.flags.ignore_mandatory = True
+    quotation.flags.ignore_validate = True
     quotation.save()
 
     # Set quotation name to purposes os
