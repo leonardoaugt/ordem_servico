@@ -34,6 +34,7 @@ def new_quotation(maint_name, purposes_idx):
     quotation = frappe.new_doc("Quotation")
     quotation.os_doctype = "Maintenance Visit"
     quotation.os_link = maint.name
+    quotation.tipo_manutencao = main.local_manutencao
     quotation.customer = maint.customer_name
     quotation.numero_serie = maint.purposes[idx - 1].numero_serie
     quotation.descricao_equipamento = maint.purposes[idx - 1].item_name
