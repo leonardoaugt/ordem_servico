@@ -33,6 +33,12 @@ def new_quotation(maint_name, purposes_idx):
     # Create quotation doc
     quotation = frappe.new_doc("Quotation")
     quotation.os_doctype = "Maintenance Visit"
+    if maint.local_manutencao == 'Interno':
+        quotation.observacao_tecnica = maint.purposes[idx - 1].observacao_3
+        quotation.defeito_constatado = maint.purposes[idx - 1].defeito_constatado2
+    elif maint.local_manutencao == 'Externo':
+        quotation.observacao_tecnica = maint.purposes[idx - 1].observacao_2
+        quotation.defeito_constatado = maint.purposes[idx - 1].defeito_constatado
     quotation.os_link = maint.name
     quotation.tipo_manutencao = maint.local_manutencao
     quotation.customer = maint.customer_name
@@ -40,8 +46,6 @@ def new_quotation(maint_name, purposes_idx):
     quotation.descricao_equipamento = maint.purposes[idx - 1].item_name
     quotation.tag = maint.purposes[idx - 1].tag
     quotation.email = frappe.db.get_value('Contacts', {'customer': quotation.customer}, ['email_id'])
-    quotation.observacao_tecnica = maint.purposes[idx - 1].observacao_3
-    quotation.defeito_constatado = maint.purposes[idx - 1].defeito_constatado2
     date = datetime.date.today()
     date = date + datetime.timedelta(days=15)
     quotation.valid_till = date.strftime('%y-%m-%d')
@@ -51,8 +55,6 @@ def new_quotation(maint_name, purposes_idx):
     quotation.conversion_rate = 1
     quotation.plc_conversion_rate = 1
     quotation.price_list_currency = "BRL"
-    quotation.flags.ignore_mandatory = True
-    quotation.flags.ignore_validate = True
     quotation.save()
 
     # Set quotation name to purposes os
