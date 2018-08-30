@@ -34,5 +34,14 @@
   "name": "Revisando", 
   "style": "Warning", 
   "workflow_state_name": "Revisando"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Workflow State", 
+  "icon": "", 
+  "modified": "2018-08-30 12:27:24.688622", 
+  "name": "Pendente de Aprova\u00e7\u00e3o", 
+  "style": "Primary", 
+  "workflow_state_name": "Pendente de Aprova\u00e7\u00e3o"
  }
 ]
