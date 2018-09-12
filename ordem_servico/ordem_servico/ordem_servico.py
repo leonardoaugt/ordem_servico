@@ -115,8 +115,6 @@ def make_event(doc_name):
             event.tag = row.tag
             event.tempo_conserto = row.tempo_conserto
             event.ref_type = "Maintenance Visit Purpose"
-            event.owner = frappe.db.get_value("Employee", row.agendado_para2,
-                                              "user_id")
             event.save()
 
             row.status_ordem_servico = 'Em Conserto'
