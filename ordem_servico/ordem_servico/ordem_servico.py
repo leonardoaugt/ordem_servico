@@ -86,6 +86,7 @@ def make_event(doc_name):
             event.ends_on = datetime.datetime.now().strftime(
                 "%Y-%m-%d 21:00:00")
             event.manutencao = maint.name
+            event.tipo_agenda = 'Orçamento'
             event.ordem_servico = row.os
             event.equipamento = row.modelo_equipamento
             event.descricao = row.item_name
@@ -109,6 +110,7 @@ def make_event(doc_name):
             event.ends_on = datetime.datetime.now().strftime(
                 "%Y-%m-%d 18:00:00")
             event.manutencao = maint.name
+            event.tipo_agenda = 'Manutenção'
             event.ordem_servico = row.os
             event.equipamento = row.modelo_equipamento
             event.descricao = row.item_name
