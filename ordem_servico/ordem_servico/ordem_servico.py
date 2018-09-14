@@ -187,5 +187,6 @@ def next_contact(doc_name):
         event.subject = 'Contact {}'.format(quotation.customer)
         event.save()
 
-        quotation.proximo_contato = event.name
+        quotation.ref_type = 'Event'
+        quotation.ref_name = event.name
         quotation.save()
