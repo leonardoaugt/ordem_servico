@@ -188,4 +188,4 @@ def next_contact(doc_name):
         event.save()
 
         quotation.proximo_contato = event.name
-        qutoation.save()
+        quotation.save()
