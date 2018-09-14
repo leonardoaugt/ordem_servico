@@ -9,7 +9,7 @@ frappe.ui.form.on('Quotation', {
                 doc_name: frm.doc.name,
             },
             callback: function (r) {
-                frm.refresh_field('proximo_contato');
+                frm.reload_doc()
             }
         });
     }
