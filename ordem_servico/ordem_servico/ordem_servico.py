@@ -46,8 +46,7 @@ def new_quotation(maint_name, purposes_idx):
     quotation.descricao_equipamento = maint.purposes[idx - 1].item_name
     quotation.tag = maint.purposes[idx - 1].tag
     quotation.email = frappe.db.get_value('Contacts', {'customer': quotation.customer}, ['email_id'])
-    date = datetime.date.today()
-    date = date + datetime.timedelta(days=15)
+    date = datetime.date.today() + datetime.timedelta(days=15)
     quotation.valid_till = date.strftime('%y-%m-%d')
     quotation.tc_name = "Boleto 15 dias"
     quotation.terms = frappe.db.get_value(
@@ -167,3 +166,22 @@ def get_tempo_orcamento_conserto(equipamento):
         ['tempo_orcamento', 'tempo_conserto'],
         as_dict=True)
     return data
+
+
+@frappe.whitelist()
+def next_contact(doc_name):
+    quotation = frappe.get_doc('Quotation', doc_name)
+    event = frappe.new_doc('Event')
+    event.all_day = 0
+    event.creation = datetime.datetime.now()
+    event.description = "Contact {} By : {} To Discuss : {}".format(quotation.customer, quotation.modified_by, quotation.name)
+    event.event_type = "Public"
+    event.name = 'EV#####'
+    event.owner = quotation.modified_by
+    event.ref_type = 'Quotation'
+    event.ref_name = quotation.name
+    event.send_reminder = 1
+    date = datetime.datetime.now() + datetime.timedelta(days=1)
+    event.starts_on = date.strftime('%Y-%m-%d %H:%M:00')
+    event.subject = 'Contact {}'.format(quotation.customer)
+    event.save()
