@@ -7,6 +7,9 @@ frappe.ui.form.on('Quotation', {
             method: 'ordem_servico.ordem_servico.ordem_servico.next_contact',
             args: {
                 doc_name: frm.doc.name,
+            },
+            callback: function (r) {
+                frm.refresh_field('proximo_contato');
             }
         });
     }

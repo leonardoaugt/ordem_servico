@@ -171,17 +171,21 @@ def get_tempo_orcamento_conserto(equipamento):
 @frappe.whitelist()
 def next_contact(doc_name):
     quotation = frappe.get_doc('Quotation', doc_name)
-    event = frappe.new_doc('Event')
-    event.all_day = 0
-    event.creation = datetime.datetime.now()
-    event.description = "Contact {} By : {} To Discuss : {}".format(quotation.customer, quotation.modified_by, quotation.name)
-    event.event_type = "Public"
-    event.name = 'EV#####'
-    event.owner = quotation.modified_by
-    event.ref_type = 'Quotation'
-    event.ref_name = quotation.name
-    event.send_reminder = 1
-    date = datetime.datetime.now() + datetime.timedelta(days=1)
-    event.starts_on = date.strftime('%Y-%m-%d %H:%M:00')
-    event.subject = 'Contact {}'.format(quotation.customer)
-    event.save()
+    if quotation.local_manutencao == 'Interno' and not quotation.proximo_contato:
+        event = frappe.new_doc('Event')
+        event.all_day = 0
+        event.creation = datetime.datetime.now()
+        event.description = "Contact {} By : {} To Discuss : {}".format(quotation.customer, quotation.modified_by, quotation.name)
+        event.event_type = "Public"
+        event.name = 'EV#####'
+        event.owner = quotation.modified_by
+        event.ref_type = 'Quotation'
+        event.ref_name = quotation.name
+        event.send_reminder = 1
+        date = datetime.datetime.now() + datetime.timedelta(days=1)
+        event.starts_on = date.strftime('%Y-%m-%d %H:%M:00')
+        event.subject = 'Contact {}'.format(quotation.customer)
+        event.save()
+
+        quotation.proximo_contato = event.name
+        qutoation.save()
