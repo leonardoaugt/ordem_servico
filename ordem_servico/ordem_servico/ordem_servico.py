@@ -6,6 +6,7 @@ import frappe
 from frappe.model.document import Document
 
 import datetime
+import time
 import json, os
 from six import iteritems, string_types, integer_types
 
@@ -80,10 +81,8 @@ def make_event(doc_name):
         if (not row.evento_link and row.agendado_para):
             event = frappe.new_doc("Event")
             event.subject = row.os
-            event.starts_on = datetime.datetime.now().strftime(
-                "%Y-%m-%d %H:%M:00")
-            event.ends_on = datetime.datetime.now().strftime(
-                "%Y-%m-%d 21:00:00")
+            event.starts_on = '{} {}'.format(row.data_agendamento_orcamento, row.hora_agendamento_orcamento)
+            event.ends_on = '{} {}'.format(row.data_agendamento_orcamento, sum_hours(row.hora_agendamento_orcamento, row.tempo_orcamento))
             event.manutencao = maint.name
             event.tipo_agenda = 'Orçamento'
             event.ordem_servico = row.os
@@ -111,6 +110,8 @@ def make_event(doc_name):
             event.manutencao = maint.name
             event.tipo_agenda = 'Manutenção'
             event.ordem_servico = row.os
+            event.starts_on = '{} {}'.format(row.data_agendamento_conserto, row.hora_agendamento_conserto)
+            event.ends_on = '{} {}'.format(row.data_agendamento_conserto, sum_hours(row.hora_agendamento_conserto, row.tempo_conserto))
             event.equipamento = row.modelo_equipamento
             event.descricao = row.item_name
             event.tag = row.tag
@@ -123,6 +124,15 @@ def make_event(doc_name):
             ).strftime('%Y-%m-%d')
             row.evento_link2 = event.name
             row.save()
+
+
+def sum_hours(t1, t2):
+    t1 = time.strptime(str(t1), '%H:%M:%S')
+    t2 = time.strptime(str(t2), '%H:%M:%S')
+    total_hour = t1.tm_hour + t2.tm_hour
+    total_min = t1.tm_min + t2.tm_min
+    time_object = '{}:{}:00'.format(total_hour, total_min)
+    return time_object
 
 
 @frappe.whitelist()
