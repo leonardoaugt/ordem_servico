@@ -89,10 +89,9 @@ def make_event(doc_name):
             event.equipamento = row.modelo_equipamento
             event.descricao = row.item_name
             event.tag = row.tag
-            event.tempo_conserto = row.tempo_conserto
+            event.tempo_orcamento_conserto = row.tempo_orcamento
             event.ref_type = "Maintenance Visit Purpose"
             event.save()
-
             row.status_ordem_servico = 'Em Orçamento'
             row.data_agendamento_orcamento = datetime.datetime.today(
             ).strftime('%Y-%m-%d')
@@ -111,14 +110,13 @@ def make_event(doc_name):
             event.tipo_agenda = 'Manutenção'
             event.ordem_servico = row.os
             event.starts_on = '{} {}'.format(row.data_agendamento_conserto, row.hora_agendamento_conserto)
-            event.ends_on = '{} {}'.format(row.data_agendamento_conserto, sum_hours(row.hora_agendamento_conserto, row.tempo_conserto))
+            event.ends_on = '{} {}'.format(row.data_agendamento_conserto, sum_hours(row.hora_agendamento_conserto, row.tempo_conserto)) # Sum start maintenance and maintenance time
             event.equipamento = row.modelo_equipamento
             event.descricao = row.item_name
             event.tag = row.tag
-            event.tempo_conserto = row.tempo_conserto
+            event.tempo_orcamento_conserto = row.tempo_conserto
             event.ref_type = "Maintenance Visit Purpose"
             event.save()
-
             row.status_ordem_servico = 'Em Conserto'
             row.data_agendamento_orcamento = datetime.datetime.today(
             ).strftime('%Y-%m-%d')
