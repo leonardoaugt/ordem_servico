@@ -195,6 +195,7 @@ def next_contact(doc_name):
         event.send_reminder = 1
         date = datetime.datetime.now() + datetime.timedelta(days=1)
         event.starts_on = date.strftime('%Y-%m-%d %H:%M:00')
+        event.all_day = 1
         event.subject = 'Contact {}'.format(quotation.customer)
         event.save()
 
