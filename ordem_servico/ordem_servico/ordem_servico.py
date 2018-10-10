@@ -129,7 +129,7 @@ def sum_hours(t1, t2):
     t2 = time.strptime(str(t2), '%H:%M:%S')
     total_hour = t1.tm_hour + t2.tm_hour
     total_min = t1.tm_min + t2.tm_min
-    if int(total_min) >= 60:
+    if total_min >= 60:
         total_hour += 1
         total_min -= 60 # Get minutes difference
     time_object = '{}:{}:00'.format(total_hour, total_min)
