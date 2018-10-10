@@ -182,7 +182,7 @@ def get_tempo_orcamento_conserto(equipamento):
 @frappe.whitelist()
 def next_contact(doc_name):
     quotation = frappe.get_doc('Quotation', doc_name)
-    if quotation.local_manutencao == 'Interno' and not quotation.proximo_contato:
+    if quotation.local_manutencao == 'Interno' and not quotation.proximo_contato_name:
         event = frappe.new_doc('Event')
         event.all_day = 0
         event.creation = datetime.datetime.now()
@@ -198,6 +198,6 @@ def next_contact(doc_name):
         event.subject = 'Contact {}'.format(quotation.customer)
         event.save()
 
-        quotation.ref_type = 'Event'
-        quotation.ref_name = event.name
+        quotation.proximo_contato_link = 'Event'
+        quotation.proximo_contato_name = event.name
         quotation.save()
