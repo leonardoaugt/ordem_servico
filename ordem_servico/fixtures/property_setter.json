@@ -2470,7 +2470,7 @@
   "_liked_by": null, 
   "_user_tags": null, 
   "default_value": null, 
-  "doc_type": "Materiais", 
+  "doc_type": "Customers Equipment", 
   "docstatus": 0, 
   "doctype": "Property Setter", 
   "doctype_or_field": "DocType", 
