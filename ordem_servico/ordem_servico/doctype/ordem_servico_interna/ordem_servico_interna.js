@@ -98,6 +98,17 @@ frappe.ui.form.on('Ordem Servico Interna', {
 				frm.save();
 			}
 		});
-	}
+	},
+
+	end_quotation: function (frm) {
+		frappe.call({
+			method: 'ordem_servico.ordem_servico.doctype.ordem_servico_interna.ordem_servico_interna.time_now',
+			callback: function (r) {
+				data = r.message;
+				frm.doc.end_quotation_time = data;
+				frm.save();
+			}
+		});
+	},
 
 });
