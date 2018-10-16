@@ -8,6 +8,8 @@ from frappe.model.document import Document
 
 # Custom imports
 import time
+from datetime import datetime
+
 
 
 class OrdemServicoInterna(Document):
@@ -46,3 +48,9 @@ def sum_time(t1, t2):
         total_min -= 60 # Get minutes difference
     time_object = '{}:{}:00'.format(total_hour, total_min)
     return time_object
+
+
+@frappe.whitelist()
+def time_now():
+	now = datetime.now().strftime('%d-%m-%Y %H:%M:%S')
+	return now
