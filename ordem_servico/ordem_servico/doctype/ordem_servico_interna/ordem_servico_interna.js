@@ -56,24 +56,37 @@ frappe.ui.form.on('Ordem Servico Interna', {
 
 	serie_number: function (frm) {
 
-		if (frm.doc.equipment_model) {
-			frappe.call({
-				method: 'ordem_servico.ordem_servico.doctype.ordem_servico_interna.ordem_servico_interna.get_repair_and_quotation_times',
-				args: {
-					equipment: frm.doc.equipment_model,
-				},
-				callback: function (r) {
-					console.log(r);
-					data = r.message;
-					frm.doc.quotation_time = data['quotation_time'];
-					frm.doc.repair_time = data['repair_time']
-					frm.refresh_field('quotation_time');
-					frm.refresh_field('repair_time');
-				}
-			});
-		} else {
-			frappe.throw('Modelo de equipamento não cadastrado para número de série:', frm.doc.serie_number, 'do cliente:', frm.doc.customer);
-		}
+		frappe.call({
+			method: 'ordem_servico.ordem_servico.doctype.ordem_servico_interna.ordem_servico_interna.get_repair_and_quotation_times',
+			args: {
+				equipment: frm.doc.equipment_model,
+			},
+			callback: function (r) {
+				data = r.message;
+				frm.doc.quotation_time = data['quotation_time'];
+				frm.doc.repair_time = data['repair_time']
+				frm.refresh_field('quotation_time');
+				frm.refresh_field('repair_time');
+			}
+		});
+	},
+
+	make_initial_event: function (frm) {
+
+		frappe.call({
+			method: 'ordem_servico.ordem_servico.doctype.ordem_servico_interna.ordem_servico_interna.make_event',
+			args: {
+				doc_name: frm.doc.name,
+				start_date: frm.doc.quotation_schedule_date,
+				start_time: frm.doc.quotation_schedule_time,
+				work_time: frm.doc.quotation_time,
+			},
+			callback: function (r) {
+				doc_name = r.message;
+				frm.doc.quotation_event_link = doc_name;
+				frm.save();
+			}
+		});
 	}
 
 });
