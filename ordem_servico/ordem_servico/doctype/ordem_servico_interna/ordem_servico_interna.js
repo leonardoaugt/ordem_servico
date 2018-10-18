@@ -88,6 +88,7 @@ frappe.ui.form.on('Ordem Servico Interna', {
 					doc_name = r.message;
 					frm.doc.quotation_event_link = doc_name;
 					frm.save();
+					show_alert('Orçamento agendado.');
 				}
 			});
 		}
@@ -101,6 +102,7 @@ frappe.ui.form.on('Ordem Servico Interna', {
 				data = r.message;
 				frm.doc.start_quotation_time = data;
 				frm.save();
+				show_alert('Orçamento iniciado.');
 			}
 		});
 	},
@@ -113,6 +115,7 @@ frappe.ui.form.on('Ordem Servico Interna', {
 				data = r.message;
 				frm.doc.end_quotation_time = data;
 				frm.save();
+				show_alert('Orçamento finalizado.');
 			}
 		});
 	},
@@ -130,7 +133,8 @@ frappe.ui.form.on('Ordem Servico Interna', {
 					local: 'Interno',
 				},
 				callback: function (r) {
-					frm.reload_doc()
+					frm.reload_doc();
+					show_alert('Orçamento gerado.');
 				}
 			});
 		}
@@ -154,6 +158,7 @@ frappe.ui.form.on('Ordem Servico Interna', {
 					frm.doc.repair_event_link = doc_name;
 					frm.doc.status_order_service = 'Em Conserto';
 					frm.save();
+					show_alert('Conserto agendado.');
 				}
 			});
 		}
@@ -167,6 +172,7 @@ frappe.ui.form.on('Ordem Servico Interna', {
 				data = r.message;
 				frm.doc.start_repair_time = data;
 				frm.save();
+				show_alert('Conserto iniciado.');
 			}
 		});
 	},
@@ -180,6 +186,7 @@ frappe.ui.form.on('Ordem Servico Interna', {
 				frm.doc.end_repair_time = data;
 				frm.doc.status_order_service = 'Encerrada';
 				frm.save();
+				show_alert('Conserto finalizado.');
 			}
 		});
 	}
