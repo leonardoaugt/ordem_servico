@@ -90,6 +90,7 @@ frappe.ui.form.on('Ordem Servico Interna', {
 	},
 
 	start_quotation: function (frm) {
+
 		frappe.call({
 			method: 'ordem_servico.ordem_servico.utils.time_now',
 			callback: function (r) {
@@ -101,6 +102,7 @@ frappe.ui.form.on('Ordem Servico Interna', {
 	},
 
 	end_quotation: function (frm) {
+
 		frappe.call({
 			method: 'ordem_servico.ordem_servico.utils.time_now',
 			callback: function (r) {
@@ -112,6 +114,7 @@ frappe.ui.form.on('Ordem Servico Interna', {
 	},
 
 	create_quotation: function (frm) {
+
 		frappe.call({
 			method: 'ordem_servico.ordem_servico.utils.make_quotation',
 			args: {
@@ -123,6 +126,25 @@ frappe.ui.form.on('Ordem Servico Interna', {
 				frm.reload_doc()
 			}
 		});
+	},
+
+	schedule_repair_event: function (frm) {
+
+		frappe.call({
+			method: 'ordem_servico.ordem_servico.doctype.ordem_servico_interna.ordem_servico_interna.make_event',
+			args: {
+				doc_name: frm.doc.name,
+				start_date: frm.doc.repair_schedule_date,
+				start_time: frm.doc.repair_schedule_time,
+				work_time: frm.doc.repair_time,
+			},
+			callback: function (r) {
+				doc_name = r.message;
+				frm.doc.repair_event_link = doc_name;
+				frm.save();
+			}
+		});
+
 	}
 
 });
