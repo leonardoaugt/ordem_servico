@@ -26,12 +26,12 @@ def get_repair_and_quotation_times(equipment):
 
 
 @frappe.whitelist()
-def make_event(doc_name, start_date, start_time, work_time):
-	doc_event = frappe.new_doc('Event')
-	doc_event.subject = doc_name
-	doc_event.starts_on = '{} {}'.format(start_date, start_time)
-	doc_event.ends_on = '{} {}'.format(start_date, sum_time(start_time, work_time))
-	doc_event.ref_type = 'Ordem Servico Interna'
-	doc_event.ref_name = doc_name
-	doc_event.save()
-	return doc_event.name
+def make_event(docname, start_date, start_time, work_time):
+	event = frappe.new_doc('Event')
+	event.subject = docname
+	event.starts_on = '{} {}'.format(start_date, start_time)
+	event.ends_on = '{} {}'.format(start_date, sum_time(start_time, work_time))
+	event.ref_type = 'Ordem Servico Interna'
+	event.ref_name = docname
+	event.save()
+	return event.name
