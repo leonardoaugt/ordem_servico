@@ -115,17 +115,21 @@ frappe.ui.form.on('Ordem Servico Interna', {
 
 	create_quotation: function (frm) {
 
-		frappe.call({
-			method: 'ordem_servico.ordem_servico.utils.make_quotation',
-			args: {
-				doctype: frm.doc.doctype,
-				docname: frm.doc.name,
-				local: 'Interno',
-			},
-			callback: function (r) {
-				frm.reload_doc()
-			}
-		});
+		if (frm.doc.__unsaved) {
+			frappe.throw('Favor salvar o documento.');
+		} else {
+			frappe.call({
+				method: 'ordem_servico.ordem_servico.utils.make_quotation',
+				args: {
+					doctype: frm.doc.doctype,
+					docname: frm.doc.name,
+					local: 'Interno',
+				},
+				callback: function (r) {
+					frm.reload_doc()
+				}
+			});
+		}
 	},
 
 	schedule_repair_event: function (frm) {
