@@ -44,6 +44,7 @@ def make_quotation(doctype, docname, local):
     quot.email = frappe.db.get_value('Contacts', {'customer': os.customer}, ['email_id'])
     quot.valid_till = (datetime.date.today() + datetime.timedelta(days=15)).strftime('%y-%m-%d') #Today + 15 days
     quot = get_items(os, quot)
+    quot.total = get_total(os)
     quot.tc_name = 'Boleto 15 dias'
     quot.terms = frappe.db.get_value('Terms and Conditions', {'name': 'Boleto 15 dias'}, ['terms'])
     quot.conversion_rate = 1
@@ -79,3 +80,11 @@ def get_items(os, quot):
             'conversion_factor': 1,
         })
     return quot
+
+
+def get_total(os):
+    items = os.quotation_items
+    total = 0
+    for item in items:
+        total += item.price_amount
+    return total
