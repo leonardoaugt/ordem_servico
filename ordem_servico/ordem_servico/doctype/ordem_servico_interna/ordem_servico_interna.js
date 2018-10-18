@@ -145,6 +145,30 @@ frappe.ui.form.on('Ordem Servico Interna', {
 			}
 		});
 
+	},
+
+	start_repair: function (frm) {
+
+		frappe.call({
+			method: 'ordem_servico.ordem_servico.utils.time_now',
+			callback: function (r) {
+				data = r.message;
+				frm.doc.start_repair_time = data;
+				frm.save();
+			}
+		});
+	},
+
+	end_repair: function (frm) {
+
+		frappe.call({
+			method: 'ordem_servico.ordem_servico.utils.time_now',
+			callback: function (r) {
+				data = r.message;
+				frm.doc.end_repair_time = data;
+				frm.save();
+			}
+		});
 	}
 
 });
