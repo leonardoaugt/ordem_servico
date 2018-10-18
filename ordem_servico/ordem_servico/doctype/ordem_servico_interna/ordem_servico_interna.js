@@ -79,7 +79,7 @@ frappe.ui.form.on('Ordem Servico Interna', {
 			frappe.call({
 				method: 'ordem_servico.ordem_servico.doctype.ordem_servico_interna.ordem_servico_interna.make_event',
 				args: {
-					doc_name: frm.doc.name,
+					docname: frm.doc.name,
 					start_date: frm.doc.quotation_schedule_date,
 					start_time: frm.doc.quotation_schedule_time,
 					work_time: frm.doc.quotation_time,
@@ -144,7 +144,7 @@ frappe.ui.form.on('Ordem Servico Interna', {
 			frappe.call({
 				method: 'ordem_servico.ordem_servico.doctype.ordem_servico_interna.ordem_servico_interna.make_event',
 				args: {
-					doc_name: frm.doc.name,
+					docname: frm.doc.name,
 					start_date: frm.doc.repair_schedule_date,
 					start_time: frm.doc.repair_schedule_time,
 					work_time: frm.doc.repair_time,
