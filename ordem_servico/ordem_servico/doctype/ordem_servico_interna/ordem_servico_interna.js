@@ -145,6 +145,7 @@ frappe.ui.form.on('Ordem Servico Interna', {
 			callback: function (r) {
 				doc_name = r.message;
 				frm.doc.repair_event_link = doc_name;
+				frm.doc.status_order_service = 'Em Conserto';
 				frm.save();
 			}
 		});
@@ -170,6 +171,7 @@ frappe.ui.form.on('Ordem Servico Interna', {
 			callback: function (r) {
 				data = r.message;
 				frm.doc.end_repair_time = data;
+				frm.doc.status_order_service = 'Encerrada';
 				frm.save();
 			}
 		});
