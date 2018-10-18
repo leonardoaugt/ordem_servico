@@ -73,20 +73,24 @@ frappe.ui.form.on('Ordem Servico Interna', {
 
 	schedule_quotation_event: function (frm) {
 
-		frappe.call({
-			method: 'ordem_servico.ordem_servico.doctype.ordem_servico_interna.ordem_servico_interna.make_event',
-			args: {
-				doc_name: frm.doc.name,
-				start_date: frm.doc.quotation_schedule_date,
-				start_time: frm.doc.quotation_schedule_time,
-				work_time: frm.doc.quotation_time,
-			},
-			callback: function (r) {
-				doc_name = r.message;
-				frm.doc.quotation_event_link = doc_name;
-				frm.save();
-			}
-		});
+		if (frm.doc.__unsaved) {
+			frappe.throw('Favor salvar o documento.');
+		} else {
+			frappe.call({
+				method: 'ordem_servico.ordem_servico.doctype.ordem_servico_interna.ordem_servico_interna.make_event',
+				args: {
+					doc_name: frm.doc.name,
+					start_date: frm.doc.quotation_schedule_date,
+					start_time: frm.doc.quotation_schedule_time,
+					work_time: frm.doc.quotation_time,
+				},
+				callback: function (r) {
+					doc_name = r.message;
+					frm.doc.quotation_event_link = doc_name;
+					frm.save();
+				}
+			});
+		}
 	},
 
 	start_quotation: function (frm) {
@@ -134,22 +138,25 @@ frappe.ui.form.on('Ordem Servico Interna', {
 
 	schedule_repair_event: function (frm) {
 
-		frappe.call({
-			method: 'ordem_servico.ordem_servico.doctype.ordem_servico_interna.ordem_servico_interna.make_event',
-			args: {
-				doc_name: frm.doc.name,
-				start_date: frm.doc.repair_schedule_date,
-				start_time: frm.doc.repair_schedule_time,
-				work_time: frm.doc.repair_time,
-			},
-			callback: function (r) {
-				doc_name = r.message;
-				frm.doc.repair_event_link = doc_name;
-				frm.doc.status_order_service = 'Em Conserto';
-				frm.save();
-			}
-		});
-
+		if (frm.doc.__unsaved) {
+			frappe.throw('Favor salvar o documento.');
+		} else {
+			frappe.call({
+				method: 'ordem_servico.ordem_servico.doctype.ordem_servico_interna.ordem_servico_interna.make_event',
+				args: {
+					doc_name: frm.doc.name,
+					start_date: frm.doc.repair_schedule_date,
+					start_time: frm.doc.repair_schedule_time,
+					work_time: frm.doc.repair_time,
+				},
+				callback: function (r) {
+					doc_name = r.message;
+					frm.doc.repair_event_link = doc_name;
+					frm.doc.status_order_service = 'Em Conserto';
+					frm.save();
+				}
+			});
+		}
 	},
 
 	start_repair: function (frm) {
