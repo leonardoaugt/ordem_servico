@@ -65,7 +65,7 @@ frappe.ui.form.on('Ordem Servico Interna', {
 				callback: function (r) {
 					data = r.message;
 					frm.doc.quotation_time = data['quotation_time'];
-					frm.doc.repair_time = data['repair_time']
+					frm.doc.repair_time = data['repair_time'];
 					frm.refresh_field('quotation_time');
 					frm.refresh_field('repair_time');
 				}
@@ -81,45 +81,45 @@ frappe.ui.form.on('Ordem Servico Interna', {
 			frappe.call({
 				method: 'ordem_servico.ordem_servico.doctype.ordem_servico_interna.ordem_servico_interna.make_event',
 				args: {
+					doctype: frm.doc.doctype,
 					docname: frm.doc.name,
 					start_date: frm.doc.quotation_schedule_date,
 					start_time: frm.doc.quotation_schedule_time,
 					work_time: frm.doc.quotation_time,
+					trigger: 'quotation',
 				},
-				callback: function (r) {
-					doc_name = r.message;
-					frm.doc.quotation_event_link = doc_name;
-					frm.save();
-					show_alert('Orçamento agendado.');
-				}
 			});
+			frm.reload_doc();
+			show_alert('Orçamento agendado.');
 		}
 	},
 
 	start_quotation: function (frm) {
 
 		frappe.call({
-			method: 'ordem_servico.ordem_servico.utils.time_now',
-			callback: function (r) {
-				data = r.message;
-				frm.doc.start_quotation_time = data;
-				frm.save();
-				show_alert('Orçamento iniciado.');
-			}
+			method: 'ordem_servico.ordem_servico.doctype.ordem_servico_interna.ordem_servico_interna.get_time_now',
+			args: {
+				doctype: frm.doc.doctype,
+				docname: frm.doc.name,
+				trigger: 'start_quotation',
+			},
 		});
+		show_alert('Orçamento iniciado.');
+		frm.reload_doc();
 	},
 
 	end_quotation: function (frm) {
 
 		frappe.call({
-			method: 'ordem_servico.ordem_servico.utils.time_now',
-			callback: function (r) {
-				data = r.message;
-				frm.doc.end_quotation_time = data;
-				frm.save();
-				show_alert('Orçamento finalizado.');
-			}
+			method: 'ordem_servico.ordem_servico.doctype.ordem_servico_interna.ordem_servico_interna.get_time_now',
+			args: {
+				doctype: frm.doc.doctype,
+				docname: frm.doc.name,
+				trigger: 'end_quotation',
+			},
 		});
+		show_alert('Orçamento finalizado.');
+		frm.reload_doc();
 	},
 
 	create_quotation: function (frm) {
@@ -134,11 +134,9 @@ frappe.ui.form.on('Ordem Servico Interna', {
 					docname: frm.doc.name,
 					local: 'Interno',
 				},
-				callback: function (r) {
-					frm.reload_doc();
-					show_alert('Orçamento gerado.');
-				}
 			});
+			frm.reload_doc();
+			show_alert('Orçamento gerado.');
 		}
 	},
 
@@ -150,47 +148,45 @@ frappe.ui.form.on('Ordem Servico Interna', {
 			frappe.call({
 				method: 'ordem_servico.ordem_servico.doctype.ordem_servico_interna.ordem_servico_interna.make_event',
 				args: {
+					doctype: frm.doc.doctype,
 					docname: frm.doc.name,
 					start_date: frm.doc.repair_schedule_date,
 					start_time: frm.doc.repair_schedule_time,
 					work_time: frm.doc.repair_time,
+					trigger: 'repair',
 				},
-				callback: function (r) {
-					doc_name = r.message;
-					frm.doc.repair_event_link = doc_name;
-					frm.doc.status_order_service = 'Em Conserto';
-					frm.save();
-					show_alert('Conserto agendado.');
-				}
 			});
+			frm.reload_doc();
+			show_alert('Conserto agendado.');
 		}
 	},
 
 	start_repair: function (frm) {
 
 		frappe.call({
-			method: 'ordem_servico.ordem_servico.utils.time_now',
-			callback: function (r) {
-				data = r.message;
-				frm.doc.start_repair_time = data;
-				frm.save();
-				show_alert('Conserto iniciado.');
-			}
+			method: 'ordem_servico.ordem_servico.doctype.ordem_servico_interna.ordem_servico_interna.get_time_now',
+			args: {
+				doctype: frm.doc.doctype,
+				docname: frm.doc.name,
+				trigger: 'start_repair',
+			},
 		});
+		frm.reload_doc();
+		show_alert('Conserto iniciado.');
 	},
 
 	end_repair: function (frm) {
 
 		frappe.call({
-			method: 'ordem_servico.ordem_servico.utils.time_now',
-			callback: function (r) {
-				data = r.message;
-				frm.doc.end_repair_time = data;
-				frm.doc.status_order_service = 'Encerrada';
-				frm.save();
-				show_alert('Conserto finalizado.');
-			}
+			method: 'ordem_servico.ordem_servico.doctype.ordem_servico_interna.ordem_servico_interna.get_time_now',
+			args: {
+				doctype: frm.doc.doctype,
+				docname: frm.doc.name,
+				trigger: 'end_repair',
+			},
 		});
-	}
+		frm.reload_doc();
+		show_alert('Conserto finalizado.');
+	},
 
 });

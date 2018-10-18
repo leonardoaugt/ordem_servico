@@ -5,27 +5,9 @@ from __future__ import unicode_literals
 import frappe
 from frappe.model.document import Document
 
+
 # Custom imports
-import datetime
-import time
-
-
-def sum_time(t1, t2):
-    t1 = time.strptime(str(t1), '%H:%M:%S')
-    t2 = time.strptime(str(t2), '%H:%M:%S')
-    total_hour = t1.tm_hour + t2.tm_hour
-    total_min = t1.tm_min + t2.tm_min
-    if total_min >= 60:
-        total_hour += 1
-        total_min -= 60 # Get minutes difference
-    time_object = '{}:{}:00'.format(total_hour, total_min)
-    return time_object
-
-
-@frappe.whitelist()
-def time_now():
-	now = datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')
-	return now
+import datetime, time
 
 
 @frappe.whitelist()
@@ -88,3 +70,20 @@ def get_total(os):
     for item in items:
         total += item.price_amount
     return total
+
+
+def time_now():
+	now = datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')
+	return now
+
+
+def sum_time(t1, t2):
+    t1 = time.strptime(str(t1), '%H:%M:%S')
+    t2 = time.strptime(str(t2), '%H:%M:%S')
+    total_hour = t1.tm_hour + t2.tm_hour
+    total_min = t1.tm_min + t2.tm_min
+    if total_min >= 60:
+        total_hour += 1
+        total_min -= 60 # Get minutes difference
+    time_object = '{}:{}:00'.format(total_hour, total_min)
+    return time_object
