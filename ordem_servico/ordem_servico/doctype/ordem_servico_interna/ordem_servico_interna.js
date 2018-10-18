@@ -56,19 +56,21 @@ frappe.ui.form.on('Ordem Servico Interna', {
 
 	serie_number: function (frm) {
 
-		frappe.call({
-			method: 'ordem_servico.ordem_servico.doctype.ordem_servico_interna.ordem_servico_interna.get_repair_and_quotation_times',
-			args: {
-				equipment: frm.doc.equipment_model,
-			},
-			callback: function (r) {
-				data = r.message;
-				frm.doc.quotation_time = data['quotation_time'];
-				frm.doc.repair_time = data['repair_time']
-				frm.refresh_field('quotation_time');
-				frm.refresh_field('repair_time');
-			}
-		});
+		if (frm.doc.serie_number) {
+			frappe.call({
+				method: 'ordem_servico.ordem_servico.doctype.ordem_servico_interna.ordem_servico_interna.get_repair_and_quotation_times',
+				args: {
+					equipment: frm.doc.equipment_model,
+				},
+				callback: function (r) {
+					data = r.message;
+					frm.doc.quotation_time = data['quotation_time'];
+					frm.doc.repair_time = data['repair_time']
+					frm.refresh_field('quotation_time');
+					frm.refresh_field('repair_time');
+				}
+			});
+		}
 	},
 
 	schedule_quotation_event: function (frm) {
