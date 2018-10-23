@@ -11,6 +11,17 @@ import datetime, time
 
 
 @frappe.whitelist()
+def get_repair_and_quotation_times(equipment):
+	equipment_family = frappe.db.get_value('Modelo Equipamento', {'model': equipment},
+								['family_ref'])
+	data = frappe.db.get_value(
+		'Familias de Equipamentos', {'family_name': equipment_family},
+		['quotation_time', 'repair_time'],
+		as_dict=True)
+	return data
+
+
+@frappe.whitelist()
 def make_event(doctype, docname, start_date, start_time, work_time, trigger):
 	event = frappe.new_doc('Event')
 	event.subject = docname
@@ -26,6 +37,22 @@ def make_event(doctype, docname, start_date, start_time, work_time, trigger):
 		os.repair_event_link = event.name
 		os.status_order_service = 'Em Conserto'
 	os.save()
+
+
+
+@frappe.whitelist()
+def get_time_now(doctype, docname, trigger):
+    os = frappe.get_doc(doctype, docname)
+    if trigger == 'start_quotation':
+        os.start_quotation_time = time_now()
+    elif trigger == 'end_quotation':
+        os.end_quotation_time = time_now()
+    elif trigger == 'start_repair':
+        os.start_repair_time = time_now()
+    elif trigger == 'end_repair':
+        os.end_repair_time = time_now()
+        os.status_order_service = 'Encerrada'
+    os.save()
 
 
 @frappe.whitelist()

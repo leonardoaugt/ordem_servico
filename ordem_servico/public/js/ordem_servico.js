@@ -59,7 +59,7 @@ frappe.ui.form.on(cur_frm.doctype, {
 
 		if (frm.doc.serie_number) {
 			frappe.call({
-				method: 'ordem_servico.ordem_servico.doctype.ordem_servico_interna.ordem_servico_interna.get_repair_and_quotation_times',
+				method: 'ordem_servico.ordem_servico.utils.get_repair_and_quotation_times',
 				args: {
 					equipment: frm.doc.equipment_model,
 				},

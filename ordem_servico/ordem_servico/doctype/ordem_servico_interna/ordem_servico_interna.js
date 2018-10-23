@@ -32,7 +32,7 @@ frappe.ui.form.on('Ordem Servico Interna', {
 			frappe.throw('Favor salvar documento!');
 		}
 		frappe.call({
-			method: 'ordem_servico.ordem_servico.doctype.ordem_servico_interna.ordem_servico_interna.get_time_now',
+			method: 'ordem_servico.ordem_servico.utils.get_time_now',
 			args: {
 				doctype: frm.doc.doctype,
 				docname: frm.doc.name,
@@ -49,7 +49,7 @@ frappe.ui.form.on('Ordem Servico Interna', {
 			frappe.throw('Favor salvar documento!');
 		}
 		frappe.call({
-			method: 'ordem_servico.ordem_servico.doctype.ordem_servico_interna.ordem_servico_interna.get_time_now',
+			method: 'ordem_servico.ordem_servico.utils.get_time_now',
 			args: {
 				doctype: frm.doc.doctype,
 				docname: frm.doc.name,
@@ -103,7 +103,7 @@ frappe.ui.form.on('Ordem Servico Interna', {
 			frappe.throw('Favor salvar documento!');
 		}
 		frappe.call({
-			method: 'ordem_servico.ordem_servico.doctype.ordem_servico_interna.ordem_servico_interna.get_time_now',
+			method: 'ordem_servico.ordem_servico.utils.get_time_now',
 			args: {
 				doctype: frm.doc.doctype,
 				docname: frm.doc.name,
@@ -120,7 +120,7 @@ frappe.ui.form.on('Ordem Servico Interna', {
 			frappe.throw('Favor salvar documento!');
 		}
 		frappe.call({
-			method: 'ordem_servico.ordem_servico.doctype.ordem_servico_interna.ordem_servico_interna.get_time_now',
+			method: 'ordem_servico.ordem_servico.utils.get_time_now',
 			args: {
 				doctype: frm.doc.doctype,
 				docname: frm.doc.name,
