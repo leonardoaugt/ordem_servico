@@ -33,9 +33,10 @@ frappe.ui.form.on('Ordem Servico Externa', {
 			args: {
 				doctype: frm.doc.doctype,
 				docname: frm.doc.name,
-				start_date: frm.doc.visit_schedule_date,
-				start_time: frm.doc.visit_schedule_time,
+				start_date: frm.doc.repair_schedule_date,
+				start_time: frm.doc.repair_schedule_time,
 				work_time: frm.doc.repair_time,
+				trigger: 'repair',
 			},
 		});
 		frm.reload_doc();
