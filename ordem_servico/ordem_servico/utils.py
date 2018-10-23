@@ -11,6 +11,24 @@ import datetime, time
 
 
 @frappe.whitelist()
+def make_event(doctype, docname, start_date, start_time, work_time, trigger):
+	event = frappe.new_doc('Event')
+	event.subject = docname
+	event.starts_on = '{} {}'.format(start_date, start_time)
+	event.ends_on = '{} {}'.format(start_date, sum_time(start_time, work_time))
+	event.ref_type = doctype
+	event.ref_name = docname
+	event.save()
+	os = frappe.get_doc(doctype, docname)
+	if trigger == 'quotation':
+		os.quotation_event_link = event.name
+	elif trigger == 'repair':
+		os.repair_event_link = event.name
+		os.status_order_service = 'Em Conserto'
+	os.save()
+
+
+@frappe.whitelist()
 def make_quotation(doctype, docname, local):
     os = frappe.get_doc(doctype, docname)
     quot = frappe.new_doc('Quotation')
