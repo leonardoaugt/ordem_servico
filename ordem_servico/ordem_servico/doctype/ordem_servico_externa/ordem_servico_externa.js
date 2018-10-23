@@ -6,7 +6,7 @@
 
 frappe.ui.form.on('Ordem Servico Externa', {
 	
-	create_quotation: function () {
+	create_quotation: function (frm) {
 
 		if (cur_frm.doc.__unsaved) {
 			frappe.throw('Favor salvar documento!');
@@ -23,7 +23,7 @@ frappe.ui.form.on('Ordem Servico Externa', {
 		show_alert('Orçamento gerado.');
 	},
 
-	schedule_visit: function () {
+	schedule_visit: function (frm) {
 
 		if (cur_frm.doc.__unsaved) {
 			frappe.throw('Favor salvar documento!');
