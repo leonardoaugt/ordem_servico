@@ -74,6 +74,38 @@ frappe.ui.form.on(cur_frm.doctype, {
 		}
 	},
 
-	
+	start_repair: function (frm) {
+
+		if (cur_frm.doc.__unsaved) {
+			frappe.throw('Favor salvar documento!');
+		}
+		frappe.call({
+			method: 'ordem_servico.ordem_servico.utils.get_time_now',
+			args: {
+				doctype: frm.doc.doctype,
+				docname: frm.doc.name,
+				trigger: 'start_repair',
+			},
+		});
+		frm.reload_doc();
+		show_alert('Conserto iniciado.');
+	},
+
+	end_repair: function (frm) {
+
+		if (cur_frm.doc.__unsaved) {
+			frappe.throw('Favor salvar documento!');
+		}
+		frappe.call({
+			method: 'ordem_servico.ordem_servico.utils.get_time_now',
+			args: {
+				doctype: frm.doc.doctype,
+				docname: frm.doc.name,
+				trigger: 'end_repair',
+			},
+		});
+		frm.reload_doc();
+		show_alert('Conserto finalizado.');
+	},
 
 });
