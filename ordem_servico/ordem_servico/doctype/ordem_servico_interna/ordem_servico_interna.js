@@ -5,13 +5,13 @@
 
 frappe.ui.form.on('Ordem Servico Interna', {
 
-	schedule_quotation_event: function () {
+	schedule_quotation_event: function (frm) {
 		
 		if (cur_frm.doc.__unsaved) {
 			frappe.throw('Favor salvar documento!');
 		}
 		frappe.call({
-			method: 'ordem_servico.ordem_servico.doctype.ordem_servico_interna.ordem_servico_interna.make_event',
+			method: 'ordem_servico.ordem_servico.utils.make_event',
 			args: {
 				doctype: frm.doc.doctype,
 				docname: frm.doc.name,
@@ -26,7 +26,7 @@ frappe.ui.form.on('Ordem Servico Interna', {
 	},
 
 
-	start_quotation: function () {
+	start_quotation: function (frm) {
 
 		if (cur_frm.doc.__unsaved) {
 			frappe.throw('Favor salvar documento!');
@@ -43,7 +43,7 @@ frappe.ui.form.on('Ordem Servico Interna', {
 		frm.reload_doc();
 	},
 
-	end_quotation: function () {
+	end_quotation: function (frm) {
 
 		if (cur_frm.doc.__unsaved) {
 			frappe.throw('Favor salvar documento!');
@@ -60,7 +60,7 @@ frappe.ui.form.on('Ordem Servico Interna', {
 		frm.reload_doc();
 	},
 
-	create_quotation: function () {
+	create_quotation: function (frm) {
 
 		if (cur_frm.doc.__unsaved) {
 			frappe.throw('Favor salvar documento!');
@@ -77,13 +77,13 @@ frappe.ui.form.on('Ordem Servico Interna', {
 		show_alert('Orçamento gerado.');
 	},
 
-	schedule_repair_event: function () {
+	schedule_repair_event: function (frm) {
 
 		if (cur_frm.doc.__unsaved) {
 			frappe.throw('Favor salvar documento!');
 		}
 		frappe.call({
-			method: 'ordem_servico.ordem_servico.doctype.ordem_servico_interna.ordem_servico_interna.make_event',
+			method: 'ordem_servico.ordem_servico.utils.make_event',
 			args: {
 				doctype: frm.doc.doctype,
 				docname: frm.doc.name,
@@ -97,7 +97,7 @@ frappe.ui.form.on('Ordem Servico Interna', {
 		show_alert('Conserto agendado.');
 	},
 
-	start_repair: function () {
+	start_repair: function (frm) {
 
 		if (cur_frm.doc.__unsaved) {
 			frappe.throw('Favor salvar documento!');
@@ -114,7 +114,7 @@ frappe.ui.form.on('Ordem Servico Interna', {
 		show_alert('Conserto iniciado.');
 	},
 
-	end_repair: function () {
+	end_repair: function (frm) {
 
 		if (cur_frm.doc.__unsaved) {
 			frappe.throw('Favor salvar documento!');

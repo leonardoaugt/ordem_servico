@@ -7,7 +7,7 @@ import frappe
 from frappe.model.document import Document
 
 
-# Custom files
+# Custom imports
 from ordem_servico.ordem_servico.utils import (time_now, sum_time, get_items, get_total)
 
 
@@ -32,7 +32,7 @@ def make_event(doctype, docname, start_date, start_time, work_time, trigger):
 	event.subject = docname
 	event.starts_on = '{} {}'.format(start_date, start_time)
 	event.ends_on = '{} {}'.format(start_date, sum_time(start_time, work_time))
-	event.ref_type = 'Ordem Servico Interna'
+	event.ref_type = doctype
 	event.ref_name = docname
 	event.save()
 	os = frappe.get_doc(doctype, docname)
