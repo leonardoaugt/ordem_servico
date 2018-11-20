@@ -4,12 +4,12 @@
   "doctype": "Workflow", 
   "document_type": "Quotation", 
   "is_active": 1, 
-  "modified": "2018-08-30 12:29:09.423568", 
+  "modified": "2018-11-20 13:50:30.430247", 
   "name": "Workotation", 
   "override_status": 0, 
   "states": [
    {
-    "allow_edit": "Customer Quotation Access", 
+    "allow_edit": "Sales User", 
     "doc_status": "0", 
     "message": null, 
     "state": "Pendente de Aprova\u00e7\u00e3o", 
@@ -17,7 +17,7 @@
     "update_value": null
    }, 
    {
-    "allow_edit": "Customer Quotation Access", 
+    "allow_edit": "Sales User", 
     "doc_status": "1", 
     "message": null, 
     "state": "Revisando", 
@@ -25,7 +25,7 @@
     "update_value": null
    }, 
    {
-    "allow_edit": "Customer Quotation Access", 
+    "allow_edit": "Sales User", 
     "doc_status": "1", 
     "message": null, 
     "state": "Approved", 
@@ -33,7 +33,7 @@
     "update_value": null
    }, 
    {
-    "allow_edit": "Customer Quotation Access", 
+    "allow_edit": "Sales User", 
     "doc_status": "2", 
     "message": null, 
     "state": "Rejected", 
@@ -44,25 +44,25 @@
   "transitions": [
    {
     "action": "Approve", 
-    "allowed": "Customer Quotation Access", 
+    "allowed": "Sales User", 
     "next_state": "Approved", 
     "state": "Pendente de Aprova\u00e7\u00e3o"
    }, 
    {
     "action": "Review", 
-    "allowed": "Customer Quotation Access", 
+    "allowed": "Sales User", 
     "next_state": "Revisando", 
     "state": "Pendente de Aprova\u00e7\u00e3o"
    }, 
    {
     "action": "Approve", 
-    "allowed": "Customer Quotation Access", 
+    "allowed": "Sales User", 
     "next_state": "Approved", 
     "state": "Revisando"
    }, 
    {
     "action": "Reject", 
-    "allowed": "Customer Quotation Access", 
+    "allowed": "Sales User", 
     "next_state": "Rejected", 
     "state": "Revisando"
    }
