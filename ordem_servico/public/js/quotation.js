@@ -4,7 +4,7 @@ frappe.ui.form.on('Quotation', {
 
         // Next Contact
         frappe.call({
-            method: 'ordem_servico.ordem_servico.ordem_servico.next_contact',
+            method: 'ordem_servico.ordem_servico.utils.next_contact',
             args: {
                 doc_name: frm.doc.name,
             },

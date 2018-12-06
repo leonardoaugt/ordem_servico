@@ -39,7 +39,6 @@ def make_event(doctype, docname, start_date, start_time, work_time, trigger):
 	os.save()
 
 
-
 @frappe.whitelist()
 def get_time_now(doctype, docname, trigger):
     os = frappe.get_doc(doctype, docname)
@@ -132,3 +131,26 @@ def sum_time(t1, t2):
         total_min -= 60 # Get minutes difference
     time_object = '{}:{}:00'.format(total_hour, total_min)
     return time_object
+
+
+@frappe.whitelist()
+def next_contact(doc_name):
+    quotation = frappe.get_doc('Quotation', doc_name)
+    if quotation.local_manutencao == 'Interno' and not quotation.proximo_contato_name:
+        event = frappe.new_doc('Event')
+        event.all_day = 0
+        event.creation = datetime.datetime.now()
+        event.description = "Contact {} By : {} To Discuss : {}".format(quotation.customer, quotation.modified_by, quotation.name)
+        event.event_type = "Public"
+        event.name = 'EV#####'
+        event.owner = quotation.modified_by
+        event.ref_type = 'Quotation'
+        event.ref_name = quotation.name
+        event.send_reminder = 1
+        date = datetime.datetime.now() + datetime.timedelta(days=1)
+        event.starts_on = date.strftime('%Y-%m-%d %H:%M:00')
+        event.subject = 'Contact {}'.format(quotation.customer)
+        event.save()
+        quotation.proximo_contato_link = 'Event'
+        quotation.proximo_contato_name = event.name
+        quotation.save()
