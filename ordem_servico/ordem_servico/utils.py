@@ -8,6 +8,7 @@ from frappe.model.document import Document
 
 # Custom imports
 import datetime, time
+from pytz import timezone
 
 
 @frappe.whitelist()
@@ -117,7 +118,7 @@ def get_total(os):
 
 
 def time_now():
-	now = datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')
+	now = datetime.datetime.now(timezone('America/Sao_Paulo')).strftime('%d-%m-%Y %H:%M:%S')
 	return now
 
 
