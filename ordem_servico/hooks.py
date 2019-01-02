@@ -36,7 +36,8 @@ doctype_js = {
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 fixtures = [
-    "Property Setter", "Workflow State",
+    "Property Setter",
+    "Workflow State",
     {"dt": "Workflow",
         "filters": [[
             "document_type", "in", ("Quotation")
@@ -48,11 +49,6 @@ fixtures = [
                          "Quotation", "Quotation Item", "Customer", "Event", "Opportunity", "Lead", "Item")
         ]]
     },
-    {"dt": "Print Format",
-        "filters": [[
-            "doc_type", "in", ("Quotation")
-        ]]
-    }
 ]
 # Home Pages
 # ----------
