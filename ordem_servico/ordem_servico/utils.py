@@ -86,7 +86,7 @@ def make_quotation(doctype, docname, local):
 
 
 def get_items(os, quot):
-    items = os.quotation_items
+    items = os.os_items
     for item in items:
         quot.append('items', {
             'item_code': item.item_code,
@@ -110,7 +110,7 @@ def get_items(os, quot):
 
 
 def get_total(os):
-    items = os.quotation_items
+    items = os.os_items
     total = 0
     for item in items:
         total += item.price_amount
