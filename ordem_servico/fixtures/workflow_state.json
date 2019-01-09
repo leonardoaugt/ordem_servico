@@ -2,6 +2,15 @@
  {
   "docstatus": 0, 
   "doctype": "Workflow State", 
+  "icon": "", 
+  "modified": "2018-12-18 10:40:29.366427", 
+  "name": "Cancelado", 
+  "style": "", 
+  "workflow_state_name": "Cancelado"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Workflow State", 
   "icon": "question-sign", 
   "modified": "2016-08-22 18:25:02.111684", 
   "name": "Pending", 
