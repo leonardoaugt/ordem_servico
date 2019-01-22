@@ -3,9 +3,9 @@
   "docstatus": 0, 
   "doctype": "Workflow State", 
   "icon": "", 
-  "modified": "2018-12-18 10:40:29.366427", 
+  "modified": "2019-01-14 13:43:26.041798", 
   "name": "Cancelado", 
-  "style": "", 
+  "style": "Inverse", 
   "workflow_state_name": "Cancelado"
  }, 
  {

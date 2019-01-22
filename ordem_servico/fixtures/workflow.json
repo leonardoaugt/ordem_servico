@@ -4,7 +4,7 @@
   "doctype": "Workflow", 
   "document_type": "Quotation", 
   "is_active": 1, 
-  "modified": "2018-11-20 13:50:30.430247", 
+  "modified": "2019-01-14 13:42:09.306124", 
   "name": "Workotation", 
   "override_status": 0, 
   "states": [
@@ -39,6 +39,14 @@
     "state": "Rejected", 
     "update_field": null, 
     "update_value": null
+   }, 
+   {
+    "allow_edit": "Sales User", 
+    "doc_status": "2", 
+    "message": null, 
+    "state": "Cancelado", 
+    "update_field": null, 
+    "update_value": null
    }
   ], 
   "transitions": [
@@ -65,6 +73,12 @@
     "allowed": "Sales User", 
     "next_state": "Rejected", 
     "state": "Revisando"
+   }, 
+   {
+    "action": "Cancel", 
+    "allowed": "Sales User", 
+    "next_state": "Cancelado", 
+    "state": "Approved"
    }
   ], 
   "workflow_name": "Workotation", 
