@@ -62,19 +62,21 @@ frappe.ui.form.on('Ordem Servico Interna', {
 
 	create_quotation: function (frm) {
 
-		if (cur_frm.doc.__unsaved) {
-			frappe.throw('Favor salvar documento!');
+		if (frm.doc.__unsaved) {
+			frappe.throw(__("You have unsaved changes in this form. Please save before you continue."));
 		}
+
 		frappe.call({
 			method: 'ordem_servico.ordem_servico.utils.make_quotation',
 			args: {
-				doctype: frm.doc.doctype,
-				docname: frm.doc.name,
-				local: 'Interno',
+				os_docname: frm.doc.name,
 			},
+			callback: function(r) {
+				frappe.model.sync(r.message);
+				console.log(r.message);
+				frappe.set_route('Form', r.message.doctype, r.message.name);
+			}
 		});
-		frm.reload_doc();
-		show_alert('Orçamento gerado.');
 	},
 
 	schedule_repair_event: function (frm) {

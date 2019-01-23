@@ -1,17 +1,16 @@
 frappe.ui.form.on('Quotation', {
 
-    after_save: function(frm) {
+    after_save: function (frm) {
 
-        // Next Contact
+        // Make next Contact
         frappe.call({
             method: 'ordem_servico.ordem_servico.utils.next_contact',
             args: {
-                doc_name: frm.doc.name,
+                docname: frm.doc.name,
             },
             callback: function (r) {
                 frm.reload_doc()
             }
         });
     }
-
 });

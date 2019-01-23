@@ -56,40 +56,44 @@ def get_time_now(doctype, docname, trigger):
 
 
 @frappe.whitelist()
-def make_quotation(doctype, docname, local):
-    os = frappe.get_doc(doctype, docname)
-    quot = frappe.new_doc('Quotation')
-    quot.os_doctype = os.doctype
-    quot.defeito_constatado = os.problem_description
-    quot.observacao_tecnica = os.problem_observation
-    quot.os_link = os.name
-    quot.local_manutencao = local
-    quot.customer = os.customer
-    quot.numero_serie = os.serie_number
-    quot.descricao_equipamento = os.equipment_description
-    quot.tag = os.equipment_tag
-    quot.email = frappe.db.get_value('Contacts', {'customer': os.customer}, ['email_id'])
-    quot.valid_till = (datetime.date.today() + datetime.timedelta(days=15)).strftime('%y-%m-%d') #Today + 15 days
-    quot = get_items(os, quot)
-    quot.total = get_total(os)
-    quot.tc_name = 'Boleto 15 dias'
-    quot.terms = frappe.db.get_value('Terms and Conditions', {'name': 'Boleto 15 dias'}, ['terms'])
-    quot.conversion_rate = 1
-    quot.plc_conversion_rate = 1
-    quot.price_list_currency = "BRL"
-    quot.flags.ignore_mandatory = True
-    quot.flags.ignore_validate = True
-    quot.save()
-    os.quotation_link = quot.name
-    os.status_order_service = 'Em Aprovação'
-    os.save()
+def make_quotation(os_docname):
+    os_doc = frappe.get_doc('Ordem Servico Interna', os_docname)
+    quot_doc = frappe.new_doc('Quotation')
+    quot_doc.os_link = os_doc.name
+    quot_doc.defeito_constatado = os_doc.problem_description
+    quot_doc.observacao_tecnica = os_doc.problem_observation
+    quot_doc.local_manutencao = 'Interno'
+    quot_doc.customer = os_doc.customer
+    quot_doc.numero_serie = os_doc.serie_number
+    quot_doc.descricao_equipamento = os_doc.equipment_description
+    quot_doc.tag = os_doc.equipment_tag
+    quot_doc.email = frappe.db.get_value('Contacts', {'customer': os_doc.customer}, ['email_id'])
+    quot_doc = get_items(os_doc, quot_doc)
+    total_rate = get_total(os_doc)
+    quot_doc.total = total_rate
+    quot_doc.net_total = total_rate
+    quot_doc.base_total = total_rate
+    quot_doc.base_net_total = total_rate
+    quot_doc.base_total_taxes_and_charges = 0
+    quot_doc.total_taxes_and_charges = 0
+    quot_doc.base_grand_total = 0
+    quot_doc.base_rouding_adjustment = 0
+    quot_doc.grand_total = 0
+    quot_doc.rouding_adjustment = 0
+    quot_doc.tc_name = 'Boleto 15 dias'
+    quot_doc.terms = frappe.db.get_value('Terms and Conditions', {'name': 'Boleto 15 dias'}, ['terms'])
+    quot_doc.conversion_rate = 1
+    quot_doc.plc_conversion_rate = 1
+    quot_doc.price_list_currency = "BRL"
+    return quot_doc
 
 
-def get_items(os, quot):
-    items = os.os_items
+def get_items(os_doc, quot_doc):
+    items = os_doc.os_items
     for item in items:
-        quot.append('items', {
+        quot_doc.append('items', {
             'item_code': item.item_code,
+            'qty': item.item_qty,
             'ncm': item.ncm_item,
             'item_name': item.item_name,
             'description': item.item_description,
@@ -106,11 +110,11 @@ def get_items(os, quot):
             'base_net_amount': item.price_amount,
             'conversion_factor': 1,
         })
-    return quot
+    return quot_doc
 
 
-def get_total(os):
-    items = os.os_items
+def get_total(os_doc):
+    items = os_doc.os_items
     total = 0
     for item in items:
         total += item.price_amount
@@ -135,8 +139,8 @@ def sum_time(t1, t2):
 
 
 @frappe.whitelist()
-def next_contact(doc_name):
-    quotation = frappe.get_doc('Quotation', doc_name)
+def next_contact(docname):
+    quotation = frappe.get_doc('Quotation', docname)
     if quotation.local_manutencao == 'Interno' and not quotation.proximo_contato_name:
         event = frappe.new_doc('Event')
         event.all_day = 0
@@ -155,3 +159,4 @@ def next_contact(doc_name):
         quotation.proximo_contato_link = 'Event'
         quotation.proximo_contato_name = event.name
         quotation.save()
+        return quotation
