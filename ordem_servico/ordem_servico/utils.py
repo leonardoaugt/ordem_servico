@@ -160,3 +160,11 @@ def next_contact(docname):
         quotation.proximo_contato_name = event.name
         quotation.save()
         return quotation
+
+
+@frappe.whitelist()
+def set_history(source_docname, source_transaction_date, target_doctype, target_docname, target_name_fieldname, target_date_fieldname):
+    os_doc = frappe.get_doc(target_doctype, target_docname)
+    os_doc[target_name_fieldname] = source_docname
+    os_doc[target_date_fieldname] = source_transaction_date
+    os_doc.save()
