@@ -163,8 +163,8 @@ def next_contact(docname):
 
 
 @frappe.whitelist()
-def set_history(source_docname, source_transaction_date, target_doctype, target_docname, target_name_fieldname, target_date_fieldname):
-    os_doc = frappe.get_doc(target_doctype, target_docname)
-    os_doc[target_name_fieldname] = source_docname
-    os_doc[target_date_fieldname] = source_transaction_date
+def set_os_interna_history(source_docname, source_transaction_date, target_docname):
+    os_doc = frappe.get_doc('Ordem Servico Interna', target_docname)
+    os_doc.quotation_name = source_docname
+    os_doc.quotation_date = source_transaction_date
     os_doc.save()

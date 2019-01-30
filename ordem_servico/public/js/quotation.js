@@ -15,14 +15,11 @@ frappe.ui.form.on('Quotation', {
         //Set quotation to OS History section
         if(frm.doc.os_link) {
             frappe.call({
-                method: 'ordem_servico.ordem_servico.utils.set_history',
+                method: 'ordem_servico.ordem_servico.utils.set_os_interna_history',
                 args: {
                     source_docname: frm.doc.name,
                     source_transaction_date: frm.doc.transaction_date,
-                    target_doctype: 'Ordem Servico Interna',
                     target_docname: frm.doc.os_link,
-                    target_name_fieldname: 'quotation_name',
-                    target_date_fieldname: 'quotation_date',
                 }
             });
         }
