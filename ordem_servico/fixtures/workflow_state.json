@@ -3,6 +3,15 @@
   "docstatus": 0, 
   "doctype": "Workflow State", 
   "icon": "", 
+  "modified": "2019-01-30 16:08:13.348638", 
+  "name": "Rascunho", 
+  "style": "Danger", 
+  "workflow_state_name": "Rascunho"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Workflow State", 
+  "icon": "", 
   "modified": "2019-01-14 13:43:26.041798", 
   "name": "Cancelado", 
   "style": "Inverse", 

@@ -4,13 +4,21 @@
   "doctype": "Workflow", 
   "document_type": "Quotation", 
   "is_active": 1, 
-  "modified": "2019-01-14 13:42:09.306124", 
+  "modified": "2019-01-30 16:18:14.216755", 
   "name": "Workotation", 
   "override_status": 0, 
   "states": [
    {
     "allow_edit": "Sales User", 
     "doc_status": "0", 
+    "message": null, 
+    "state": "Rascunho", 
+    "update_field": null, 
+    "update_value": null
+   }, 
+   {
+    "allow_edit": "Sales User", 
+    "doc_status": "1", 
     "message": null, 
     "state": "Pendente de Aprova\u00e7\u00e3o", 
     "update_field": null, 
@@ -50,6 +58,12 @@
    }
   ], 
   "transitions": [
+   {
+    "action": "Enviar", 
+    "allowed": "Sales User", 
+    "next_state": "Pendente de Aprova\u00e7\u00e3o", 
+    "state": "Rascunho"
+   }, 
    {
     "action": "Approve", 
     "allowed": "Sales User", 

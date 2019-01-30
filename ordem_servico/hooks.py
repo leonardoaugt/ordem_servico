@@ -38,11 +38,7 @@ doctype_js = {
 fixtures = [
     "Property Setter",
     "Workflow State",
-    {"dt": "Workflow",
-        "filters": [[
-            "document_type", "in", ("Quotation")
-        ]]
-    },
+    "Workflow",
     {"dt": "Custom Field",
         "filters": [[
             "dt", "in", ("Maintenance Visit", "Maintenance Visit Purpose",
