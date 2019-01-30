@@ -4,8 +4,8 @@
   "doctype": "Workflow", 
   "document_type": "Quotation", 
   "is_active": 1, 
-  "modified": "2019-01-30 16:18:14.216755", 
-  "name": "Workotation", 
+  "modified": "2019-01-30 17:48:03.467455", 
+  "name": "Quotation", 
   "override_status": 0, 
   "states": [
    {
@@ -22,21 +22,13 @@
     "message": null, 
     "state": "Pendente de Aprova\u00e7\u00e3o", 
     "update_field": null, 
-    "update_value": null
+    "update_value": ""
    }, 
    {
     "allow_edit": "Sales User", 
     "doc_status": "1", 
     "message": null, 
-    "state": "Revisando", 
-    "update_field": null, 
-    "update_value": null
-   }, 
-   {
-    "allow_edit": "Sales User", 
-    "doc_status": "1", 
-    "message": null, 
-    "state": "Approved", 
+    "state": "Aprovado", 
     "update_field": null, 
     "update_value": null
    }, 
@@ -44,7 +36,7 @@
     "allow_edit": "Sales User", 
     "doc_status": "2", 
     "message": null, 
-    "state": "Rejected", 
+    "state": "Rejeitado", 
     "update_field": null, 
     "update_value": null
    }, 
@@ -65,37 +57,31 @@
     "state": "Rascunho"
    }, 
    {
-    "action": "Approve", 
+    "action": "Aprovar", 
     "allowed": "Sales User", 
-    "next_state": "Approved", 
+    "next_state": "Aprovado", 
     "state": "Pendente de Aprova\u00e7\u00e3o"
    }, 
    {
-    "action": "Review", 
+    "action": "Rejeitar", 
     "allowed": "Sales User", 
-    "next_state": "Revisando", 
+    "next_state": "Rejeitado", 
     "state": "Pendente de Aprova\u00e7\u00e3o"
    }, 
    {
-    "action": "Approve", 
-    "allowed": "Sales User", 
-    "next_state": "Approved", 
-    "state": "Revisando"
-   }, 
-   {
-    "action": "Reject", 
-    "allowed": "Sales User", 
-    "next_state": "Rejected", 
-    "state": "Revisando"
-   }, 
-   {
-    "action": "Cancel", 
+    "action": "Cancelar", 
     "allowed": "Sales User", 
     "next_state": "Cancelado", 
-    "state": "Approved"
+    "state": "Pendente de Aprova\u00e7\u00e3o"
+   }, 
+   {
+    "action": "Cancelar", 
+    "allowed": "Sales User", 
+    "next_state": "Cancelado", 
+    "state": "Aprovado"
    }
   ], 
-  "workflow_name": "Workotation", 
+  "workflow_name": "Quotation", 
   "workflow_state_field": "workflow_state"
  }
 ]
