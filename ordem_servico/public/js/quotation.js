@@ -13,13 +13,13 @@ frappe.ui.form.on('Quotation', {
         });
 
         //Set quotation to OS History section
-        if(frm.doc.os_link) {
+        if(frm.doc.os_interna_link) {
             frappe.call({
                 method: 'ordem_servico.ordem_servico.utils.set_os_interna_history',
                 args: {
                     source_docname: frm.doc.name,
                     source_transaction_date: frm.doc.transaction_date,
-                    target_docname: frm.doc.os_link,
+                    target_docname: frm.doc.os_interna_link,
                 }
             });
         }

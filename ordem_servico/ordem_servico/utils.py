@@ -59,7 +59,7 @@ def get_time_now(doctype, docname, trigger):
 def make_quotation(os_docname):
     os_doc = frappe.get_doc('Ordem Servico Interna', os_docname)
     quot_doc = frappe.new_doc('Quotation')
-    quot_doc.os_link = os_doc.name
+    quot_doc.os_interna_link = os_doc.name
     quot_doc.defeito_constatado = os_doc.problem_description
     quot_doc.observacao_tecnica = os_doc.problem_observation
     quot_doc.local_manutencao = 'Interno'
