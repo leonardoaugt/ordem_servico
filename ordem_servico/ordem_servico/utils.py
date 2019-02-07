@@ -163,9 +163,36 @@ def next_contact(docname):
 
 
 @frappe.whitelist()
-def set_os_interna_history(source_docname, source_transaction_date, target_docname):
+def set_quotation_history(source_docname, source_transaction_date, target_docname):
     os_doc = frappe.get_doc('Ordem Servico Interna', target_docname)
     if not os_doc.quotation_name:
         os_doc.quotation_name = source_docname
         os_doc.quotation_date = source_transaction_date
+        os_doc.save()
+
+
+@frappe.whitelist()
+def set_sales_order_history(source_docname, source_transaction_date, target_docname):
+    os_doc = frappe.get_doc('Ordem Servico Interna', target_docname)
+    if not os_doc.sales_order_name:
+        os_doc.sales_order_name = source_docname
+        os_doc.sales_order_date = source_transaction_date
+        os_doc.save()
+
+
+@frappe.whitelist()
+def set_sales_invoice_history(source_docname, source_transaction_date, target_docname):
+    os_doc = frappe.get_doc('Ordem Servico Interna', target_docname)
+    if not os_doc.invoice_name:
+        os_doc.invoice_name = source_docname
+        os_doc.invoice_date = source_transaction_date
+        os_doc.save()
+
+
+@frappe.whitelist()
+def set_payment_entry_history(source_docname, source_transaction_date, target_docname):
+    os_doc = frappe.get_doc('Ordem Servico Interna', target_docname)
+    if not os_doc.quotation_name:
+        os_doc.sales_order_name = source_docname
+        os_doc.sales_order_date = source_transaction_date
         os_doc.save()
