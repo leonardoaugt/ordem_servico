@@ -192,7 +192,18 @@ def set_sales_invoice_history(source_docname, source_transaction_date, target_do
 @frappe.whitelist()
 def set_payment_entry_history(source_docname, source_transaction_date, target_docname):
     os_doc = frappe.get_doc('Ordem Servico Interna', target_docname)
-    if not os_doc.quotation_name:
-        os_doc.sales_order_name = source_docname
-        os_doc.sales_order_date = source_transaction_date
+    if not os_doc.payment_entry_name:
+        os_doc.payment_entry_name = source_docname
+        os_doc.payment_entry_date = source_transaction_date
         os_doc.save()
+
+
+@frappe.whitelist()
+def set_delivery_note_history(source_docname, source_transaction_date, target_docname):
+    os_doc = frappe.get_doc('Ordem Servico Interna', target_docname)
+    if not os_doc.delivery_note_name:
+        os_doc.delivery_note_name = source_docname
+        os_doc.delivery_note_date = source_transaction_date
+        os_doc.save()
+
+

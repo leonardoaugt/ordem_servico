@@ -7,6 +7,7 @@ frappe.ui.form.on('Payment Entry', {
             var prev_doctype = prev_route[1];
             var prev_docname = prev_route[2];
             var prev_doc = frappe.get_doc(prev_doctype[1], prev_docname[2]);
+            console.log(prev_doc);
 
             // Check if is a Sales Order and has os_interna_link
             if (prev_doc.doctype == 'Sales Order' && prev_doc.os_interna_link) {
