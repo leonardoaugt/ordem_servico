@@ -4,7 +4,7 @@
   "doctype": "Workflow", 
   "document_type": "Quotation", 
   "is_active": 1, 
-  "modified": "2019-01-30 17:48:03.467455", 
+  "modified": "2019-02-13 01:58:02.725295", 
   "name": "Quotation", 
   "override_status": 0, 
   "states": [
@@ -36,7 +36,7 @@
     "allow_edit": "Sales User", 
     "doc_status": "2", 
     "message": null, 
-    "state": "Rejeitado", 
+    "state": "Reprovado", 
     "update_field": null, 
     "update_value": null
    }, 
@@ -63,9 +63,9 @@
     "state": "Pendente de Aprova\u00e7\u00e3o"
    }, 
    {
-    "action": "Rejeitar", 
+    "action": "Reprovar", 
     "allowed": "Sales User", 
-    "next_state": "Rejeitado", 
+    "next_state": "Reprovado", 
     "state": "Pendente de Aprova\u00e7\u00e3o"
    }, 
    {

@@ -3,6 +3,15 @@
   "docstatus": 0, 
   "doctype": "Workflow State", 
   "icon": "", 
+  "modified": "2019-02-13 01:54:50.327158", 
+  "name": "Reprovado", 
+  "style": "Danger", 
+  "workflow_state_name": "Reprovado"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Workflow State", 
+  "icon": "", 
   "modified": "2019-01-30 16:08:13.348638", 
   "name": "Rascunho", 
   "style": "Danger", 
@@ -61,14 +70,5 @@
   "name": "Aprovado", 
   "style": "Success", 
   "workflow_state_name": "Aprovado"
- }, 
- {
-  "docstatus": 0, 
-  "doctype": "Workflow State", 
-  "icon": "", 
-  "modified": "2019-01-30 17:48:47.906055", 
-  "name": "Rejeitado", 
-  "style": "Danger", 
-  "workflow_state_name": "Rejeitado"
  }
 ]
