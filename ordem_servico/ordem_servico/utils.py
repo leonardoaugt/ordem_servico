@@ -168,6 +168,7 @@ def set_quotation_history(source_docname, source_transaction_date, target_docnam
     if not os_doc.quotation_name:
         os_doc.quotation_name = source_docname
         os_doc.quotation_date = source_transaction_date
+        os_doc.status_order_service = 'Em Aprovação'
         os_doc.save()
 
 
