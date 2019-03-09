@@ -29,7 +29,6 @@ app_license = "MIT"
 # doctype_js = {"doctype" : "public/js/doctype.js"}
 doctype_js = {
     "Ordem Servico Interna": "public/js/os_items.js",
-    "Ordem Servico Externa": "public/js/os_items.js",
     "Quotation": "public/js/quotation.js",
     "Payment Entry": "public/js/payment_entry.js",
     "Sales Invoice": "public/js/sales_invoice.js",
