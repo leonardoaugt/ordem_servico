@@ -1,9 +1,6 @@
 // Copyright (c) 2018, laugusto and contributors
 // For license information, please see license.txt
 
-{% include "ordem_servico/public/js/ordem_servico.js" %}
-
-
 frappe.ui.form.on('Ordem Servico Externa', {
 	
 	create_quotation: function (frm) {
@@ -43,6 +40,18 @@ frappe.ui.form.on('Ordem Servico Externa', {
 		show_alert('Visita agendada.');
 	},
 
-
+	after_save: function (frm) {
+		if (frm.doc.multiple_equipments) {
+			frappe.call({
+				method:'ordem_servico.ordem_servico.doctype.ordem_servico_externa.ordem_servico_externa.create_maintenances',
+				args: {
+					source_docname: frm.doc.name,
+				},
+				callback: function (r) {
+					console.log(r.message);
+				}
+			});
+		}
+	}
 
 });
