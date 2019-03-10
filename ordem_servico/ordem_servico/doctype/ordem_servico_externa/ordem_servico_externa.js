@@ -2,7 +2,17 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Ordem Servico Externa', {
-	
+    
+    onload: function (frm) {
+        frm.fields_dict['equipments'].grid.get_field('serial_number').get_query = function () {
+            return {
+                filters: {
+                    'parent': cur_frm.doc.customer
+                }
+            }
+        }
+    },
+
 	create_quotation: function (frm) {
 
 		if (cur_frm.doc.__unsaved) {
