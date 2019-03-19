@@ -3155,7 +3155,7 @@
   "doctype": "Property Setter", 
   "doctype_or_field": "DocType", 
   "field_name": null, 
-  "modified": "2019-03-07 00:22:13.091309", 
+  "modified": "2019-03-18 01:54:29.810422", 
   "name": "Sales Order-read_only_onload", 
   "property": "read_only_onload", 
   "property_type": "Check", 

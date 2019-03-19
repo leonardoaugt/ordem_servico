@@ -70,5 +70,41 @@
   "name": "Aprovado", 
   "style": "Success", 
   "workflow_state_name": "Aprovado"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Workflow State", 
+  "icon": "", 
+  "modified": "2019-03-14 22:58:56.651529", 
+  "name": "Aguardando Manuten\u00e7\u00e3o", 
+  "style": "Warning", 
+  "workflow_state_name": "Aguardando Manuten\u00e7\u00e3o"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Workflow State", 
+  "icon": "", 
+  "modified": "2019-03-14 22:59:59.404204", 
+  "name": "Conclu\u00eddo", 
+  "style": "Success", 
+  "workflow_state_name": "Conclu\u00eddo"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Workflow State", 
+  "icon": "", 
+  "modified": "2019-03-14 23:05:46.211434", 
+  "name": "Enviado", 
+  "style": "Primary", 
+  "workflow_state_name": "Enviado"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Workflow State", 
+  "icon": "", 
+  "modified": "2019-03-16 16:31:23.810147", 
+  "name": "Manuten\u00e7\u00e3o Conclu\u00edda", 
+  "style": "Success", 
+  "workflow_state_name": "Manuten\u00e7\u00e3o Conclu\u00edda"
  }
 ]
