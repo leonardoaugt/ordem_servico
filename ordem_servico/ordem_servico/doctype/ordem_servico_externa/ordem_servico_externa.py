@@ -5,7 +5,6 @@
 from __future__ import unicode_literals
 import frappe
 from frappe.model.document import Document
-from ...utils import time_now
 import datetime
 
 
@@ -13,8 +12,8 @@ class OrdemServicoExterna(Document):
 	pass
 
 @frappe.whitelist()
-def make_os_externa(docname):
-    sales_order = frappe.get_doc('Sales Order', docname)
+def make_os_externa(source_docname):
+    sales_order = frappe.get_doc('Sales Order', source_docname)
     os_externa = frappe.new_doc('Ordem Servico Externa')
     os_externa.customer = sales_order.customer
     os_externa.transaction_date = datetime.datetime.now().date()
@@ -25,4 +24,7 @@ def make_os_externa(docname):
     os_externa.contact_mobile = sales_order.contact_mobile
     return os_externa
 
-
+def set_os_externa_link(source_docname, target_docname):
+    sales_order = frappe.get_doc('Sales Order', target_docname)
+    sales_order.os_externa_link = source_docname
+    sales_order.save()
