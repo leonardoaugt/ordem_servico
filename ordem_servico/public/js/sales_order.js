@@ -34,11 +34,10 @@ cur_frm.cscript['Make OS Externa'] = function () {
     frappe.call({
         method: "ordem_servico.ordem_servico.doctype.ordem_servico_externa.ordem_servico_externa.make_os_externa",
         args: {
-            docname: cur_frm.doc.name,
+            source_docname: cur_frm.doc.name,
         },
         callback: function (r) {
             frappe.model.sync(r.message);
-            console.log(r.message);
             frappe.set_route('Form', r.message.doctype, r.message.name);
         }
     })
