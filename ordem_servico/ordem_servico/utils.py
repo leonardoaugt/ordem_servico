@@ -151,32 +151,6 @@ def sum_time(t1, t2):
 
 
 @frappe.whitelist()
-def next_contact(docname):
-    quotation = frappe.get_doc("Quotation", docname)
-    if quotation.local_manutencao == "Interno" and not quotation.proximo_contato_name:
-        event = frappe.new_doc("Event")
-        event.all_day = 0
-        event.creation = datetime.datetime.now()
-        event.description = "Contatar: {} Por: {} Para discutir: {}".format(
-            quotation.customer, frappe.session.user, quotation.name
-        )
-        event.event_type = "Public"
-        event.name = "EV#####"
-        event.owner = quotation.modified_by
-        event.ref_type = "Quotation"
-        event.ref_name = quotation.name
-        event.send_reminder = 1
-        date = datetime.datetime.now() + datetime.timedelta(days=1)
-        event.starts_on = date.strftime("%Y-%m-%d %H:%M:00")
-        event.subject = "Contact {}".format(quotation.customer)
-        event.save()
-        quotation.proximo_contato_link = "Event"
-        quotation.proximo_contato_name = event.name
-        quotation.save()
-        return quotation
-
-
-@frappe.whitelist()
 def set_quotation_history(source_docname, source_transaction_date, target_docname):
     os_doc = frappe.get_doc("Ordem Servico Interna", target_docname)
     if not os_doc.quotation_name:
