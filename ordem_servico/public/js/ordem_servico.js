@@ -25,7 +25,7 @@ frappe.ui.form.on(cur_frm.doctype, {
 		this.cur_frm.fields_dict.initial_scheduled_by.get_query = function () {
 			return {
 				filters: {
-					'department': ['in', ['Diretoria', 'Vendas']]
+					'department': ['in', ['Diretoria', 'Vendas', 'Comercial']]
 				}
 			}
 		}
@@ -41,7 +41,7 @@ frappe.ui.form.on(cur_frm.doctype, {
 		this.cur_frm.fields_dict.final_scheduled_to.get_query = function () {
 			return {
 				filters: {
-					'department': ['in', ['Diretoria', 'Vendas']]
+					'department': ['in', ['Diretoria', 'Vendas', 'Comercial']]
 				}
 			}
 		}
