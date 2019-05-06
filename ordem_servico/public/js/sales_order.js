@@ -41,18 +41,18 @@ frappe.ui.form.on('Sales Order', {
     },
 
     add_custom_button: function (frm) {
-        if (frm.events.is_externa(frm)) {
+        if (frm.events.show_os_button(frm)) {
             cur_frm.add_custom_button(__('OS Externa'),
                 () => frm.events.make_os_externa(frm),
                 __("Make"));
         }
     },
 
-    is_externa: function (frm) {
+    show_os_button: function (frm) {
         if (frm.doc.local_manutencao == 'Externa' &&
             frm.doc.docstatus == 1 &&
-            (!frm.doc.os_interna_link ||
-                frm.doc.os_interna_link == undefined)
+            (!frm.doc.os_externa_link ||
+                frm.doc.os_externa_link == undefined)
         ) {
             valid = true;
         } else {
