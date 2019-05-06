@@ -15,12 +15,9 @@ class OrdemServicoExterna(Document):
     def set_ref(self):
         so = frappe.get_doc("Sales Order", self.sales_order)
         if not so.os_externa_link:
-            frappe.msgprint("é not!")
             so.os_externa_link = self.name
             so.flags.ignore_validate_update_after_submit = True
             so.save()
-        else:
-            frappe.msgprint("tem valor", so.os_externa_link)
 
 
 @frappe.whitelist()
