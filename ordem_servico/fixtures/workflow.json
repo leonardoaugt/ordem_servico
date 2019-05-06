@@ -142,5 +142,70 @@
   ], 
   "workflow_name": "OS Externa", 
   "workflow_state_field": "workflow_state"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Workflow", 
+  "document_type": "Manutencao Externa", 
+  "is_active": 1, 
+  "modified": "2019-05-06 03:11:14.135649", 
+  "name": "Manutencao Externa", 
+  "override_status": 0, 
+  "states": [
+   {
+    "allow_edit": "Ordem Servi\u00e7o", 
+    "doc_status": "0", 
+    "message": null, 
+    "state": "Pendente", 
+    "update_field": null, 
+    "update_value": null
+   }, 
+   {
+    "allow_edit": "Ordem Servi\u00e7o", 
+    "doc_status": "1", 
+    "message": null, 
+    "state": "Enviado", 
+    "update_field": null, 
+    "update_value": null
+   }, 
+   {
+    "allow_edit": "Ordem Servi\u00e7o", 
+    "doc_status": "1", 
+    "message": null, 
+    "state": "Sem Conserto", 
+    "update_field": null, 
+    "update_value": null
+   }, 
+   {
+    "allow_edit": "Ordem Servi\u00e7o", 
+    "doc_status": "2", 
+    "message": null, 
+    "state": "Cancelado", 
+    "update_field": null, 
+    "update_value": null
+   }
+  ], 
+  "transitions": [
+   {
+    "action": "Enviar", 
+    "allowed": "Ordem Servi\u00e7o", 
+    "next_state": "Enviado", 
+    "state": "Pendente"
+   }, 
+   {
+    "action": "Sem Conserto", 
+    "allowed": "Ordem Servi\u00e7o", 
+    "next_state": "Sem Conserto", 
+    "state": "Enviado"
+   }, 
+   {
+    "action": "Cancelar", 
+    "allowed": "Ordem Servi\u00e7o", 
+    "next_state": "Cancelado", 
+    "state": "Enviado"
+   }
+  ], 
+  "workflow_name": "Manutencao Externa", 
+  "workflow_state_field": "workflow_state"
  }
 ]
