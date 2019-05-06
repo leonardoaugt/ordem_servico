@@ -29,7 +29,7 @@ def make_maintenance(docname):
         return maint
 
     def update_maint_status(equipment, maint):
-        equipment.status = maint.workflow_state
+        equipment.maint_status = maint.workflow_state
 
     def update_maint_link(equipment, maint):
         equipment.maint_link = maint.name
