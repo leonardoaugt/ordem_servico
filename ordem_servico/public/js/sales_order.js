@@ -30,6 +30,13 @@ frappe.ui.form.on('Sales Order', {
             args: {
                 docname: frm.doc.name,
             },
+            callback: function (r) {
+                let object = r.message;
+                let doctype = object.doctype;
+                let docname = object.name;
+                frappe.model.sync(object);
+                frappe.set_route('Form', doctype, docname);
+            }
         })
     },
 
