@@ -3,43 +3,44 @@
 
 frappe.ui.form.on('Ordem Servico Externa', {
 
-	create_quotation: function (frm) {
-
-		if (cur_frm.doc.__unsaved) {
-			frappe.throw('Favor salvar documento!');
+	setup: function (frm) {
+		frm.custom_make_buttons = {
+			'Ordem Serviço Externa': 'OS Externa',
 		}
-		frappe.call({
-			method: 'ordem_servico.ordem_servico.utils.make_quotation',
-			args: {
-				doctype: frm.doc.doctype,
-				docname: frm.doc.name,
-				local: 'Externo',
-			},
-		});
-		frm.reload_doc();
-		show_alert('Orçamento gerado.');
 	},
 
-	schedule_repair_event: function (frm) {
-
-		if (cur_frm.doc.__unsaved) {
-			frappe.throw('Favor salvar documento!');
-		}
-		frappe.call({
-			method: 'ordem_servico.ordem_servico.utils.make_event',
-			args: {
-				doctype: frm.doc.doctype,
-				docname: frm.doc.name,
-				start_date: frm.doc.repair_schedule_date,
-				start_time: frm.doc.repair_schedule_time,
-				work_time: frm.doc.repair_time,
-				trigger: 'repair',
-			},
-		});
-		frm.reload_doc();
-		show_alert('Visita agendada.');
+	refresh: function (frm) {
+		frm.events.add_custom_button(frm);
 	},
 
+	add_custom_button: function (frm) {
+		if (frm.events.show_maint_button(frm)) {
+			cur_frm.add_custom_button(__('Gerar Manutenção'),
+				() => frm.events.make_maintenance(frm),
+				__("Make"));
+		}
+	},
 
+	show_os_button: function (frm) {
+		let status = 'Aguardando Manutenção'
+		let valid = frm.doc.workflow_state == status ? true : false;
 
+		return valid;
+	},
+
+	make_maintenance: function (frm) {
+		frappe.call({
+			method: 'ordem_servico.ordem_servico.doctype.manutencao_externa.manutencao_externa.make_maintenance',
+			args: {
+				docname: frm.doc.name,
+			},
+			callback: function (r) {
+				refresh_field('os_equipments');
+				frappe.show_alert({
+					message: 'Manutenções geradas!',
+					indicator: 'green',
+				})
+			}
+		})
+	},
 });
