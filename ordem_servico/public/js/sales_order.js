@@ -1,8 +1,3 @@
-status = {
-    EXTERNA: 'Externo',
-};
-externa = status.EXTERNA;
-
 frappe.ui.form.on('Sales Order', {
 
     setup: function (frm) {
@@ -11,12 +6,8 @@ frappe.ui.form.on('Sales Order', {
         }
     },
 
-    onload: function (frm) {
-        if (frm.events.is_externa(frm)) {
-            cur_frm.add_custom_button(__('OS Externa'),
-                () => make_os(frm),
-                __("Make"));
-        }
+    refresh: function (frm) {
+        frm.events.add_custom_button(frm);
     },
 
     after_save: function (frm) {
@@ -33,17 +24,25 @@ frappe.ui.form.on('Sales Order', {
         }
     },
 
-    make_os: function (frm) {
+    make_os_externa: function (frm) {
         frappe.call({
-            method: 'ordem_servico.ordem_servico.doctype.ordem_servico_externa.ordem_servico_externa.make_os_externa',
+            method: 'ordem_servico.ordem_servico.doctype.ordem_servico_externa.ordem_servico_externa.make_os',
             args: {
                 docname: frm.doc.name,
             },
         })
     },
 
+    add_custom_button: function (frm) {
+        if (frm.events.is_externa(frm)) {
+            cur_frm.add_custom_button(__('OS Externa'),
+                () => frm.events.make_os_externa(frm),
+                __("Make"));
+        }
+    },
+
     is_externa: function (frm) {
-        if (frm.doc.local_manutencao == externa &&
+        if (frm.doc.local_manutencao == 'Externa' &&
             frm.doc.docstatus == 1 &&
             (!frm.doc.os_interna_link ||
                 frm.doc.os_interna_link == undefined)
@@ -52,7 +51,6 @@ frappe.ui.form.on('Sales Order', {
         } else {
             valid = false;
         }
-
         return valid;
     }
 });

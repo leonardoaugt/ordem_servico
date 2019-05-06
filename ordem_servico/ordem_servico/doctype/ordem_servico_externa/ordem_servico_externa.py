@@ -8,6 +8,10 @@ from frappe.model.document import Document
 
 
 class OrdemServicoExterna(Document):
-	pass
+    pass
 
 
+@frappe.whitelist()
+def make_os(docname):
+    sales_order = frappe.get_doc("Sales Order", docname)
+    frappe.msgprint("Chamou aqui!")
