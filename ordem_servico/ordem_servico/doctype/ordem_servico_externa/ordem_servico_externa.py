@@ -9,7 +9,18 @@ from datetime import date
 
 
 class OrdemServicoExterna(Document):
-    pass
+    def on_update(self):
+        self.set_ref()
+
+    def set_ref(self):
+        so = frappe.get_doc("Sales Order", self.sales_order)
+        if not so.os_externa_link:
+            frappe.msgprint("é not!")
+            so.os_externa_link = self.name
+            so.flags.ignore_validate_update_after_submit = True
+            so.save()
+        else:
+            frappe.msgprint("tem valor", so.os_externa_link)
 
 
 @frappe.whitelist()
@@ -22,5 +33,7 @@ def make_os(docname):
     os.contact_person = so.contact_person
     os.contact_display = so.contact_display
     os.mobile_no = so.contact_mobile
+    os.sales_order = so.name
+    os.so_transaction = so.transaction_date
     os.save()
     return os
