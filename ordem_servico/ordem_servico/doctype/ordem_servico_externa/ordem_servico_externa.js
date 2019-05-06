@@ -35,12 +35,13 @@ frappe.ui.form.on('Ordem Servico Externa', {
 				docname: frm.doc.name,
 			},
 			callback: function (r) {
-				refresh_field('os_equipments');
 				frappe.show_alert({
 					message: 'Manutenções geradas!',
 					indicator: 'green',
 				})
 			}
+
 		})
+		frm.reload_doc();
 	},
 });

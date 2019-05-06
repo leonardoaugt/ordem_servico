@@ -6,6 +6,8 @@ from __future__ import unicode_literals
 import frappe
 from frappe.model.document import Document
 
+from enum import Enum
+
 
 class ManutencaoExterna(Document):
     pass
@@ -18,7 +20,8 @@ def make_maintenance(docname):
 
     def _make_maintenance(equipment, docname):
         maint = frappe.new_doc("Manutencao Externa")
-        maint.naming_series = "{}-.#".format(maint.name)
+        maint.naming_series = "MANUT-{}-.#".format(os.name)
+        maint.workflow_state = "Pendente"
         maint.customer = os.customer
         maint.serie = equipment.serie
         maint.tag = equipment.tag
@@ -41,4 +44,5 @@ def make_maintenance(docname):
 
     os.flags.ignore_validate_update_after_submit = True
     os.save()
+    return
 
