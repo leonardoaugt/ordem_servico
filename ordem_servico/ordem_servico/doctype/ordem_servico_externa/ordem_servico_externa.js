@@ -21,7 +21,7 @@ frappe.ui.form.on('Ordem Servico Externa', {
 		}
 	},
 
-	show_os_button: function (frm) {
+	show_maint_button: function (frm) {
 		let status = 'Aguardando Manutenção'
 		let valid = frm.doc.workflow_state == status ? true : false;
 
