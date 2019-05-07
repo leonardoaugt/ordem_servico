@@ -13,6 +13,11 @@ class ManutencaoExterna(Document):
     pass
 
 
+PENDING = "Pendente"
+SUCCEEDED = "Concluído"
+CANCELLED = "Cancelado"
+
+
 @frappe.whitelist()
 def make_maintenance(docname):
     os = frappe.get_doc("Ordem Servico Externa", docname)
@@ -21,7 +26,7 @@ def make_maintenance(docname):
     def _make_maintenance(equipment, docname):
         maint = frappe.new_doc("Manutencao Externa")
         maint.naming_series = "MANUT-{}-.#".format(os.name)
-        maint.workflow_state = "Pendente"
+        maint.workflow_state = PENDING
         maint.customer = os.customer
         maint.serie = equipment.serie
         maint.tag = equipment.tag
@@ -42,6 +47,7 @@ def make_maintenance(docname):
         update_maint_status(equipment, maint)
         update_maint_link(equipment, maint)
 
+    os.update_status()
     os.flags.ignore_validate_update_after_submit = True
     os.save()
     return

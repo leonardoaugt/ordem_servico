@@ -19,6 +19,21 @@ class OrdemServicoExterna(Document):
             so.flags.ignore_validate_update_after_submit = True
             so.save()
 
+    def update_status(self):
+        SUBMITTED = "Enviado"
+        TO_SCHEDULE = "Agendamento Pendente"
+        TO_REPAIR = "Manutenção Pendente"
+
+        def switcher_status(status):
+            switcher = {SUBMITTED: TO_SCHEDULE, TO_SCHEDULE: TO_REPAIR}
+            return switcher.get(
+                self.workflow_state, "Status {} não disponível".format(status)
+            )
+
+        self.workflow_state = switcher_status(self.workflow_state)
+        self.ignore_validate_update_after_submit = True
+        self.save()
+
 
 @frappe.whitelist()
 def make_os(docname):
