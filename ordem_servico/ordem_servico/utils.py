@@ -194,3 +194,19 @@ def set_delivery_note_history(source_docname, source_transaction_date, target_do
         os_doc.delivery_note_name = source_docname
         os_doc.delivery_note_date = source_transaction_date
         os_doc.save()
+
+
+@frappe.whitelist()
+def set_reference(target_doctype, target_docname, attr, source_docname):
+    target = frappe.get_doc(target_doctype, target_docname)
+    setattr(
+        target,
+        attr,
+        target_docname,
+        "Erro ao tentar no atributo ao tentar linkar documentos, atributo: {}".format(
+            attr
+        ),
+    )
+    target.flags.ignore_validate_update_after_submit = True
+    target.save()
+
