@@ -19,6 +19,7 @@ class OrdemServicoExterna(Document):
             so.flags.ignore_validate_update_after_submit = True
             so.save()
 
+    # Emulate switch case and set new workflow_status value based on switcher return
     def update_status(self):
         SUBMITTED = "Enviado"
         TO_SCHEDULE = "Agendamento Pendente"
