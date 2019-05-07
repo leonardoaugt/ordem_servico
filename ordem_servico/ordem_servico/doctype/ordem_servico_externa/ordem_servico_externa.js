@@ -19,7 +19,7 @@ frappe.ui.form.on('Ordem Servico Externa', {
 	add_schedule_button: function (frm) {
 		if (frm.events.show_schedule_button(frm)) {
 			frm.add_custom_button(__('Agendar Manutenção'),
-				() => frm.events.make_maintenance(frm),
+				() => frm.events.schedule_maintenance(frm),
 				__("Make"));
 		}
 	},
@@ -56,15 +56,20 @@ frappe.ui.form.on('Ordem Servico Externa', {
 	},
 
 	schedule_maintenance: function (frm) {
-		let maint = frm.doc;
-		let event = frappe.new_doc('Event');
-
-		event.doc.name = maint.name;
-		event.link_documento = frm.doc.doctype;
-		event.link_dinamico = frm.doc.name;
-
-		frm.refresh_field('name');
-		frm.refresh_field('link_documento');
-		frm.refresh_field('link_dinamico');
+		frappe.call({
+			method: 'ordem_servico.ordem_servico.utils.schedule_maintenance',
+			args: {
+				ref_doctype: frm.doc.doctype,
+				ref_docname: frm.doc.name,
+				repair_person: frm.doc.repair_person,
+			},
+			callback: function (r) {
+				refresh_field('event_link');
+				frappe.show_alert({
+					message: 'Manutenções agendada!',
+					indicator: 'green',
+				})
+			}
+		})
 	},
 });
