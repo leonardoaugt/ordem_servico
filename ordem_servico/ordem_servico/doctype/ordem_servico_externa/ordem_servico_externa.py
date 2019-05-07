@@ -31,7 +31,7 @@ class OrdemServicoExterna(Document):
             )
 
         self.workflow_state = switcher_status(self.workflow_state)
-        self.ignore_validate_update_after_submit = True
+        self.flags.ignore_validate_update_after_submit = True
         self.save()
 
 
