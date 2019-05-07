@@ -115,5 +115,23 @@
   "name": "Enviado", 
   "style": "Primary", 
   "workflow_state_name": "Enviado"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Workflow State", 
+  "icon": "", 
+  "modified": "2019-05-06 23:59:19.255327", 
+  "name": "Agendamento Pendente", 
+  "style": "Warning", 
+  "workflow_state_name": "Agendamento Pendente"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "Workflow State", 
+  "icon": "", 
+  "modified": "2019-05-07 00:02:26.673001", 
+  "name": "Manuten\u00e7\u00e3o Pendente", 
+  "style": "Warning", 
+  "workflow_state_name": "Manuten\u00e7\u00e3o Pendente"
  }
 ]
