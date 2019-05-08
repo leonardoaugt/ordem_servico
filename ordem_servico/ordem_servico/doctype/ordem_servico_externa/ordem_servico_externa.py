@@ -56,3 +56,16 @@ def make_os(docname):
 def schedule_maintenance(docname, repair_person):
     doctype = "Ordem Servico Externa"
     _make_event(doctype, docname, repair_person)
+
+
+@frappe.whitelist()
+def update_maint_status(doctype, docname, maint_name, status):
+    os = frappe.get_doc(doctype, docname)
+    for equip in os.os_equipments:
+        if equip.maint_link == maint_name:
+            equip.maint_status = status
+            break
+    os.flags.ignore_validate_update_after_submit = True
+    frappe.msgprint("teste")
+    os.save()
+
