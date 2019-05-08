@@ -212,24 +212,23 @@ def set_reference(target_doctype, target_docname, attr, source_docname):
 
 
 @frappe.whitelist()
-def schedule_maintenance(ref_doctype, ref_name, repair_person=None):
+def _make_event(ref_doctype, ref_docname, repair_person=None):
     event = frappe.new_doc("Event")
-    event.name = ref_name
-    event.docstatus = 1
+    event.subject = ref_docname
     event.event_type = "Public"
     event.owner = frappe.session.user
     event.repair_person_name = repair_person
     event.send_reminder = 1
     event.all_day = 1
-    event.description = "Manutenção/Calibração - Manutenção: {}".format(ref_name)
+    event.description = "Manutenção/Calibração - Manutenção: {}".format(ref_docname)
     event.link_documento = ref_doctype
-    event.link_dinamico = ref_name
+    event.link_dinamico = ref_docname
     event.save()
-    set_event_link(ref_doctype, ref_name, event.name)
+    set_event_link(ref_doctype, ref_docname, event.name)
 
 
-def set_event_link(ref_doctype, ref_name, event_name):
-    doc = frappe.get_doc(ref_doctype, ref_name)
+def set_event_link(ref_doctype, ref_docname, event_name):
+    doc = frappe.get_doc(ref_doctype, ref_docname)
     doc.event_link = event_name
     doc.flags.ignore_validate_update_after_submit = True
     doc.save()

@@ -5,7 +5,7 @@
 from __future__ import unicode_literals
 import frappe
 from frappe.model.document import Document
-from datetime import date
+from ...utils import _make_event
 
 
 class OrdemServicoExterna(Document):
@@ -50,3 +50,9 @@ def make_os(docname):
     os.so_transaction = so.transaction_date
     os.save()
     return os
+
+
+@frappe.whitelist()
+def schedule_maintenance(docname, repair_person):
+    doctype = "Ordem Servico Externa"
+    _make_event(doctype, docname, repair_person)

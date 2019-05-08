@@ -57,16 +57,15 @@ frappe.ui.form.on('Ordem Servico Externa', {
 
 	schedule_maintenance: function (frm) {
 		frappe.call({
-			method: 'ordem_servico.ordem_servico.utils.schedule_maintenance',
+			method: 'ordem_servico.ordem_servico.doctype.ordem_servico_externa.ordem_servico_externa.schedule_maintenance',
 			args: {
-				ref_doctype: frm.doc.doctype,
-				ref_docname: frm.doc.name,
+				docname: frm.doc.name,
 				repair_person: frm.doc.repair_person,
 			},
 			callback: function (r) {
-				refresh_field('event_link');
+				frm.reload_doc();
 				frappe.show_alert({
-					message: 'Manutenções agendada!',
+					message: 'Manutenção agendada!',
 					indicator: 'green',
 				})
 			}
