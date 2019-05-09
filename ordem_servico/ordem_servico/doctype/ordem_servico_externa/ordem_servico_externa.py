@@ -66,6 +66,5 @@ def update_maint_status(doctype, docname, maint_name, status):
             equip.maint_status = status
             break
     os.flags.ignore_validate_update_after_submit = True
-    frappe.msgprint("teste")
     os.save()
 
