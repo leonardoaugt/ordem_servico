@@ -11,3 +11,7 @@ ordem_servico/docs/current
 .idea/vcs.xml
 .idea/workspace.xml
 .idea/ordem_servico.iml
+
+\.idea/codeStyles/
+
+\.idea/inspectionProfiles/
