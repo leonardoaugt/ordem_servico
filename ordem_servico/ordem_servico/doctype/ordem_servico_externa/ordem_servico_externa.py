@@ -48,6 +48,7 @@ def make_os(docname):
     os.mobile_no = so.contact_mobile
     os.sales_order = so.name
     os.so_transaction = so.transaction_date
+    os.flags.ignore_mandatory = True
     os.save()
     return os
 
