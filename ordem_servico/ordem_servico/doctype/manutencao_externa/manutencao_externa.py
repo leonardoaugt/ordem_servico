@@ -38,6 +38,7 @@ def make_maintenance(docname):
         maint.model = equipment.model
         maint.description = equipment.description
         maint.os_link = os_name
+        maint.flags.ignore_validate_update_after_submit = True
         maint.save()
         return maint
 
