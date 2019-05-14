@@ -4,7 +4,7 @@
   "doctype": "Workflow", 
   "document_type": "Ordem Servico Externa", 
   "is_active": 1, 
-  "modified": "2019-05-13 23:01:01.909444", 
+  "modified": "2019-05-14 02:15:14.482549", 
   "name": "OS Externa", 
   "override_status": 0, 
   "states": [
@@ -47,14 +47,6 @@
     "state": "Conclu\u00eddo", 
     "update_field": null, 
     "update_value": null
-   }, 
-   {
-    "allow_edit": "Ordem Servi\u00e7o", 
-    "doc_status": "1", 
-    "message": null, 
-    "state": "Cancelado", 
-    "update_field": null, 
-    "update_value": null
    }
   ], 
   "transitions": [
@@ -63,24 +55,6 @@
     "allowed": "Ordem Servi\u00e7o", 
     "next_state": "Enviado", 
     "state": "Rascunho"
-   }, 
-   {
-    "action": "Cancelar", 
-    "allowed": "Ordem Servi\u00e7o", 
-    "next_state": "Cancelado", 
-    "state": "Enviado"
-   }, 
-   {
-    "action": "Cancelar", 
-    "allowed": "Ordem Servi\u00e7o", 
-    "next_state": "Cancelado", 
-    "state": "Agendamento Pendente"
-   }, 
-   {
-    "action": "Cancelar", 
-    "allowed": "Ordem Servi\u00e7o", 
-    "next_state": "Cancelado", 
-    "state": "Manuten\u00e7\u00e3o Pendente"
    }
   ], 
   "workflow_name": "OS Externa", 
