@@ -92,8 +92,10 @@ def cancel_maintenances(docname):
         maint.workflow_state = CANCELLED
         maint.docstatus = 1
         maint.flags.ignore_validate_update_after_submit = True
+        maint.flags.ignore_validate = True
         maint.save()
-        os.workflow_state = CANCELLED
-        os.flags.ignore_validate_update_after_submit = True
-        os.save()
+
+    os.workflow_state = CANCELLED
+    os.flags.ignore_validate_update_after_submit = True
+    os.save()
 

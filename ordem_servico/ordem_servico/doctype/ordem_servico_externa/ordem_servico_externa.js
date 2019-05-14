@@ -1,11 +1,12 @@
 // Copyright (c) 2018, laugusto and contributors
-// For license information, please see license.txtfrappe.ui.form.on('Ordem Servico Externa', {
+// For license information, please see license.txt
 
 frappe.ui.form.on('Ordem Servico Externa', {
 
 	refresh: function (frm) {
 		frm.events.add_os_button(frm);
 		frm.events.add_schedule_button(frm);
+		frm.events.add_cancel_button(frm);
 	},
 
 	add_os_button: function (frm) {
@@ -24,6 +25,14 @@ frappe.ui.form.on('Ordem Servico Externa', {
 		}
 	},
 
+	add_cancel_button: function (frm) {
+		if (frm.events.show_cancel_button(frm)) {
+			frm.add_custom_button(__('Cancelar'),
+				() => frm.events.cancel_maintenances(frm),
+				__("Status"));
+		}
+	},
+
 	show_maint_button: function (frm) {
 		let status = 'Enviado';
 		let valid = frm.doc.workflow_state == status ? true : false;
@@ -34,6 +43,13 @@ frappe.ui.form.on('Ordem Servico Externa', {
 	show_schedule_button: function (frm) {
 		let status = 'Agendamento Pendente';
 		let valid = frm.doc.workflow_state == status ? true : false;
+
+		return valid;
+	},
+
+	show_cancel_button: function (frm) {
+		let status = 'Concluído';
+		let valid = frm.doc.workflow_state != status ? true : false;
 
 		return valid;
 	},
@@ -71,4 +87,27 @@ frappe.ui.form.on('Ordem Servico Externa', {
 			}
 		})
 	},
+
+	cancel_maintenances: function (frm) {
+		frappe.confirm(`Tem certeza que deseja cancelar a Ordem de Serviço ${frm.doc.name}?`,
+			function () {
+				frappe.call({
+					method: 'ordem_servico.ordem_servico.doctype.ordem_servico_externa.ordem_servico_externa.cancel_maintenances',
+					args: {
+						docname: frm.doc.name,
+					},
+					callback: function (r) {
+						frm.reload_doc();
+						frappe.show_alert({
+							message: 'Manutenções canceladas!',
+							indicator: 'grey',
+						})
+					}
+				})
+			},
+			function () {
+				window.close();
+			}
+		)
+	}
 });
