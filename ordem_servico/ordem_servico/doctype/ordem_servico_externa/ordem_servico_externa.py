@@ -81,3 +81,19 @@ def make_os(docname):
 def schedule_maintenance(docname, repair_person):
     doctype = "Ordem Servico Externa"
     _make_event(doctype, docname, repair_person)
+
+
+@frappe.whitelist()
+def cancel_maintenances(docname):
+    os = frappe.get_doc('Ordem Servico Externa', docname)
+    for equip in os.os_equipments:
+        if equip.maint_status == PENDING: equip.maint_status = CANCELLED
+        maint = frappe.get_doc('Manutencao Externa', equip.maint_link)
+        maint.workflow_state = CANCELLED
+        maint.docstatus = 1
+        maint.flags.ignore_validate_update_after_submit = True
+        maint.save()
+        os.workflow_state = CANCELLED
+        os.flags.ignore_validate_update_after_submit = True
+        os.save()
+

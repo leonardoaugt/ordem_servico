@@ -1,5 +1,5 @@
 // Copyright (c) 2018, laugusto and contributors
-// For license information, please see license.txt
+// For license information, please see license.txtfrappe.ui.form.on('Ordem Servico Externa', {
 
 frappe.ui.form.on('Ordem Servico Externa', {
 
