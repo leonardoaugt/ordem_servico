@@ -63,6 +63,7 @@ class OrdemServicoExterna(Document):
 def make_os(docname):
     so = frappe.get_doc("Sales Order", docname)
     os = frappe.new_doc("Ordem Servico Externa")
+    os.transaction_date = frappe.utils.nowdate()
     os.customer = so.customer
     os.address_name = so.customer_address
     os.address_display = so.address_display
