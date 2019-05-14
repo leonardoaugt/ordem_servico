@@ -8,6 +8,14 @@ from frappe.model.document import Document
 from ...utils import _make_event
 
 
+PENDING = 'Pendente'
+SUCCEEDED = 'Concluído'
+CANCELLED = 'Cancelado'
+SUBMITTED = "Enviado"
+TO_SCHEDULE = "Agendamento Pendente"
+TO_REPAIR = "Manutenção Pendente"
+
+
 class OrdemServicoExterna(Document):
     def on_update(self):
         self.set_ref()
@@ -21,19 +29,34 @@ class OrdemServicoExterna(Document):
 
     # Emulate switch case and set new workflow_status value based on switcher return
     def update_status(self):
-        SUBMITTED = "Enviado"
-        TO_SCHEDULE = "Agendamento Pendente"
-        TO_REPAIR = "Manutenção Pendente"
+
+        def sync_maint_status(status):
+            if all(equip.maint_status == CANCELLED for equip in self.os_equipments):
+                status = CANCELLED
+            elif not any(equip.maint_status == PENDING for equip in self.os_equipments):
+                status = SUCCEEDED
+
+            return status
 
         def switcher_status(status):
-            switcher = {SUBMITTED: TO_SCHEDULE, TO_SCHEDULE: TO_REPAIR}
-            return switcher.get(
-                self.workflow_state, "Status {} não disponível".format(status)
-            )
+            switcher = {
+                SUBMITTED: TO_SCHEDULE,
+                TO_SCHEDULE: TO_REPAIR,
+                TO_REPAIR: sync_maint_status(status),
+            }
+            switch = switcher.get(status, "Status {} não disponível".format(status))
+            return switch
 
         self.workflow_state = switcher_status(self.workflow_state)
         self.flags.ignore_validate_update_after_submit = True
         self.save()
+
+    def update_maint_status(self, name, workflow_state):
+        for equip in self.os_equipments:
+            if equip.maint_link == name:
+                equip.maint_status = workflow_state
+                break
+        self.update_status()
 
 
 @frappe.whitelist()
@@ -57,15 +80,3 @@ def make_os(docname):
 def schedule_maintenance(docname, repair_person):
     doctype = "Ordem Servico Externa"
     _make_event(doctype, docname, repair_person)
-
-
-@frappe.whitelist()
-def update_maint_status(doctype, docname, maint_name, status):
-    os = frappe.get_doc(doctype, docname)
-    for equip in os.os_equipments:
-        if equip.maint_link == maint_name:
-            equip.maint_status = status
-            break
-    os.flags.ignore_validate_update_after_submit = True
-    os.save()
-

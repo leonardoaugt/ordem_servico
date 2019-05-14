@@ -228,7 +228,6 @@ def _make_event(ref_doctype, ref_docname, repair_person=None):
 
 
 def set_event_link(ref_doctype, ref_docname, event_name):
-    doc = frappe.get_doc(ref_doctype, ref_docname)
-    doc.event_link = event_name
-    doc.flags.ignore_validate_update_after_submit = True
-    doc.save()
+    os = frappe.get_doc(ref_doctype, ref_docname)
+    os.event_link = event_name
+    os.update_status()
