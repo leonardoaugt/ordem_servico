@@ -6,3 +6,12 @@ tags
 ordem_servico/docs/current
 .vscode/temp.sql
 .vscode/settings.json
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
+.idea/ordem_servico.iml
+
+\.idea/codeStyles/
+
+\.idea/inspectionProfiles/
