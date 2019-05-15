@@ -197,15 +197,10 @@ def set_delivery_note_history(source_docname, source_transaction_date, target_do
 
 
 @frappe.whitelist()
-def set_reference(target_doctype, target_docname, attr, source_docname):
+def set_reference(target_doctype, target_docname, attr):
     target = frappe.get_doc(target_doctype, target_docname)
     setattr(
-        target,
-        attr,
-        target_docname,
-        "Erro ao tentar no atributo ao tentar linkar documentos, atributo: {}".format(
-            attr
-        ),
+        target, attr, target_docname, "Erro ao tentar no atributo ao tentar linkar documentos, atributo: {}".format(attr),
     )
     target.flags.ignore_validate_update_after_submit = True
     target.save()
@@ -231,3 +226,15 @@ def set_event_link(ref_doctype, ref_docname, event_name):
     os = frappe.get_doc(ref_doctype, ref_docname)
     os.event_link = event_name
     os.update_status()
+
+
+@frappe.whitelist()
+def update_delivery_date(docname, date, reason):
+    if date < frappe.utils.nowdate():
+        frappe.throw('A data {} não pode ser anterior que a atual'.format(date))
+    else:
+        so = frappe.get_doc('Sales Order', docname)
+        so.delivery_date = date
+        so.emenda_reason = reason
+        so.flags.ignore_validate_update_after_submit = True
+        so.save()
