@@ -44,7 +44,7 @@ frappe.ui.form.on(cur_frm.doctype, {
 		this.cur_frm.fields_dict.final_scheduled_to.get_query = function () {
 			return {
 				filters: {
-					'department': ['in', ['Diretoria', 'Vendas', 'Comercial']],
+					'department': ['in', ['Diretoria', 'Assistência Técnica']],
 					'status': 'Active',
 				}
 			}
@@ -53,7 +53,7 @@ frappe.ui.form.on(cur_frm.doctype, {
 		this.cur_frm.fields_dict.final_scheduled_by.get_query = function () {
 			return {
 				filters: {
-					'department': ['in', ['Diretoria', 'Assistência Técnica']],
+					'department': ['in', ['Diretoria', 'Vendas', 'Comercial']],
 					'status': 'Active',
 				}
 			}
