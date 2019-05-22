@@ -4,6 +4,7 @@
 frappe.ui.form.on('Ordem Servico Externa', {
 
 	refresh: function (frm) {
+		frm.events.apply_filters(frm);
 		frm.events.add_os_button(frm);
 		frm.events.add_schedule_button(frm);
 		frm.events.add_cancel_button(frm);
@@ -109,5 +110,15 @@ frappe.ui.form.on('Ordem Servico Externa', {
 				window.close();
 			}
 		)
+	},
+
+	apply_filters (frm) {
+		frm.fields_dict['os_equipments'].grid.get_field('serie').get_query = () => {
+			return {
+				filters: {
+					'parent': frm.doc.customer,
+				}
+			}
+		};
 	}
 });
