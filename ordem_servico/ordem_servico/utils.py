@@ -153,11 +153,10 @@ def sum_time(t1, t2):
 @frappe.whitelist()
 def set_quotation_history(source_docname, source_transaction_date, target_docname):
     os_doc = frappe.get_doc("Ordem Servico Interna", target_docname)
-    if not os_doc.quotation_name:
-        os_doc.quotation_name = source_docname
-        os_doc.quotation_date = source_transaction_date
-        os_doc.status_order_service = "Em Aprovação"
-        os_doc.save()
+    os_doc.quotation_name = source_docname
+    os_doc.quotation_date = source_transaction_date
+    os_doc.status_order_service = "Em Aprovação"
+    os_doc.save()
 
 
 @frappe.whitelist()
