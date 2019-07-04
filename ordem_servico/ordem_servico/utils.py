@@ -202,6 +202,7 @@ def update_delivery_date(docname, date, reason):
     else:
         so = frappe.get_doc('Sales Order', docname)
         so.delivery_date = date
-        so.emenda_reason = reason
+        nowdate = frappe.utils.formatdate(frappe.utils.nowdate(), 'dd-MM-yyyy')
+        so.emenda_reason = '{} - {} {}.'.format(reason, frappe.session.user, nowdate)
         so.flags.ignore_validate_update_after_submit = True
         so.save()
