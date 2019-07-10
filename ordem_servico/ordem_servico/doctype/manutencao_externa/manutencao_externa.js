@@ -11,7 +11,7 @@ frappe.ui.form.on("Manutencao Externa", {
 
     /* Bug fix when trying to submit a Manutencao Externa
      status was changing even validate fails */
-    before_submit(frm) {
+    validate(frm) {
         if (
             frm.doc.equip_problem == undefined
             || frm.doc.work_done == undefined
