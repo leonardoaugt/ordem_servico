@@ -17,7 +17,7 @@ frappe.ui.form.on(cur_frm.doctype, {
 		cur_frm.fields_dict.initial_scheduled_to.get_query = function () {
 			return {
 				filters: {
-					'department': ['in', ['Diretoria', 'Assistência Técnica']],
+					'department': ['in', ['Diretoria - ER', 'Assistência Técnica - ER']],
 					'status': 'Active',
 				}
 			}
@@ -26,7 +26,7 @@ frappe.ui.form.on(cur_frm.doctype, {
 		cur_frm.fields_dict.initial_scheduled_by.get_query = function () {
 			return {
 				filters: {
-					'department': ['in', ['Diretoria', 'Vendas', 'Comercial']],
+					'department': ['in', ['Diretoria - ER', 'Vendas - ER', 'Comercial - ER']],
 					'status': 'Active'
 				}
 			}
@@ -35,7 +35,7 @@ frappe.ui.form.on(cur_frm.doctype, {
 		cur_frm.fields_dict.technical_person.get_query = function () {
 			return {
 				filters: {
-					'department': ['in', ['Diretoria', 'Assistência Técnica']],
+					'department': ['in', ['Diretoria - ER', 'Assistência Técnica - ER']],
 					'status': 'Active',
 				}
 			}
@@ -44,7 +44,7 @@ frappe.ui.form.on(cur_frm.doctype, {
 		cur_frm.fields_dict.final_scheduled_to.get_query = function () {
 			return {
 				filters: {
-					'department': ['in', ['Diretoria', 'Assistência Técnica']],
+					'department': ['in', ['Diretoria - ER', 'Assistência Técnica - ER']],
 					'status': 'Active',
 				}
 			}
@@ -53,7 +53,7 @@ frappe.ui.form.on(cur_frm.doctype, {
 		cur_frm.fields_dict.final_scheduled_by.get_query = function () {
 			return {
 				filters: {
-					'department': ['in', ['Diretoria', 'Vendas', 'Comercial']],
+					'department': ['in', ['Diretoria - ER', 'Vendas - ER', 'Comercial - ER']],
 					'status': 'Active',
 				}
 			}
