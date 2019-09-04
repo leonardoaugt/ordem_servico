@@ -42,6 +42,7 @@ doctype_js = {
 fixtures = [
     "Property Setter",
     "Workflow State",
+    "Workflow Action Master",
     "Workflow",
     {"dt": "Custom Field",
         "filters": [[
