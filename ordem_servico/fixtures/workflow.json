@@ -4,7 +4,7 @@
   "doctype": "Workflow",
   "document_type": "Quotation",
   "is_active": 1,
-  "modified": "2019-02-13 01:58:02.725295",
+  "modified": "2019-09-04 00:24:53.657244",
   "name": "Quotation",
   "override_status": 0,
   "parent": null,
@@ -76,7 +76,7 @@
   "transitions": [
    {
     "action": "Enviar",
-    "allow_self_approval": 0,
+    "allow_self_approval": 1,
     "allowed": "Sales User",
     "condition": null,
     "next_state": "Pendente de Aprova\u00e7\u00e3o",
@@ -87,7 +87,7 @@
    },
    {
     "action": "Aprovar",
-    "allow_self_approval": 0,
+    "allow_self_approval": 1,
     "allowed": "Sales User",
     "condition": null,
     "next_state": "Aprovado",
@@ -98,7 +98,7 @@
    },
    {
     "action": "Reprovar",
-    "allow_self_approval": 0,
+    "allow_self_approval": 1,
     "allowed": "Sales User",
     "condition": null,
     "next_state": "Reprovado",
@@ -109,7 +109,7 @@
    },
    {
     "action": "Cancelar",
-    "allow_self_approval": 0,
+    "allow_self_approval": 1,
     "allowed": "Sales User",
     "condition": null,
     "next_state": "Cancelado",
@@ -120,7 +120,7 @@
    },
    {
     "action": "Cancelar",
-    "allow_self_approval": 0,
+    "allow_self_approval": 1,
     "allowed": "Sales User",
     "condition": null,
     "next_state": "Cancelado",
