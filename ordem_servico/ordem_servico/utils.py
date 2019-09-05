@@ -2,12 +2,12 @@
 # Copyright (c) 2017, laugusto and contributors
 # For license information, please see license.txt
 from __future__ import unicode_literals
-import frappe
-from frappe.model.document import Document
-
 
 # Custom imports
-import datetime, time
+import datetime
+import time
+
+import frappe
 from pytz import timezone
 
 
@@ -197,12 +197,10 @@ def set_delivery_note_history(source_docname, source_transaction_date, target_do
 
 @frappe.whitelist()
 def update_delivery_date(docname, date, reason):
-    if date < frappe.utils.nowdate():
-        frappe.throw('A data {} não pode ser anterior que a atual'.format(date))
-    else:
-        so = frappe.get_doc('Sales Order', docname)
-        so.delivery_date = date
-        nowdate = frappe.utils.formatdate(frappe.utils.nowdate(), 'dd-MM-yyyy')
-        so.emenda_reason = '{} - {} {}.'.format(reason, frappe.session.user, nowdate)
-        so.flags.ignore_validate_update_after_submit = True
-        so.save()
+    nowdate = frappe.utils.formatdate(frappe.utils.nowdate(), 'dd-MM-yyyy')
+    so = frappe.get_doc('Sales Order', docname)
+    so.delivery_date = date
+    so.emenda_reason = '{} - {} {}.'.format(reason, frappe.session.user, nowdate)
+    so.flags.ignore_validate_update_after_submit = True
+    so.flags.ignore_validate = True
+    so.save()

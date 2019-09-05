@@ -54,11 +54,4 @@ frappe.ui.form.on('Sales Order', {
 
         return over;
     },
-
-    add_custom_button: function (frm) {
-        if (frm.events.overdued()) {
-            frm.add_custom_button(__('Emenda'),
-                () => frm.events.update_delivery_date(frm));
-        }
-    },
 });
