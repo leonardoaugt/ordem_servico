@@ -66,7 +66,7 @@ def make_quotation(os_docname):
     quot_doc.defeito_constatado = os_doc.problem_description
     quot_doc.observacao_tecnica = os_doc.problem_observation
     quot_doc.local_manutencao = "Interno"
-    quot_doc.customer = os_doc.customer
+    quot_doc.party_name = os_doc.customer
     quot_doc.numero_serie = os_doc.serie_number
     quot_doc.descricao_equipamento = os_doc.equipment_description
     quot_doc.tag = os_doc.equipment_tag
