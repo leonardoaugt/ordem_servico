@@ -41,15 +41,61 @@ doctype_js = {
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 fixtures = [
     "Property Setter",
-    "Workflow State",
-    "Workflow Action Master",
-    "Workflow",
+    'Workflow State',
+    'Workflow Action Master',
+    'Workflow',
     {"dt": "Custom Field",
-        "filters": [[
-            "dt", "in", ("Maintenance Visit", "Maintenance Visit Purpose",
-                         "Quotation", "Quotation Item", "Customer", "Event", "Opportunity", "Lead", "Item", "Sales Order", "Delivery Note", "Payment Entry", "Sales Invoice")
-        ]]
-    },
+     "filters": [[
+         "name", "in", (
+             'Customer-inscricao_estadual',
+             'Customer-nome_fantasia',
+             'Customer-segmento',
+             'Delivery Note-local_manutencao',
+             'Delivery Note-os_interna_link',
+             'Event-link_dinamico',
+             'Event-link_documento',
+             'Event-tempo_orcamento_conserto',
+             'Item-localizacao',
+             'Item-ncm',
+             'Lead-contato',
+             'Lead-segmento',
+             'Lead-tipo_calibracao',
+             'Lead-transaction_date',
+             'Lead-uf',
+             'Opportunity-orcamento_link',
+             'Opportunity-segmento',
+             'Opportunity-tipo_calibracao',
+             'Opportunity-uf',
+             'Payment Entry-local_manutencao',
+             'Payment Entry-os_interna_link',
+             'Quotation Item-ncm',
+             'Quotation Item-prazo_de_entrega_em_dias',
+             'Quotation-cb_1',
+             'Quotation-clausula',
+             'Quotation-defeito_constatado',
+             'Quotation-descricao_equipamento',
+             'Quotation-descricao_equipamento_orçado',
+             'Quotation-descricao_servicos',
+             'Quotation-descricao_servico',
+             'Quotation-email',
+             'Quotation-frete',
+             'Quotation-local_manutencao',
+             'Quotation-numero_serie',
+             'Quotation-observacao_comercial',
+             'Quotation-observacao_tecnica',
+             'Quotation-os_interna_link',
+             'Quotation-tag',
+             'Quotation-tipo_orcamento',
+             'Quotation-workflow_state',
+             'Quotation-cb_2',
+             'Sales Invoice-local_manutencao',
+             'Sales Invoice-os_interna_link',
+             'Sales Order-emenda_reason',
+             'Sales Order-local_manutencao',
+             'Sales Order-os_interna_link'
+         )
+     ]]
+     },
 ]
 # Home Pages
 # ----------

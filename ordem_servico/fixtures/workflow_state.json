@@ -15,18 +15,6 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2019-01-30 16:08:13.348638",
-  "name": "Rascunho",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "style": "Danger",
-  "workflow_state_name": "Rascunho"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
   "modified": "2019-01-14 13:43:26.041798",
   "name": "Cancelado",
   "parent": null,
@@ -75,6 +63,18 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
+  "modified": "2019-01-30 17:48:55.249864",
+  "name": "Aprovado",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "style": "Success",
+  "workflow_state_name": "Aprovado"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
   "modified": "2019-01-30 17:51:26.757550",
   "name": "Pendente de Aprova\u00e7\u00e3o",
   "parent": null,
@@ -87,12 +87,12 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2019-01-30 17:48:55.249864",
-  "name": "Aprovado",
+  "modified": "2019-01-30 16:08:13.348638",
+  "name": "Rascunho",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
-  "style": "Success",
-  "workflow_state_name": "Aprovado"
+  "style": "Danger",
+  "workflow_state_name": "Rascunho"
  }
 ]
