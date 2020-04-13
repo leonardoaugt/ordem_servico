@@ -1,10 +1,7 @@
 // Copyright (c) 2018, laugusto and contributors
 // For license information, please see license.txt
 
-{%
-  include
-  'ordem_servico/public/js/ordem_servico.js' %
-}
+{% include 'ordem_servico/public/js/ordem_servico.js' %}
 
 frappe.ui.form.on('Ordem Servico Interna', {
 
