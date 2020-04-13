@@ -204,3 +204,11 @@ def update_delivery_date(docname, date, reason):
     so.flags.ignore_validate_update_after_submit = True
     so.flags.ignore_validate = True
     so.save()
+
+
+@frappe.whitelist()
+def make_os_interna(customer, docname):
+    doc = frappe.new_doc('Ordem Servico Interna')
+    doc.customer = customer
+    doc.equipment = docname
+    return doc
