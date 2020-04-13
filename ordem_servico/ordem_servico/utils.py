@@ -207,8 +207,8 @@ def update_delivery_date(docname, date, reason):
 
 
 @frappe.whitelist()
-def make_os_interna(customer, docname):
-    doc = frappe.new_doc('Ordem Servico Interna')
+def make_os(doctype, customer, docname):
+    doc = frappe.new_doc(doctype)
     doc.customer = customer
     doc.equipment = docname
     return doc
