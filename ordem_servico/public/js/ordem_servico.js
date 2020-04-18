@@ -69,9 +69,9 @@ frappe.ui.form.on(cur_frm.doctype, {
 					equipment: frm.doc.equipment_model,
 				},
 				callback: function (r) {
-					data = r.message;
-					frm.doc.quotation_time = data['quotation_time'];
-					frm.doc.repair_time = data['repair_time'];
+					const data = r.message;
+					frm.doc.quotation_time = data.quotation_time;
+					frm.doc.repair_time = data.repair_time;
 					frm.refresh_field('quotation_time');
 					frm.refresh_field('repair_time');
 				}
