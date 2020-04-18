@@ -1409,7 +1409,7 @@
  "issingle": 0,
  "istable": 0,
  "max_attachments": 0,
- "modified": "2019-09-02 02:28:31.721674",
+ "modified": "2020-04-18 15:28:36.285559",
  "modified_by": "Administrator",
  "module": "Ordem Servico",
  "name": "Ordem Servico Externa",
@@ -1436,7 +1436,7 @@
    "write": 1
   }
  ],
- "quick_entry": 1,
+ "quick_entry": 0,
  "read_only": 0,
  "read_only_onload": 0,
  "show_name_in_global_search": 0,

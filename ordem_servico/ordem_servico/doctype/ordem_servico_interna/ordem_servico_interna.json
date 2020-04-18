@@ -3151,7 +3151,7 @@
  "issingle": 0,
  "istable": 0,
  "max_attachments": 0,
- "modified": "2019-10-21 22:33:21.972678",
+ "modified": "2020-04-18 15:28:29.671075",
  "modified_by": "Administrator",
  "module": "Ordem Servico",
  "name": "Ordem Servico Interna",
@@ -3178,7 +3178,7 @@
    "write": 1
   }
  ],
- "quick_entry": 1,
+ "quick_entry": 0,
  "read_only": 0,
  "read_only_onload": 0,
  "show_name_in_global_search": 0,
