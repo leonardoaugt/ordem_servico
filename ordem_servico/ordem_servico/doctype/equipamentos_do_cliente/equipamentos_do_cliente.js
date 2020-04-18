@@ -1,8 +1,8 @@
 // Copyright (c) 2019, laugusto and contributors
 // For license information, please see license.txt
 const DocTypes = {
-  OS_INTERNA : 'Ordem Servico Interna',
-  OS_EXTERNA : 'Ordem Servico Externa'
+  OS_INTERNA: 'Ordem Servico Interna',
+  OS_EXTERNA: 'Ordem Servico Externa'
 }
 
 frappe.ui.form.on('Equipamentos do Cliente', {
@@ -19,16 +19,18 @@ frappe.ui.form.on('Equipamentos do Cliente', {
     )
   },
   make_os(frm, doctype) {
+    const { customer, name } = frm.doc
     frappe.call({
       method: 'ordem_servico.ordem_servico.utils.make_os',
       args: {
         doctype: doctype,
-        customer: frm.doc.customer,
-        docname: frm.doc.name
+        customer: customer,
+        docname: name
       },
       callback(r) {
+        const { doctype, name } = r.message
         frappe.model.sync(r.message)
-        frappe.set_route('Form', r.message.doctype, r.message.name)
+        frappe.set_route('Form', doctype, name)
       }
     })
   }
