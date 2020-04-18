@@ -3,46 +3,48 @@
 
 {% include "ordem_servico/public/js/ordem_servico.js" %}
 
-
 frappe.ui.form.on('Ordem Servico Externa', {
-	
-	create_quotation: function (frm) {
-
-		if (cur_frm.doc.__unsaved) {
-			frappe.throw('Favor salvar documento!');
+	create_quotation(frm) {
+		const { __unsaved } = cur_frm.doc
+		if (__unsaved) {
+			frappe.throw('Favor salvar documento!')
 		}
+		const { doctype, name } = frm.doc
 		frappe.call({
 			method: 'ordem_servico.ordem_servico.utils.make_quotation',
 			args: {
-				doctype: frm.doc.doctype,
-				docname: frm.doc.name,
-				local: 'Externo',
-			},
-		});
-		frm.reload_doc();
-		show_alert('Orçamento gerado.');
+				doctype: doctype,
+				docname: name,
+				local: 'Externo'
+			}
+		})
+		frm.reload_doc()
+		show_alert('Orçamento gerado.')
 	},
-
-	schedule_repair_event: function (frm) {
-
-		if (cur_frm.doc.__unsaved) {
-			frappe.throw('Favor salvar documento!');
+	schedule_repair_event(frm) {
+		const { __unsaved } = cur_frm.doc
+		if (__unsaved) {
+			frappe.throw('Favor salvar documento!')
 		}
+		const {
+			doctype,
+			name,
+			repair_schedule_date,
+			repair_schedule_time,
+			repair_time
+		} = frm.doc
 		frappe.call({
 			method: 'ordem_servico.ordem_servico.utils.make_event',
 			args: {
-				doctype: frm.doc.doctype,
-				docname: frm.doc.name,
-				start_date: frm.doc.repair_schedule_date,
-				start_time: frm.doc.repair_schedule_time,
-				work_time: frm.doc.repair_time,
-				trigger: 'repair',
-			},
-		});
-		frm.reload_doc();
-		show_alert('Visita agendada.');
-	},
-
-
-
-});
+				doctype: doctype,
+				docname: name,
+				start_date: repair_schedule_date,
+				start_time: repair_schedule_time,
+				work_time: repair_time,
+				trigger: 'repair'
+			}
+		})
+		frm.reload_doc()
+		show_alert('Visita agendada.')
+	}
+})
