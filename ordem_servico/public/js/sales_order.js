@@ -1,8 +1,8 @@
 frappe.ui.form.on('Sales Order', {
   refresh(frm) {
-    frm.events.add_custom_button(frm)
+    frm.events._add_custom_button(frm)
   },
-  add_custom_button(frm) {
+  _add_custom_button(frm) {
     const overdued = frm.events.overdued()
     if (overdued) {
       frm.add_custom_button(__('Emenda'),
