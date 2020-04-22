@@ -75,8 +75,8 @@ frappe.ui.form.on('Ordem Servico Interna', {
         os_docname: frm.doc.name
       },
       callback(r) {
-        const { doctype, name } = r.message
         frappe.model.sync(r.message)
+        const { doctype, name } = r.message
         frappe.set_route('Form', doctype, name)
       }
     })

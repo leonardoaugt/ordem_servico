@@ -28,8 +28,8 @@ frappe.ui.form.on('Equipamentos do Cliente', {
         docname: name
       },
       callback(r) {
-        const { doctype, name } = r.message
         frappe.model.sync(r.message)
+        const { doctype, name } = r.message
         frappe.set_route('Form', doctype, name)
       }
     })
