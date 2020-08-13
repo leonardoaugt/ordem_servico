@@ -4,6 +4,10 @@
 {% include 'ordem_servico/public/js/ordem_servico.js' %}
 
 frappe.ui.form.on('Ordem Servico Interna', {
+  before_save(frm) {
+    if (frm.doc.status_order_service === 'Encerrada')
+      frm.events.finish_maintenance(frm)
+  },
   schedule_quotation_event(frm) {
     const { __unsaved } = cur_frm.doc
     if (__unsaved) {
@@ -140,5 +144,25 @@ frappe.ui.form.on('Ordem Servico Interna', {
     })
     frm.reload_doc()
     show_alert('Conserto finalizado.')
+  },
+  finish_maintenance(frm) {
+    const fields = frm.doc.accessories.map(item => ({
+      fieldtype: 'Check', label: item.description
+    }))
+    const d = new frappe.ui.Dialog({
+      title: 'Acessórios',
+      fields: fields,
+      primary_action_label: 'Confirmar',
+      primary_action: (values) => {
+        frm.events._validateAccessories(values)
+        d.hide()
+      },
+      secondary_action_label: 'Fechar'
+    })
+    d.show()
+  },
+  _validateAccessories(values) {
+    const isValid = Object.values(values).every(val => val)
+    if (!isValid) frappe.throw('É necessário devolver todos os acessórios!')
   }
 })
