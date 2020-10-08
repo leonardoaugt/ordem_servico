@@ -1,50 +1,124 @@
 // Copyright (c) 2018, laugusto and contributors
 // For license information, please see license.txt
 
-{% include "ordem_servico/public/js/ordem_servico.js" %}
-
 frappe.ui.form.on('Ordem Servico Externa', {
-	create_quotation(frm) {
-		const { __unsaved } = cur_frm.doc
-		if (__unsaved) {
-			frappe.throw('Favor salvar documento!')
-		}
-		const { doctype, name } = frm.doc
-		frappe.call({
-			method: 'ordem_servico.ordem_servico.utils.make_quotation',
-			args: {
-				doctype: doctype,
-				docname: name,
-				local: 'Externo'
-			}
-		})
-		frm.reload_doc()
-		show_alert('Orçamento gerado.')
+
+	refresh: function (frm) {
+		frm.events.apply_filters(frm);
+		frm.events.add_os_button(frm);
+		frm.events.add_schedule_button(frm);
+		frm.events.add_cancel_button(frm);
 	},
-	schedule_repair_event(frm) {
-		const { __unsaved } = cur_frm.doc
-		if (__unsaved) {
-			frappe.throw('Favor salvar documento!')
+
+	add_os_button: function (frm) {
+		if (frm.events.show_maint_button(frm)) {
+			frm.add_custom_button(__('Gerar Manutenção'),
+				() => frm.events.make_maintenance(frm),
+				__("Make"));
 		}
-		const {
-			doctype,
-			name,
-			repair_schedule_date,
-			repair_schedule_time,
-			repair_time
-		} = frm.doc
+	},
+
+	add_schedule_button: function (frm) {
+		if (frm.events.show_schedule_button(frm)) {
+			frm.add_custom_button(__('Agendar Manutenção'),
+				() => frm.events.schedule_maintenance(frm),
+				__("Make"));
+		}
+	},
+
+	add_cancel_button: function (frm) {
+		if (frm.events.show_cancel_button(frm)) {
+			frm.add_custom_button(__('Cancelar'),
+				() => frm.events.cancel_maintenances(frm),
+				__("Status"));
+		}
+	},
+
+	show_maint_button: function (frm) {
+		let status = 'Enviado';
+		let valid = frm.doc.workflow_state == status ? true : false;
+
+		return valid;
+	},
+
+	show_schedule_button: function (frm) {
+		let status = 'Agendamento Pendente';
+		let valid = frm.doc.workflow_state == status ? true : false;
+
+		return valid;
+	},
+
+	show_cancel_button: function (frm) {
+		let status = 'Concluído';
+		let valid = frm.doc.workflow_state != status ? true : false;
+
+		return valid;
+	},
+
+	make_maintenance: function (frm) {
 		frappe.call({
-			method: 'ordem_servico.ordem_servico.utils.make_event',
+			method: 'ordem_servico.ordem_servico.doctype.manutencao_externa.manutencao_externa.make_maintenance',
 			args: {
-				doctype: doctype,
-				docname: name,
-				start_date: repair_schedule_date,
-				start_time: repair_schedule_time,
-				work_time: repair_time,
-				trigger: 'repair'
+				docname: frm.doc.name,
+			},
+			callback: function (r) {
+				frappe.show_alert({
+					message: 'Manutenções geradas!',
+					indicator: 'green',
+				})
+			}
+
+		})
+		frm.reload_doc();
+	},
+
+	schedule_maintenance: function (frm) {
+		frappe.call({
+			method: 'ordem_servico.ordem_servico.doctype.ordem_servico_externa.ordem_servico_externa.schedule_maintenance',
+			args: {
+				docname: frm.doc.name,
+				repair_person: frm.doc.repair_person,
+			},
+			callback: function (r) {
+				frm.reload_doc();
+				frappe.show_alert({
+					message: 'Manutenção agendada!',
+					indicator: 'green',
+				})
 			}
 		})
-		frm.reload_doc()
-		show_alert('Visita agendada.')
+	},
+
+	cancel_maintenances: function (frm) {
+		frappe.confirm(`Tem certeza que deseja cancelar a Ordem de Serviço ${frm.doc.name}?`,
+			function () {
+				frappe.call({
+					method: 'ordem_servico.ordem_servico.doctype.ordem_servico_externa.ordem_servico_externa.cancel_maintenances',
+					args: {
+						docname: frm.doc.name,
+					},
+					callback: function (r) {
+						frm.reload_doc();
+						frappe.show_alert({
+							message: 'Manutenções canceladas!',
+							indicator: 'grey',
+						})
+					}
+				})
+			},
+			function () {
+				window.close();
+			}
+		)
+	},
+
+	apply_filters (frm) {
+		frm.fields_dict['os_equipments'].grid.get_field('serie').get_query = () => {
+			return {
+				filters: {
+					'parent': frm.doc.customer,
+				}
+			}
+		};
 	}
-})
+});

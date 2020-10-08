@@ -153,10 +153,11 @@ def sum_time(t1, t2):
 @frappe.whitelist()
 def set_quotation_history(source_docname, source_transaction_date, target_docname):
     os_doc = frappe.get_doc("Ordem Servico Interna", target_docname)
-    os_doc.quotation_name = source_docname
-    os_doc.quotation_date = source_transaction_date
-    os_doc.status_order_service = "Em Aprovação"
-    os_doc.save()
+    if not os_doc.quotation_name:
+        os_doc.quotation_name = source_docname
+        os_doc.quotation_date = source_transaction_date
+        os_doc.status_order_service = "Em Aprovação"
+        os_doc.save()
 
 
 @frappe.whitelist()
@@ -212,3 +213,35 @@ def make_os(doctype, customer, docname):
     doc.customer = customer
     doc.equipment = docname
     return doc
+
+
+@frappe.whitelist()
+def set_reference(target_doctype, target_docname, attr):
+    target = frappe.get_doc(target_doctype, target_docname)
+    setattr(
+        target, attr, target_docname, "Erro ao tentar no atributo ao tentar linkar documentos, atributo: {}".format(attr),
+    )
+    target.flags.ignore_validate_update_after_submit = True
+    target.save()
+
+
+@frappe.whitelist()
+def _make_event(ref_doctype, ref_docname, repair_person=None):
+    event = frappe.new_doc("Event")
+    event.subject = ref_docname
+    event.event_type = "Public"
+    event.owner = frappe.session.user
+    event.repair_person_name = repair_person
+    event.send_reminder = 1
+    event.all_day = 1
+    event.description = "Manutenção/Calibração - Manutenção: {}".format(ref_docname)
+    event.link_documento = ref_doctype
+    event.link_dinamico = ref_docname
+    event.save()
+    set_event_link(ref_doctype, ref_docname, event.name)
+
+
+def set_event_link(ref_doctype, ref_docname, event_name):
+    os = frappe.get_doc(ref_doctype, ref_docname)
+    os.event_link = event_name
+    os.update_status()
