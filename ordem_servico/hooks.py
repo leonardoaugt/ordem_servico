@@ -70,7 +70,8 @@ fixtures = [
              'Sales Invoice-local_manutencao',
              'Sales Invoice-os_interna_link',
              'Sales Order-local_manutencao',
-             'Sales Order-os_interna_link'
+             'Sales Order-os_interna_link',
+             'Sales Order-os_externa_link'
          )
      ]]
      },
