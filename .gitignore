@@ -6,5 +6,5 @@ tags
 ordem_servico/docs/current
 .vscode/temp.sql
 .vscode/settings.json
-
 \.idea/
+__pycache__
